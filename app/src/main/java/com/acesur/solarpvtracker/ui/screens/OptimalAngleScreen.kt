@@ -5,6 +5,8 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -23,6 +25,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.acesur.solarpvtracker.R
 import com.acesur.solarpvtracker.data.LocationHelper
 import com.acesur.solarpvtracker.data.UserLocation
@@ -244,224 +247,108 @@ fun OptimalAngleScreen(
             
             Spacer(modifier = Modifier.height(20.dp))
             
-            // Quick Reference Angles Section
-            Text(
-                text = stringResource(R.string.quick_reference),
-                style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier.fillMaxWidth()
-            )
-            
-            Spacer(modifier = Modifier.height(12.dp))
-            
-            // Today's Optimal Angle
+            // Quick Reference Angles Section (Grouped)
             Card(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 4.dp),
+                modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(12.dp),
-                colors = CardDefaults.cardColors(
-                    containerColor = SolarGreen.copy(alpha = 0.15f)
-                ),
-                border = if (selectedMode == OptimalAngleMode.DAILY) BorderStroke(2.dp, SolarGreen) else null,
-                onClick = { selectedMode = OptimalAngleMode.DAILY }
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f))
             ) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(16.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Icon(
-                        Icons.Default.Today,
-                        contentDescription = null,
-                        tint = SolarGreen,
-                        modifier = Modifier.size(24.dp)
-                    )
-                    Spacer(modifier = Modifier.width(12.dp))
-                    Column(modifier = Modifier.weight(1f)) {
-                        Text(
-                            text = stringResource(R.string.daily_angle),
-                            style = MaterialTheme.typography.bodyMedium,
-                            fontWeight = FontWeight.Medium
-                        )
-                        Text(
-                            text = stringResource(R.string.daily_angle_desc),
-                            style = MaterialTheme.typography.labelSmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                    }
+                Column(modifier = Modifier.padding(12.dp)) {
                     Text(
-                        text = String.format("%.1f°", todayOptimalAngle),
-                        style = MaterialTheme.typography.headlineSmall,
+                        text = stringResource(R.string.quick_reference),
+                        style = MaterialTheme.typography.titleMedium,
                         fontWeight = FontWeight.Bold,
-                        color = SolarGreen
+                        modifier = Modifier.padding(bottom = 8.dp)
                     )
-                }
-            }
-            
-            // Next 30 Days Average
-            Card(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 4.dp),
-                shape = RoundedCornerShape(12.dp),
-                colors = CardDefaults.cardColors(
-                    containerColor = SkyBlue.copy(alpha = 0.15f)
-                ),
-                border = if (selectedMode == OptimalAngleMode.NEXT_30_DAYS) BorderStroke(2.dp, SkyBlue) else null,
-                onClick = { selectedMode = OptimalAngleMode.NEXT_30_DAYS }
-            ) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(16.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Icon(
-                        Icons.Default.DateRange,
-                        contentDescription = null,
-                        tint = SkyBlue,
-                        modifier = Modifier.size(24.dp)
+                    
+                    // Daily
+                    CompactAngleRow(
+                        title = stringResource(R.string.daily_angle),
+                        subtitle = stringResource(R.string.daily_angle_desc),
+                        angle = todayOptimalAngle,
+                        icon = Icons.Default.Today,
+                        color = SolarGreen,
+                        isSelected = selectedMode == OptimalAngleMode.DAILY,
+                        onClick = { selectedMode = OptimalAngleMode.DAILY }
                     )
-                    Spacer(modifier = Modifier.width(12.dp))
-                    Column(modifier = Modifier.weight(1f)) {
-                        Text(
-                            text = stringResource(R.string.next_30_days),
-                            style = MaterialTheme.typography.bodyMedium,
-                            fontWeight = FontWeight.Medium
-                        )
-                        Text(
-                            text = stringResource(R.string.next_30_days_desc),
-                            style = MaterialTheme.typography.labelSmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                    }
-                    Text(
-                        text = String.format("%.1f°", next30DaysAngle),
-                        style = MaterialTheme.typography.headlineSmall,
-                        fontWeight = FontWeight.Bold,
-                        color = SkyBlue
+                    
+                    HorizontalDivider(modifier = Modifier.padding(vertical = 6.dp))
+                    
+                    // Next 30 Days
+                    CompactAngleRow(
+                        title = stringResource(R.string.next_30_days),
+                        subtitle = stringResource(R.string.next_30_days_desc),
+                        angle = next30DaysAngle,
+                        icon = Icons.Default.DateRange,
+                        color = SkyBlue,
+                        isSelected = selectedMode == OptimalAngleMode.NEXT_30_DAYS,
+                        onClick = { selectedMode = OptimalAngleMode.NEXT_30_DAYS }
                     )
-                }
-            }
-            
-
-            
-            // Year-round Fixed Angle
-            Card(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 4.dp),
-                shape = RoundedCornerShape(12.dp),
-                colors = CardDefaults.cardColors(
-                    containerColor = SolarOrange.copy(alpha = 0.15f)
-                ),
-                border = if (selectedMode == OptimalAngleMode.FIXED) BorderStroke(2.dp, SolarOrange) else null,
-                onClick = { selectedMode = OptimalAngleMode.FIXED }
-            ) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(16.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Icon(
-                        Icons.Default.PushPin,
-                        contentDescription = null,
-                        tint = SolarOrange,
-                        modifier = Modifier.size(24.dp)
+                    
+                    HorizontalDivider(modifier = Modifier.padding(vertical = 6.dp))
+                    
+                    // Fixed
+                    CompactAngleRow(
+                        title = stringResource(R.string.fixed_angle),
+                        subtitle = stringResource(R.string.fixed_angle_desc),
+                        angle = fixedAngle,
+                        icon = Icons.Default.PushPin,
+                        color = SolarOrange,
+                        isSelected = selectedMode == OptimalAngleMode.FIXED,
+                        onClick = { selectedMode = OptimalAngleMode.FIXED },
+                        isPvgis = pvgisOptimalAngle != null
                     )
-                    Spacer(modifier = Modifier.width(12.dp))
-                    Column(modifier = Modifier.weight(1f)) {
-                        Text(
-                            text = stringResource(R.string.fixed_angle),
-                            style = MaterialTheme.typography.bodyMedium,
-                            fontWeight = FontWeight.Medium
-                        )
-                        Text(
-                            text = stringResource(R.string.fixed_angle_desc),
-                            style = MaterialTheme.typography.labelSmall,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                    }
-                    Text(
-                        text = String.format("%.1f°", fixedAngle),
-                        style = MaterialTheme.typography.headlineSmall,
-                        fontWeight = FontWeight.Bold,
-                        color = SolarOrange
-                    )
-                }
-                
-                // PVGIS Source Badge
-                if (pvgisOptimalAngle != null) {
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(end = 16.dp, bottom = 8.dp),
-                        horizontalArrangement = Arrangement.End,
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.Verified,
-                            contentDescription = null,
-                            tint = SolarGreen,
-                            modifier = Modifier.size(14.dp)
-                        )
-                        Spacer(modifier = Modifier.width(4.dp))
-                        Text(
-                            text = "Source: PVGIS API",
-                            style = MaterialTheme.typography.labelSmall,
-                            color = SolarGreen,
-                            fontWeight = FontWeight.Bold
-                        )
-                    }
                 }
             }
             
             Spacer(modifier = Modifier.height(20.dp))
             
-            // Seasonal Recommendations
-            Text(
-                text = stringResource(R.string.seasonal_recommendations),
-                style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier.fillMaxWidth()
-            )
-            
-            Spacer(modifier = Modifier.height(12.dp))
-            
-            seasonalAngles.filter { it.descriptionResId != R.string.year_round_description }.forEachIndexed { index, angleData ->
-                val colors = listOf(SunYellow, SolarOrange, SkyBlue, MaterialTheme.colorScheme.primary)
-                
-                Card(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(vertical = 4.dp),
-                    shape = RoundedCornerShape(12.dp),
-                    colors = CardDefaults.cardColors(
-                        containerColor = colors.getOrElse(index) { SolarOrange }.copy(alpha = 0.15f)
+            // Seasonal Recommendations (Grouped)
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(12.dp),
+                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f))
+            ) {
+                Column(modifier = Modifier.padding(12.dp)) {
+                    Text(
+                        text = stringResource(R.string.seasonal_recommendations),
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier.padding(bottom = 8.dp)
                     )
-                ) {
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(16.dp),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Column(modifier = Modifier.weight(1f)) {
-                            Text(
+                    
+                    val seasonalList = seasonalAngles.filter { it.descriptionResId != R.string.year_round_description }
+                    seasonalList.forEachIndexed { index, angleData ->
+                        val colors = listOf(SunYellow, SolarOrange, SkyBlue, MaterialTheme.colorScheme.primary)
+                        val itemColor = colors.getOrElse(index) { SolarOrange }
+                        
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(vertical = 4.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                             // Bullet point
+                             Box(modifier = Modifier.size(8.dp).background(itemColor, androidx.compose.foundation.shape.CircleShape))
+                             Spacer(modifier = Modifier.width(8.dp))
+                             
+                             Text(
                                 text = angleData.descriptionResId?.let { stringResource(it) } ?: angleData.description,
                                 style = MaterialTheme.typography.bodyMedium,
-                                fontWeight = FontWeight.Medium
-                            )
+                                modifier = Modifier.weight(1f)
+                             )
+                             
+                             Text(
+                                text = String.format("%.1f°", angleData.angle),
+                                style = MaterialTheme.typography.titleMedium,
+                                fontWeight = FontWeight.Bold,
+                                color = itemColor
+                             )
                         }
-                        Text(
-                            text = String.format("%.1f°", angleData.angle),
-                            style = MaterialTheme.typography.headlineSmall,
-                            fontWeight = FontWeight.Bold,
-                            color = colors.getOrElse(index) { SolarOrange }
-                        )
+                        
+                        if (index < seasonalList.lastIndex) {
+                            HorizontalDivider(modifier = Modifier.padding(vertical = 4.dp), color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.1f))
+                        }
                     }
                 }
             }
@@ -617,5 +504,86 @@ private fun PanelDiagram(
                 }
             }
         }
+    }
+}
+
+@Composable
+fun CompactAngleRow(
+    title: String,
+    subtitle: String,
+    angle: Double,
+    icon:  androidx.compose.ui.graphics.vector.ImageVector,
+    color: Color,
+    isSelected: Boolean,
+    onClick: () -> Unit,
+    isPvgis: Boolean = false
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick)
+            .padding(vertical = 8.dp, horizontal = 4.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        // Selection Indicator
+        RadioButton(
+            selected = isSelected,
+            onClick = onClick,
+            colors = RadioButtonDefaults.colors(selectedColor = color, unselectedColor = Color.Gray),
+            modifier = Modifier.size(20.dp)
+        )
+        
+        Spacer(modifier = Modifier.width(12.dp))
+        
+        // Icon
+        Icon(
+            imageVector = icon,
+            contentDescription = null,
+            tint = color,
+            modifier = Modifier.size(20.dp)
+        )
+        
+        Spacer(modifier = Modifier.width(12.dp))
+        
+        // Text
+        Column(modifier = Modifier.weight(1f)) {
+            Text(
+                text = title,
+                style = MaterialTheme.typography.bodyMedium,
+                fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Medium
+            )
+            Text(
+                text = subtitle,
+                style = MaterialTheme.typography.labelSmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            
+            if (isPvgis) {
+                Spacer(modifier = Modifier.height(2.dp))
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Icon(
+                        imageVector = Icons.Default.Verified,
+                        contentDescription = null,
+                        tint = SolarGreen,
+                        modifier = Modifier.size(10.dp)
+                    )
+                    Spacer(modifier = Modifier.width(2.dp))
+                    Text(
+                        text = "PVGIS",
+                        style = MaterialTheme.typography.labelSmall.copy(fontSize = 10.sp),
+                        color = SolarGreen,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+            }
+        }
+        
+        // Angle Value
+        Text(
+            text = String.format("%.1f°", angle),
+            style = MaterialTheme.typography.titleMedium,
+            fontWeight = FontWeight.Bold,
+            color = color
+        )
     }
 }
