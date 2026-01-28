@@ -299,6 +299,24 @@ fun SolarEstimationScreen(
             
             Spacer(modifier = Modifier.height(12.dp))
             
+            // Monthly Output Chart
+            if (pvOutput?.monthlyBreakdown?.isNotEmpty() == true) {
+                Spacer(modifier = Modifier.height(12.dp))
+                Text(
+                    text = stringResource(R.string.monthly_production_chart),
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.Bold
+                )
+                Spacer(modifier = Modifier.height(8.dp))
+                
+                MonthlyEnergyChart(
+                    monthlyProduction = pvOutput!!.monthlyBreakdown,
+                    isPvgis = isPvgisUsed
+                )
+                
+                Spacer(modifier = Modifier.height(16.dp))
+            }
+
             // Solar Radiation Results
             if (radiation != null) {
                 Text(
@@ -401,21 +419,6 @@ fun SolarEstimationScreen(
                     }
                 }
 
-                // Monthly Output Chart
-                if (pvOutput?.monthlyBreakdown?.isNotEmpty() == true) {
-                    Spacer(modifier = Modifier.height(24.dp))
-                    Text(
-                        text = stringResource(R.string.monthly_production_chart),
-                        style = MaterialTheme.typography.titleMedium,
-                        fontWeight = FontWeight.Bold
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
-                    
-                    MonthlyEnergyChart(
-                        monthlyProduction = pvOutput!!.monthlyBreakdown,
-                        isPvgis = isPvgisUsed
-                    )
-                }
             }
             
             Spacer(modifier = Modifier.height(16.dp))
