@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Solar Panel Adjustor</string>
+    
+    <!-- Home Screen -->
+    <string name="welcome_message">Welcome to Solar Panel Adjustor</string>
+    <string name="home_subtitle">Optimize your solar panel installation</string>
+    
+    <!-- Features -->
+    <string name="tiltmeter">Tiltmeter</string>
+    <string name="tiltmeter_desc">Measure and adjust panel tilt angle using your phone</string>
+    <string name="solar_estimation">Solar Estimation</string>
+    <string name="solar_estimation_desc">Calculate solar radiation and PV output for your location</string>
+    <string name="optimal_angle">Optimal Angle</string>
+    <string name="optimal_angle_desc">Get the best tilt angle recommendations for your latitude</string>
+    <string name="tilt_report">Tilt Angle Report</string>
+    <string name="tilt_report_desc">View and export daily/monthly optimal angles as PDF</string>
+    
+    <!-- Common -->
+    <string name="settings">Settings</string>
+    <string name="back">Back</string>
+    <string name="refresh">Refresh</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="continue_label">Continue</string>
+    <string name="select_your_language">Select your language</string>
+    
+    <!-- Tiltmeter Screen -->
+    <string name="angle_mode">Angle Mode</string>
+    <string name="level_mode">Level Mode</string>
+    <string name="current_angle">Current Angle</string>
+    <string name="locked_angle">Locked</string>
+    <string name="difference">Difference</string>
+    <string name="lock_angle">Lock Angle</string>
+    <string name="unlock">Unlock</string>
+    <string name="level_instruction">Place your phone on a flat surface. The bubble should be centered when level.</string>
+    <string name="how_to_use">How to Use</string>
+    <string name="tiltmeter_instructions">1. Place your phone along the solar panel surface\n2. Read the current angle from the gauge\n3. Use Lock Angle to save a target angle\n4. Adjust your panel until the difference shows 0°</string>
+    
+    <!-- Solar Estimation Screen -->
+    <string name="getting_location">Getting location…</string>
+    <string name="location">Location</string>
+    <string name="location_unavailable">Location unavailable</string>
+    <string name="panel_settings">Panel Settings</string>
+    <string name="wattage">Wattage</string>
+    <string name="panel_count">Count</string>
+    <string name="efficiency">Efficiency</string>
+    <string name="solar_radiation">Solar Radiation</string>
+    <string name="daily">Daily</string>
+    <string name="monthly">Monthly</string>
+    <string name="yearly">Yearly</string>
+    <string name="estimated_output">Estimated PV Output</string>
+    <string name="annual_production">Annual Production</string>
+    <string name="estimation_disclaimer">* Estimates are based on average solar irradiance data and may vary based on weather, panel orientation, and local conditions.</string>
+    
+    <!-- Optimal Angle Screen -->
+    <string name="your_latitude">Your Latitude</string>
+    <string name="seasonal_recommendations">Seasonal Recommendations</string>
+    <string name="tilt_angle_info_title">About Optimal Tilt</string>
+    <string name="tilt_angle_info">The optimal tilt angle depends on your latitude and the season. For year-round fixed installations, setting the tilt equal to your latitude provides good average performance. Adjusting seasonally can increase output by 5–10%.</string>
+    
+    <!-- Tilt Report Screen -->
+    <string name="monthly_12">Monthly (12)</string>
+    <string name="daily_365">Daily (365)</string>
+    <string name="export_pdf">Export PDF</string>
+    <string name="pdf_saved">PDF saved: %1$s</string>
+    <string name="pdf_error">Error generating PDF</string>
+    
+    <!-- Settings Screen -->
+    <string name="language">Language</string>
+    <string name="select_language">Select Language</string>
+    <string name="appearance">Appearance</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="location_settings">Location</string>
+    <string name="use_gps">Use GPS</string>
+    <string name="latitude">Latitude</string>
+    <string name="longitude">Longitude</string>
+    <string name="about">About</string>
+    <string name="version">Version %1$s</string>
+    <string name="app_description">A comprehensive tool for solar panel installation and optimization. Measure tilt angles, calculate optimal positioning, and estimate solar energy production.</string>
+    
+    <!-- Remove Ads Screen -->
+    <string name="remove_ads">Remove Ads</string>
+    <string name="remove_ads_desc">Remove ads and support development</string>
+    <string name="enjoy_ad_free">Enjoy Ad-Free Experience</string>
+    <string name="ad_free_active">Ad-Free Active</string>
+    <string name="ad_free_forever_desc">You have lifetime ad-free access</string>
+    <string name="expires_on">Expires on %1$s</string>
+    <string name="benefits">Benefits</string>
+    <string name="benefit_no_banners">No banner ads</string>
+    <string name="benefit_no_interstitials">No interstitial ads</string>
+    <string name="benefit_clean_ui">Clean, distraction-free interface</string>
+    <string name="benefit_support_dev">Support app development</string>
+    <string name="choose_option">Choose Your Option</string>
+    <string name="remove_ads_30_days">Remove Ads for 30 Days ($2.99)</string>
+    <string name="remove_ads_30_days_desc">Enjoy 30 days without ads</string>
+    <string name="remove_ads_forever">Remove Ads Forever</string>
+    <string name="remove_ads_forever_desc">One-time payment, lifetime access</string>
+    <string name="purchase_note">Purchases will be connected to your Google Play account</string>
+    
+    <!-- Tiltmeter Azimuth -->
+    <string name="panel_azimuth">Panel Azimuth</string>
+    <string name="required_azimuth">Required Azimuth</string>
+    <string name="azimuth_discrepancy">Azimuth Discrepancy</string>
+    <string name="point_south">Point South</string>
+    <string name="point_north">Point North</string>
+    <string name="hemisphere_northern">Northern Hemisphere</string>
+    <string name="hemisphere_southern">Southern Hemisphere</string>
+    
+    <!-- Angle Mode Options -->
+    <string name="angle_calculation">Angle Calculation</string>
+    <string name="fixed_angle">Fixed (Year-Round)</string>
+    <string name="fixed_angle_desc">Optimal for permanent installations</string>
+    <string name="daily_angle">Daily Optimal</string>
+    <string name="daily_angle_desc">Best angle for today</string>
+    <string name="next_30_days">Next 30 Days</string>
+    <string name="next_30_days_desc">Average optimal for coming month</string>
+    <string name="target_angle">Target Angle</string>
+    <string name="tilt_report_subheader">Best tilt angle at your location for that month.</string>
+    <string name="copyright">© A.C. Bros 2026 Ankara</string>
+    <string name="translation_disclaimer"></string>
+    <string name="light_mode">Light Mode</string>
+    <string name="optimal_position_status">✓ OPTIMAL POSITION</string>
+    <string name="current_tilt">Current Tilt</string>
+    <string name="tilt_diff">Tilt Diff</string>
+    <string name="azimuth_diff">Azimuth Diff</string>
+    <string name="instructions_title">Instructions</string>
+    <string name="tiltmeter_usage_instructions">1. Use compass to align azimuth (point arrow to target).
+2. Adjust tilt until bubble is centered and gauge matches target.
+3. Combined accuracy &lt; 5° triggers beep and green status.</string>
+    <string name="quick_reference">Quick Reference</string>
+    <string name="summer_description">Summer (Lower tilt for higher sun)</string>
+    <string name="spring_fall_description">Spring/Fall (Equal to latitude)</string>
+    <string name="winter_description">Winter (Higher tilt for lower sun)</string>
+    <string name="year_round_description">Year-round fixed (Equal to latitude)</string>
+    <string name="target_label">Target: %1$.1f°</string>
+    <string name="summer_lower_tilt">Summer - Lower tilt</string>
+    <string name="winter_higher_tilt">Winter - Higher tilt</string>
+    <string name="transition_season">Transition season</string>
+    <string name="day_label">Day %1$d</string>
+
+    <!-- Rate App -->
+    <string name="rate_app_title">Rate this app</string>
+    <string name="rate_app_message">If you enjoy using this app, would you mind taking a moment to rate it? It won\'t take more than a minute. Thanks for your support!</string>
+    <string name="rate_app_card_desc">Support us by rating the app on Play Store</string>
+    <string name="rate_now">Rate Now</string>
+    <string name="remind_later">Remind Later</string>
+    <string name="no_thanks">No Thanks</string>
+</resources>

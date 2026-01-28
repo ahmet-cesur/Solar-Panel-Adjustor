@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Solar Panel Adjustor</string>
+    
+    <!-- Home Screen -->
+    <string name="welcome_message">مرحبًا بك في ضابط الألواح الشمسية</string>
+    <string name="home_subtitle">تحسين تركيب الألواح الشمسية الخاصة بك</string>
+    
+    <!-- Features -->
+    <string name="tiltmeter">مقياس الميل</string>
+    <string name="tiltmeter_desc">قياس وضبط زاوية ميل اللوحة باستخدام هاتفك</string>
+    <string name="solar_estimation">التقدير الشمسي</string>
+    <string name="solar_estimation_desc">حساب الإشعاع الشمسي والناتج الكهروضوئي لموقعك</string>
+    <string name="optimal_angle">الزاوية المثالية</string>
+    <string name="optimal_angle_desc">احصل على أفضل توصيات زاوية الميل لخط العرض الخاص بك</string>
+    <string name="tilt_report">تقرير زاوية الميل</string>
+    <string name="tilt_report_desc">عرض وتصدير الزوايا المثالية اليومية / الشهرية كملف PDF</string>
+    
+    <!-- Common -->
+    <string name="settings">الإعدادات</string>
+    <string name="back">رجوع</string>
+    <string name="refresh">تحديث</string>
+    <string name="cancel">إلغاء</string>
+    <string name="save">حفظ</string>
+    <string name="continue_label">متابعة</string>
+    <string name="select_your_language">اختر لغتك</string>
+    
+    <!-- Tiltmeter Screen -->
+    <string name="angle_mode">وضع الزاوية</string>
+    <string name="level_mode">وضع المستوى</string>
+    <string name="current_angle">الزاوية الحالية</string>
+    <string name="locked_angle">مقفلة</string>
+    <string name="difference">الفرق</string>
+    <string name="lock_angle">قفل الزاوية</string>
+    <string name="unlock">فتح القفل</string>
+    <string name="level_instruction">ضع هاتفك على سطح مستو. يجب أن تكون الفقاعة في المنتصف عندما تكون مستوية.</string>
+    <string name="how_to_use">كيفية الاستخدام</string>
+    <string name="tiltmeter_instructions">1. ضع هاتفك على طول سطح اللوحة الشمسية\n2. اقرأ الزاوية الحالية من المقياس\n3. استخدم قفل الزاوية لحفظ الزاوية المستهدفة\n4. اضبط لوحتك حتى يظهر الفرق 0 درجة</string>
+    
+    <!-- Solar Estimation Screen -->
+    <string name="getting_location">جاري الحصول على الموقع...</string>
+    <string name="location">الموقع</string>
+    <string name="location_unavailable">الموقع غير متاح</string>
+    <string name="panel_settings">إعدادات اللوحة</string>
+    <string name="wattage">القوة الكهربائية</string>
+    <string name="panel_count">العدد</string>
+    <string name="efficiency">الكفاءة</string>
+    <string name="solar_radiation">الإشعاع الشمسي</string>
+    <string name="daily">يومي</string>
+    <string name="monthly">شهري</string>
+    <string name="yearly">سنوي</string>
+    <string name="estimated_output">الناتج الكهروضوئي المقدر</string>
+    <string name="annual_production">الإنتاج السنوي</string>
+    <string name="estimation_disclaimer">* التقديرات تستند إلى متوسط بيانات الإشعاع الشمسي وقد تختلف بناءً على الطقس واتجاه اللوحة والظروف المحلية.</string>
+    
+    <!-- Optimal Angle Screen -->
+    <string name="your_latitude">خط العرض الخاص بك</string>
+    <string name="seasonal_recommendations">التوصيات الموسمية</string>
+    <string name="tilt_angle_info_title">حول الميل المثالي</string>
+    <string name="tilt_angle_info">تعتمد زاوية الميل المثالية على خط العرض والموسم. بالنسبة للتركيبات الثابتة على مدار العام، فإن تحديد الميل مساويًا لخط العرض يوفر أداءً متوسطًا جيدًا. يمكن أن يزيد التعديل الموسمي الناتج بنسبة 5-10٪.</string>
+    
+    <!-- Tilt Report Screen -->
+    <string name="monthly_12">شهري (12)</string>
+    <string name="daily_365">يومي (365)</string>
+    <string name="export_pdf">تصدير PDF</string>
+    <string name="pdf_saved">تم حفظ PDF: %1$s</string>
+    <string name="pdf_error">خطأ في إنشاء PDF</string>
+    
+    <!-- Settings Screen -->
+    <string name="language">اللغة</string>
+    <string name="select_language">اختر اللغة</string>
+    <string name="appearance">المظهر</string>
+    <string name="dark_mode">الوضع الداكن</string>
+    <string name="location_settings">الموقع</string>
+    <string name="use_gps">استخدام نظام تحديد المواقع</string>
+    <string name="latitude">خط العرض</string>
+    <string name="longitude">خط الطول</string>
+    <string name="about">حول</string>
+    <string name="version">الإصدار %1$s</string>
+    <string name="app_description">أداة شاملة لتركيب وتحسين الألواح الشمسية. قم بقياس زوايا الميل وحساب التموضع المثالي وتقدير إنتاج الطاقة الشمسية.</string>
+    
+    <!-- Remove Ads Screen -->
+    <string name="remove_ads">إزالة الإعلانات</string>
+    <string name="remove_ads_desc">إزالة الإعلانات ودعم التطوير</string>
+    <string name="enjoy_ad_free">استمتع بتجربة خالية من الإعلانات</string>
+    <string name="ad_free_active">خالي من الإعلانات نشط</string>
+    <string name="ad_free_forever_desc">لديك وصول مدى الحياة خالي من الإعلانات</string>
+    <string name="expires_on">ينتهي في %1$s</string>
+    <string name="benefits">المزايا</string>
+    <string name="benefit_no_banners">لا إعلانات لافتة</string>
+    <string name="benefit_no_interstitials">لا إعلانات بينية</string>
+    <string name="benefit_clean_ui">واجهة نظيفة وخالية من التشتيت</string>
+    <string name="benefit_support_dev">دعم تطوير التطبيق</string>
+    <string name="choose_option">اختر خيارك</string>
+    <string name="remove_ads_30_days">إزالة الإعلانات لمدة 30 يومًا ($2.99)</string>
+    <string name="remove_ads_30_days_desc">استمتع بـ 30 يومًا بدون إعلانات</string>
+    <string name="remove_ads_forever">إزالة الإعلانات للأبد</string>
+    <string name="remove_ads_forever_desc">دفع مرة واحدة، وصول مدى الحياة</string>
+    <string name="purchase_note">سيتم ربط المشتريات بحساب Google Play الخاص بك</string>
+    
+    <!-- Tiltmeter Azimuth -->
+    <string name="panel_azimuth">سمت اللوحة</string>
+    <string name="required_azimuth">السمت المطلوب</string>
+    <string name="azimuth_discrepancy">تباين السمت</string>
+    <string name="point_south">اتجه جنوبًا</string>
+    <string name="point_north">اتجه شمالًا</string>
+    <string name="hemisphere_northern">نصف الكرة الشمالي</string>
+    <string name="hemisphere_southern">نصف الكرة الجنوبي</string>
+    
+    <!-- Angle Mode Options -->
+    <string name="angle_calculation">حساب الزاوية</string>
+    <string name="fixed_angle">ثابت (طوال العام)</string>
+    <string name="fixed_angle_desc">الأمثل للتركيبات الدائمة</string>
+    <string name="daily_angle">الأمثل اليومي</string>
+    <string name="daily_angle_desc">أفضل زاوية لليوم</string>
+    <string name="next_30_days">الـ 30 يومًا القادمة</string>
+    <string name="next_30_days_desc">المتوسط الأمثل للشهر القادم</string>
+    <string name="target_angle">الزاوية المستهدفة</string>
+    <string name="tilt_report_subheader">أفضل زاوية ميل في موقعك لذلك الشهر.</string>
+    <string name="copyright">© A.C. Bros 2026 أنقرة</string>
+    <string name="translation_disclaimer"></string>
+    <string name="light_mode">الوضع الفاتح</string>
+    <string name="optimal_position_status">✓ الوضع الأمثل</string>
+    <string name="current_tilt">الميل الحالي</string>
+    <string name="tilt_diff">فرق الميل</string>
+    <string name="azimuth_diff">فرق السمت</string>
+    <string name="instructions_title">تعليمات</string>
+    <string name="tiltmeter_usage_instructions">1. استخدم البوصلة لمحاذاة السمت (وجه السهم نحو الهدف).\n2. اضبط الميل حتى تتوسط الفقاعة ويتطابق المقياس مع الهدف.\n3. الدقة المشتركة &lt; 5 درجات تطلق صوتًا وحالة خضراء.</string>
+    <string name="quick_reference">مرجع سريع</string>
+    <string name="summer_description">الصيف (ميل أقل لشمس أعلى)</string>
+    <string name="spring_fall_description">الربيع / الخريف (مساوي لخط العرض)</string>
+    <string name="winter_description">الشتاء (ميل أعلى لشمس أقل)</string>
+    <string name="year_round_description">ثابت على مدار السنة (مساوٍ لخط العرض)</string>
+    <string name="target_label">الهدف: %1$.1f°</string>
+    <string name="summer_lower_tilt">الصيف - ميل أقل</string>
+    <string name="winter_higher_tilt">الشتاء - ميل أعلى</string>
+    <string name="transition_season">موسم انتقالي</string>
+    <string name="day_label">اليوم %1$d</string>
+</resources>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Solar Panel Adjustor</string>
+    
+    <!-- Home Screen -->
+    <string name="welcome_message">Solar Panel Adjustor में आपका स्वागत है</string>
+    <string name="home_subtitle">अपने सौर पैनल इंस्टॉलेशन को अनुकूलित करें</string>
+    
+    <!-- Features -->
+    <string name="tiltmeter">टिल्टमीटर</string>
+    <string name="tiltmeter_desc">अपने फोन का उपयोग करके पैनल टिल्ट कोण को मापें और समायोजित करें</string>
+    <string name="solar_estimation">सौर अनुमान</string>
+    <string name="solar_estimation_desc">अपने स्थान के लिए सौर विकिरण और पीवी आउटपुट की गणना करें</string>
+    <string name="optimal_angle">इष्टतम कोण</string>
+    <string name="optimal_angle_desc">अपने अक्षांश के लिए सर्वोत्तम टिल्ट कोण सुझाव प्राप्त करें</string>
+    <string name="tilt_report">टिल्ट कोण रिपोर्ट</string>
+    <string name="tilt_report_desc">दैनिक/मासिक इष्टतम कोण देखें और पीडीएफ के रूप में निर्यात करें</string>
+    
+    <!-- Common -->
+    <string name="settings">सेटिंग्स</string>
+    <string name="back">वापस</string>
+    <string name="refresh">रीफ्रेश</string>
+    <string name="cancel">रद्द करें</string>
+    <string name="save">सहेजें</string>
+    <string name="continue_label">जारी रखें</string>
+    <string name="select_your_language">अपनी भाषा चुनें</string>
+    
+    <!-- Tiltmeter Screen -->
+    <string name="angle_mode">कोण मोड</string>
+    <string name="level_mode">लेवल मोड</string>
+    <string name="current_angle">वर्तमान कोण</string>
+    <string name="locked_angle">लॉक किया गया</string>
+    <string name="difference">अंतर</string>
+    <string name="lock_angle">कोण लॉक करें</string>
+    <string name="unlock">अनलॉक</string>
+    <string name="level_instruction">अपने फोन को समतल सतह पर रखें। समतल होने पर बुलबुला केंद्र में होना चाहिए।</string>
+    <string name="how_to_use">उपयोग कैसे करें</string>
+    <string name="tiltmeter_instructions">1. अपने फोन को सौर पैनल सतह के साथ रखें\n2. गेज से वर्तमान कोण पढ़ें\n3. लक्ष्य कोण को सहेजने के लिए लॉक कोण का उपयोग करें\n4. अपने पैनल को समायोजित करें जब तक कि अंतर 0° न दिखाई दे</string>
+    
+    <!-- Solar Estimation Screen -->
+    <string name="getting_location">स्थान प्राप्त किया जा रहा है...</string>
+    <string name="location">स्थान</string>
+    <string name="location_unavailable">स्थान अनुपलब्ध</string>
+    <string name="panel_settings">पैनल सेटिंग्स</string>
+    <string name="wattage">वाटेज</string>
+    <string name="panel_count">गिनती</string>
+    <string name="efficiency">दक्षता</string>
+    <string name="solar_radiation">सौर विकिरण</string>
+    <string name="daily">दैनिक</string>
+    <string name="monthly">मासिक</string>
+    <string name="yearly">वार्षिक</string>
+    <string name="estimated_output">अनुमानित पीवी आउटपुट</string>
+    <string name="annual_production">वार्षिक उत्पादन</string>
+    <string name="estimation_disclaimer">* अनुमान औसत सौर विकिरण डेटा पर आधारित हैं और मौसम, पैनल ओरिएंटेशन और स्थानीय परिस्थितियों के आधार पर भिन्न हो सकते हैं।</string>
+    
+    <!-- Optimal Angle Screen -->
+    <string name="your_latitude">आपका अक्षांश</string>
+    <string name="seasonal_recommendations">मौसमी सिफारिशें</string>
+    <string name="tilt_angle_info_title">इष्टतम टिल्ट के बारे में</string>
+    <string name="tilt_angle_info">इष्टतम टिल्ट कोण आपके अक्षांश और मौसम पर निर्भर करता है। साल भर फिक्स्ड इंस्टॉलेशन के लिए, टिल्ट को अपने अक्षांश के बराबर सेट करना अच्छा औसत प्रदर्शन प्रदान करता है। मौसमी रूप से समायोजित करने से आउटपुट 5-10% बढ़ सकता है।</string>
+    
+    <!-- Tilt Report Screen -->
+    <string name="monthly_12">मासिक (12)</string>
+    <string name="daily_365">दैनिक (365)</string>
+    <string name="export_pdf">पीडीएफ निर्यात करें</string>
+    <string name="pdf_saved">पीडीएफ सहेजा गया: %1$s</string>
+    <string name="pdf_error">पीडीएफ बनाने में त्रुटि</string>
+    
+    <!-- Settings Screen -->
+    <string name="language">भाषा</string>
+    <string name="select_language">भाषा चुनें</string>
+    <string name="appearance">दिखावट</string>
+    <string name="dark_mode">डार्क मोड</string>
+    <string name="location_settings">स्थान</string>
+    <string name="use_gps">जीपीएस का उपयोग करें</string>
+    <string name="latitude">अक्षांश</string>
+    <string name="longitude">देशांतर</string>
+    <string name="about">बारे में</string>
+    <string name="version">संस्करण %1$s</string>
+    <string name="app_description">सौर पैनल स्थापना और अनुकूलन के लिए एक व्यापक उपकरण। टिल्ट कोण मापें, इष्टतम स्थिति की गणना करें, और सौर ऊर्जा उत्पादन का अनुमान लगाएं।</string>
+    
+    <!-- Remove Ads Screen -->
+    <string name="remove_ads">विज्ञापन हटाएं</string>
+    <string name="remove_ads_desc">विज्ञापन हटाएं और विकास का समर्थन करें</string>
+    <string name="enjoy_ad_free">विज्ञापन-मुक्त अनुभव का आनंद लें</string>
+    <string name="ad_free_active">विज्ञापन-मुक्त सक्रिय</string>
+    <string name="ad_free_forever_desc">आपके पास आजीवन विज्ञापन-मुक्त पहुंच है</string>
+    <string name="expires_on">%1$s को समाप्त हो रहा है</string>
+    <string name="benefits">लाभ</string>
+    <string name="benefit_no_banners">कोई बैनर विज्ञापन नहीं</string>
+    <string name="benefit_no_interstitials">कोई अंतरालीय विज्ञापन नहीं</string>
+    <string name="benefit_clean_ui">स्वच्छ, व्याकुलता-मुक्त इंटरफ़ेस</string>
+    <string name="benefit_support_dev">ऐप विकास का समर्थन करें</string>
+    <string name="choose_option">अपना विकल्प चुनें</string>
+    <string name="remove_ads_30_days">30 दिनों के लिए विज्ञापन हटाएं ($2.99)</string>
+    <string name="remove_ads_30_days_desc">30 दिनों तक विज्ञापन के बिना आनंद लें</string>
+    <string name="remove_ads_forever">हमेशा के लिए विज्ञापन हटाएं</string>
+    <string name="remove_ads_forever_desc">एक बार भुगतान, आजीवन पहुंच</string>
+    <string name="purchase_note">खरीदारी आपके Google Play खाते से जुड़ी होगी</string>
+    
+    <!-- Tiltmeter Azimuth -->
+    <string name="panel_azimuth">पैनल दिगंश (Azimuth)</string>
+    <string name="required_azimuth">आवश्यक दिगंश</string>
+    <string name="azimuth_discrepancy">दिगंश विसंगति</string>
+    <string name="point_south">दक्षिण की ओर इंगित करें</string>
+    <string name="point_north">उत्तर की ओर इंगित करें</string>
+    <string name="hemisphere_northern">उत्तरी गोलार्द्ध</string>
+    <string name="hemisphere_southern">दक्षिणी गोलार्द्ध</string>
+    
+    <!-- Angle Mode Options -->
+    <string name="angle_calculation">कोण गणना</string>
+    <string name="fixed_angle">फिक्स्ड (साल भर)</string>
+    <string name="fixed_angle_desc">स्थायी प्रतिष्ठानों के लिए इष्टतम</string>
+    <string name="daily_angle">दैनिक इष्टतम</string>
+    <string name="daily_angle_desc">आज के लिए सबसे अच्छा कोण</string>
+    <string name="next_30_days">अगले 30 दिन</string>
+    <string name="next_30_days_desc">आने वाले महीने के लिए औसत इष्टतम</string>
+    <string name="target_angle">लक्ष्य कोण</string>
+    <string name="tilt_report_subheader">उस महीने के लिए आपके स्थान पर सबसे अच्छा टिल्ट कोण।</string>
+    <string name="copyright">© A.C. Bros 2026 अंकारा</string>
+    <string name="translation_disclaimer"></string>
+    <string name="light_mode">लाइट मोड</string>
+    <string name="optimal_position_status">✓ इष्टतम स्थिति</string>
+    <string name="current_tilt">वर्तमान टिल्ट</string>
+    <string name="tilt_diff">टिल्ट अंतर</string>
+    <string name="azimuth_diff">दिगंश अंतर</string>
+    <string name="instructions_title">निर्देश</string>
+    <string name="tiltmeter_usage_instructions">1. दिगंश को संरेखित करने के लिए कंपास का उपयोग करें (तीर को लक्ष्य की ओर इंगित करें)।\n2. टिल्ट को तब तक समायोजित करें जब तक बुलबुला केंद्रित न हो जाए और गेज लक्ष्य से मेल न खाए।\n3. संयुक्त सटीकता &lt; 5° बीप और हरी स्थिति को ट्रिगर करती है।</string>
+    <string name="quick_reference">त्वरित संदर्भ</string>
+    <string name="summer_description">गर्मी (उच्च सूर्य के लिए कम झुकाव)</string>
+    <string name="spring_fall_description">वसंत/पतझड़ (अक्षांश के बराबर)</string>
+    <string name="winter_description">सर्दी (कम सूर्य के लिए उच्च झुकाव)</string>
+    <string name="year_round_description">साल भर स्थिर (अक्षांश के बराबर)</string>
+    <string name="target_label">लक्ष्य: %1$.1f°</string>
+    <string name="summer_lower_tilt">गर्मी - कम झुकाव</string>
+    <string name="winter_higher_tilt">सर्दी - उच्च झुकाव</string>
+    <string name="transition_season">संक्रमण काल</string>
+    <string name="day_label">दिन %1$d</string>
+</resources>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Solar Panel Adjustor</string>
+    
+    <!-- Home Screen -->
+    <string name="welcome_message">Добре дошли в Solar Panel Adjustor</string>
+    <string name="home_subtitle">Оптимизирайте вашата инсталация на слънчеви панели</string>
+    
+    <!-- Features -->
+    <string name="tiltmeter">Наклономер</string>
+    <string name="tiltmeter_desc">Измерете и регулирайте ъгъла на наклона на панела с телефона си</string>
+    <string name="solar_estimation">Слънчева Оценка</string>
+    <string name="solar_estimation_desc">Изчислете слънчевата радиация и PV продукцията за вашето местоположение</string>
+    <string name="optimal_angle">Оптимален Ъгъл</string>
+    <string name="optimal_angle_desc">Получете най-добрите препоръки за ъгъл за вашата географска ширина</string>
+    <string name="tilt_report">Доклад за Наклона</string>
+    <string name="tilt_report_desc">Преглед и експорт на дневни/месечни оптимални ъгли като PDF</string>
+    
+    <!-- Common -->
+    <string name="settings">Настройки</string>
+    <string name="back">Назад</string>
+    <string name="refresh">Опресни</string>
+    <string name="cancel">Отказ</string>
+    <string name="save">Запази</string>
+    
+    <!-- Tiltmeter Screen -->
+    <string name="angle_mode">Режим Ъгъл</string>
+    <string name="level_mode">Режим Нивел</string>
+    <string name="current_angle">Текущ Ъгъл</string>
+    <string name="locked_angle">Заключен</string>
+    <string name="difference">Разлика</string>
+    <string name="lock_angle">Заключи Ъгъл</string>
+    <string name="unlock">Отключи</string>
+    <string name="level_instruction">Поставете телефона на равна повърхност. Балончето трябва да е центрирано, когато е нивелирано.</string>
+    <string name="how_to_use">Как да използвате</string>
+    <string name="tiltmeter_instructions">1. Поставете телефона по повърхността на слънчевия панел\n2. Отчетете текущия ъгъл от скалата\n3. Използвайте Заключи Ъгъл, за да запазите целеви ъгъл\n4. Регулируйте панела, докато разликата покаже 0°</string>
+    
+    <!-- Solar Estimation Screen -->
+    <string name="getting_location">Получаване на местоположение…</string>
+    <string name="location">Местоположение</string>
+    <string name="location_unavailable">Местоположението не е налично</string>
+    <string name="panel_settings">Настройки на Панела</string>
+    <string name="wattage">Мощност</string>
+    <string name="panel_count">Брой</string>
+    <string name="efficiency">Ефективност</string>
+    <string name="solar_radiation">Слънчева Радиация</string>
+    <string name="daily">Дневно</string>
+    <string name="monthly">Месечно</string>
+    <string name="yearly">Годишно</string>
+    <string name="estimated_output">Очаквана PV Продукция</string>
+    <string name="annual_production">Годишно Производство</string>
+    <string name="estimation_disclaimer">* Оценките се базират на средни данни за слънчевото облъчване и могат да варират според времето, ориентацията на панела и местните условия.</string>
+    
+    <!-- Optimal Angle Screen -->
+    <string name="your_latitude">Вашата Ширина</string>
+    <string name="seasonal_recommendations">Сезонни Препоръки</string>
+    <string name="tilt_angle_info_title">За Оптималния Наклон</string>
+    <string name="tilt_angle_info">Оптималният ъгъл на наклон зависи от вашата ширина и сезона. За целогодишни фиксирани инсталации, настройката на наклона да е равен на вашата ширина осигурява добра средна производителност.</string>
+    
+    <!-- Tilt Report Screen -->
+    <string name="monthly_12">Месечно (12)</string>
+    <string name="daily_365">Дневно (365)</string>
+    <string name="export_pdf">Експорт PDF</string>
+    <string name="pdf_saved">PDF записан: %1$s</string>
+    <string name="pdf_error">Грешка при генериране на PDF</string>
+    
+    <!-- Settings Screen -->
+    <string name="language">Език</string>
+    <string name="select_language">Избери Език</string>
+    <string name="appearance">Външен вид</string>
+    <string name="dark_mode">Тъмен Режим</string>
+    <string name="location_settings">Местоположение</string>
+    <string name="use_gps">Използвай GPS</string>
+    <string name="latitude">Ширина</string>
+    <string name="longitude">Дължина</string>
+    <string name="about">Относно</string>
+    <string name="version">Версия %1$s</string>
+    <string name="app_description">Комплексен инструмент за инсталиране и оптимизиране на слънчеви панели.</string>
+    
+    <!-- Remove Ads Screen -->
+    <string name="remove_ads">Премахване на реклами</string>
+    <string name="remove_ads_desc">Премахнете рекламите и подкрепете разработката</string>
+    <string name="enjoy_ad_free">Насладете се на работа без реклами</string>
+    <string name="ad_free_active">Без реклами: Активно</string>
+    <string name="ad_free_forever_desc">Имате доживотен достъп без реклами</string>
+    <string name="expires_on">Изтича на %1$s</string>
+    <string name="benefits">Предимства</string>
+    <string name="benefit_no_banners">Без банер реклами</string>
+    <string name="benefit_no_interstitials">Без прекъсващи реклами</string>
+    <string name="benefit_clean_ui">Чист интерфейс без разсейване</string>
+    <string name="benefit_support_dev">Подкрепете разработката</string>
+    <string name="choose_option">Изберете опция</string>
+    <string name="remove_ads_30_days">Премахни реклами за 30 дни ($2.99)</string>
+    <string name="remove_ads_30_days_desc">Насладете се на 30 дни без реклами</string>
+    <string name="remove_ads_forever">Премахни реклами завинаги</string>
+    <string name="remove_ads_forever_desc">Еднократно плащане, доживотен достъп</string>
+    <string name="purchase_note">Покупките ще бъдат свързани с вашия Google Play акаунт</string>
+    
+    <!-- Tiltmeter Azimuth -->
+    <string name="panel_azimuth">Азимут на Панела</string>
+    <string name="required_azimuth">Необходим Азимут</string>
+    <string name="azimuth_discrepancy">Отклонение в Азимута</string>
+    <string name="point_south">Насочи на Юг</string>
+    <string name="point_north">Насочи на Север</string>
+    <string name="hemisphere_northern">Северно Полукълбо</string>
+    <string name="hemisphere_southern">Южно Полукълбо</string>
+    
+    <!-- Angle Mode Options -->
+    <string name="angle_calculation">Изчисление на Ъгъла</string>
+    <string name="fixed_angle">Фиксиран (Целогодишен)</string>
+    <string name="fixed_angle_desc">Оптимален за постоянни инсталации</string>
+    <string name="daily_angle">Дневен Оптимален</string>
+    <string name="daily_angle_desc">Най-добър ъгъл за днес</string>
+    <string name="next_30_days">Следващите 30 Дни</string>
+    <string name="next_30_days_desc">Среден оптимален за идния месец</string>
+    <string name="target_angle">Целеви Ъгъл</string>
+    <string name="tilt_report_subheader">Най-добрият ъгъл на наклон във вашето местоположение за този месец.</string>
+    <string name="translation_disclaimer">Всички текстове са преведени от AI от английски. Можете да проверите английската версия за справка.</string>
+    <string name="light_mode">Светла тема</string>
+    <string name="optimal_position_status">✓ ОПТИМАЛНА ПОЗИЦИЯ</string>
+    <string name="current_tilt">Текущ наклон</string>
+    <string name="tilt_diff">Разлика в наклона</string>
+    <string name="azimuth_diff">Разлика в азимута</string>
+    <string name="instructions_title">Инструкции</string>
+    <string name="tiltmeter_usage_instructions">1. Използвайте компаса, за да подравните азимута (насочете стрелката към целта).\n2. Регулирайте наклона, докато балончето се центрира и индикаторът съвпадне с целта.\n3. Комбинирана точност &lt; 5° задейства звуков сигнал и зелен статус.</string>
+    <string name="quick_reference">Бърза справка</string>
+    <string name="summer_description">Лято (По-нисък наклон за по-високо слънце)</string>
+    <string name="spring_fall_description">Пролет/Есен (Равно на географската ширина)</string>
+    <string name="winter_description">Зима (По-висок наклон за по-ниско слънце)</string>
+    <string name="year_round_description">Целогодишно фиксиран (Равно на географската ширина)</string>
+    <string name="target_label">Цел: %1$.1f°</string>
+    <string name="summer_lower_tilt">Лято - по-нисък наклон</string>
+    <string name="winter_higher_tilt">Зима - по-висок наклон</string>
+    <string name="transition_season">Преходен сезон</string>
+    <string name="day_label">Ден %1$d</string>
+</resources>
