@@ -207,7 +207,7 @@ fun SolarEstimationScreen(
                     label = { Text(stringResource(R.string.wattage), style = MaterialTheme.typography.bodySmall) },
                     suffix = { Text("W", style = MaterialTheme.typography.bodySmall) },
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                    modifier = Modifier.weight(1f).height(52.dp),
+                    modifier = Modifier.weight(1f),
                     textStyle = MaterialTheme.typography.bodyMedium,
                     singleLine = true
                 )
@@ -220,7 +220,7 @@ fun SolarEstimationScreen(
                     },
                     label = { Text(stringResource(R.string.panel_count), style = MaterialTheme.typography.bodySmall) },
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                    modifier = Modifier.weight(1f).height(52.dp),
+                    modifier = Modifier.weight(1f),
                     textStyle = MaterialTheme.typography.bodyMedium,
                     singleLine = true
                 )
@@ -234,7 +234,7 @@ fun SolarEstimationScreen(
                     label = { Text(stringResource(R.string.efficiency), style = MaterialTheme.typography.bodySmall) },
                     suffix = { Text("%", style = MaterialTheme.typography.bodySmall) },
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                    modifier = Modifier.weight(1f).height(52.dp),
+                    modifier = Modifier.weight(1f),
                     textStyle = MaterialTheme.typography.bodyMedium,
                     singleLine = true
                 )
@@ -445,7 +445,7 @@ fun MonthlyEnergyChart(
     monthlyProduction: List<Double>,
     isPvgis: Boolean
 ) {
-    val maxProduction = (monthlyProduction.maxOrNull() ?: 1.0) * 2.2 // Increased max to make bars shorter as requested
+    val maxProduction = (monthlyProduction.maxOrNull() ?: 1.0) * 1.7 // Reduced from 2.2 to 1.7 as requested
     val months = listOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
     
     Card(
