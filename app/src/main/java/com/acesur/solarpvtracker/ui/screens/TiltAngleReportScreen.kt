@@ -184,6 +184,18 @@ fun TiltAngleReportScreen(
                 .fillMaxSize()
                 .padding(paddingValues)
         ) {
+    // Generate report data when location changes
+    
+    val coordinatePrecision by preferencesManager.coordinatePrecision.collectAsState(initial = 4)
+    
+    LaunchedEffect(location) {
+
+        // ... existing LaunchedEffect ...
+
+    }
+
+    // ... down in the UI ...
+
             // Location info
             if (location != null) {
                 Card(
@@ -205,7 +217,7 @@ fun TiltAngleReportScreen(
                         )
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(
-                            text = String.format("%.4f°, %.4f°", location?.latitude, location?.longitude),
+                            text = String.format("%.${coordinatePrecision}f°, %.${coordinatePrecision}f°", location?.latitude, location?.longitude),
                             style = MaterialTheme.typography.bodyMedium
                         )
                     }

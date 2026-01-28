@@ -39,6 +39,20 @@ class PreferencesManager(private val context: Context) {
         private val KEY_PVGIS_LAST_FETCH_TIME = longPreferencesKey("pvgis_last_fetch_time")
         private val KEY_PVGIS_LAST_LOCATION = stringPreferencesKey("pvgis_last_location")
         private val KEY_PVGIS_MONTHLY_DATA = stringPreferencesKey("pvgis_monthly_data")
+        
+        // Coordinate Settings
+        private val KEY_COORDINATE_PRECISION = intPreferencesKey("coordinate_precision")
+    }
+    
+    // Coordinate Precision
+    val coordinatePrecision: Flow<Int> = context.dataStore.data.map { preferences ->
+        preferences[KEY_COORDINATE_PRECISION] ?: 4
+    }
+
+    suspend fun setCoordinatePrecision(precision: Int) {
+        context.dataStore.edit { preferences ->
+            preferences[KEY_COORDINATE_PRECISION] = precision
+        }
     }
     
     // Language

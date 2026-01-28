@@ -57,6 +57,8 @@ fun SolarEstimationScreen(
     // Alias for compatibility
     val location = userLocation
     
+    val coordinatePrecision by preferencesManager.coordinatePrecision.collectAsState(initial = 4)
+    
     var isLoadingLocation by remember { mutableStateOf(false) } // Keep local loading state for UI feedback
     
     // Panel settings
@@ -252,128 +254,99 @@ fun SolarEstimationScreen(
                 )
             }
             
-            Spacer(modifier = Modifier.height(12.dp))
+            Spacer(modifier = Modifier.height(8.dp))
             
             // Monthly Output Chart
             if (pvOutput?.monthlyBreakdown?.isNotEmpty() == true) {
-                Spacer(modifier = Modifier.height(12.dp))
                 Text(
                     text = stringResource(R.string.monthly_production_chart),
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold
                 )
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(4.dp))
                 
                 MonthlyEnergyChart(
                     monthlyProduction = pvOutput!!.monthlyBreakdown,
                     isPvgis = isPvgisUsed
                 )
                 
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(12.dp))
             }
 
-            // Solar Radiation Results
-            if (radiation != null) {
-                Text(
-                    text = stringResource(R.string.solar_radiation),
-                    style = MaterialTheme.typography.titleMedium,
-                    fontWeight = FontWeight.Bold
-                )
-                
-                Spacer(modifier = Modifier.height(8.dp))
-                
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(12.dp)
-                ) {
-                    StatCard(
-                        title = stringResource(R.string.daily),
-                        value = String.format("%.1f", radiation?.dailyIrradiance),
-                        unit = "kWh/m²",
-                        icon = Icons.Default.Today,
-                        modifier = Modifier.weight(1f),
-                        backgroundColor = SunYellow.copy(alpha = 0.2f)
-                    )
-                    StatCard(
-                        title = stringResource(R.string.yearly),
-                        value = String.format("%.0f", radiation?.yearlyIrradiance),
-                        unit = "kWh/m²",
-                        icon = Icons.Default.CalendarMonth,
-                        modifier = Modifier.weight(1f),
-                        backgroundColor = SolarOrange.copy(alpha = 0.2f)
-                    )
-                }
-            }
-            
-            Spacer(modifier = Modifier.height(12.dp))
-            
-            // PV Output Results
-            if (pvOutput != null) {
+            // Combined Stats Card
+            if (pvOutput != null || radiation != null) {
                 Text(
                     text = stringResource(R.string.estimated_output),
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold
                 )
                 
-                Spacer(modifier = Modifier.height(8.dp))
-                
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(12.dp)
-                ) {
-                    StatCard(
-                        title = stringResource(R.string.daily),
-                        value = String.format("%.1f", pvOutput?.dailyOutput),
-                        unit = "kWh",
-                        icon = Icons.Default.ElectricBolt,
-                        modifier = Modifier.weight(1f),
-                        backgroundColor = SkyBlue.copy(alpha = 0.2f)
-                    )
-                    StatCard(
-                        title = stringResource(R.string.monthly),
-                        value = String.format("%.0f", pvOutput?.monthlyOutput),
-                        unit = "kWh",
-                        icon = Icons.Default.DateRange,
-                        modifier = Modifier.weight(1f),
-                        backgroundColor = SolarGreen.copy(alpha = 0.2f)
-                    )
-                }
-                
-                Spacer(modifier = Modifier.height(12.dp))
+                Spacer(modifier = Modifier.height(4.dp))
                 
                 Card(
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(12.dp),
                     colors = CardDefaults.cardColors(
-                        containerColor = SolarOrange.copy(alpha = 0.15f)
+                        containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f)
                     )
                 ) {
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(12.dp),
-                        horizontalArrangement = Arrangement.Center,
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Text(
-                            text = stringResource(R.string.annual_production) + ": ",
-                            style = MaterialTheme.typography.bodyMedium,
-                            fontWeight = FontWeight.Medium
-                        )
-                        Text(
-                            text = String.format("%.0f", pvOutput?.yearlyOutput),
-                            style = MaterialTheme.typography.titleLarge,
-                            fontWeight = FontWeight.Bold,
-                            color = MaterialTheme.colorScheme.primary
-                        )
-                        Spacer(modifier = Modifier.width(4.dp))
-                        Text(
-                            text = "kWh/year",
-                            style = MaterialTheme.typography.bodySmall
-                        )
+                    Column(modifier = Modifier.padding(12.dp)) {
+                        // Radiation Header
+                        if (radiation != null) {
+                            Text(
+                                text = "Irradiance (kWh/m²)",
+                                style = MaterialTheme.typography.labelMedium,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                            Spacer(modifier = Modifier.height(4.dp))
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceBetween
+                            ) {
+                                StatItemCompact(
+                                    label = stringResource(R.string.daily),
+                                    value = String.format("%.1f", radiation?.dailyIrradiance)
+                                )
+                                StatItemCompact(
+                                    label = stringResource(R.string.yearly),
+                                    value = String.format("%.0f", radiation?.yearlyIrradiance)
+                                )
+                            }
+                            Spacer(modifier = Modifier.height(8.dp))
+                            HorizontalDivider()
+                            Spacer(modifier = Modifier.height(8.dp))
+                        }
+                        
+                        // Output Header
+                        if (pvOutput != null) {
+                            Text(
+                                text = "Production (kWh)",
+                                style = MaterialTheme.typography.labelMedium,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                            Spacer(modifier = Modifier.height(4.dp))
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceBetween
+                            ) {
+                                StatItemCompact(
+                                    label = stringResource(R.string.daily),
+                                    value = String.format("%.1f", pvOutput?.dailyOutput)
+                                )
+                                StatItemCompact(
+                                    label = stringResource(R.string.monthly),
+                                    value = String.format("%.0f", pvOutput?.monthlyOutput)
+                                )
+                                StatItemCompact(
+                                    label = stringResource(R.string.yearly),
+                                    value = String.format("%.0f", pvOutput?.yearlyOutput),
+                                    isHighlight = true
+                                )
+                            }
+                        }
                     }
                 }
-
+                Spacer(modifier = Modifier.height(12.dp))
             }
             
             // Location Card
@@ -387,19 +360,19 @@ fun SolarEstimationScreen(
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 12.dp, vertical = 4.dp),
+                        .padding(horizontal = 12.dp, vertical = 6.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Icon(
                         imageVector = Icons.Default.LocationOn,
                         contentDescription = null,
                         tint = SolarOrange,
-                        modifier = Modifier.size(18.dp)
+                        modifier = Modifier.size(16.dp)
                     )
                     Spacer(modifier = Modifier.width(8.dp))
                     
                     if (isLoadingLocation) {
-                        CircularProgressIndicator(modifier = Modifier.size(16.dp))
+                        CircularProgressIndicator(modifier = Modifier.size(12.dp), strokeWidth = 2.dp)
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(
                             text = stringResource(R.string.getting_location),
@@ -407,7 +380,7 @@ fun SolarEstimationScreen(
                         )
                     } else if (location != null) {
                         Text(
-                            text = String.format("%s: %.4f°, %.4f°", stringResource(R.string.location), location?.latitude, location?.longitude),
+                            text = String.format("%s: %.${coordinatePrecision}f°, %.${coordinatePrecision}f°", stringResource(R.string.location), location?.latitude, location?.longitude),
                             style = MaterialTheme.typography.bodySmall,
                             fontWeight = FontWeight.Medium
                         )
@@ -422,37 +395,58 @@ fun SolarEstimationScreen(
                     Spacer(modifier = Modifier.weight(1f))
                     
                     IconButton(
-                        onClick = {
-                            onRefreshLocation()
-                        },
-                        modifier = Modifier.size(32.dp)
+                        onClick = { onRefreshLocation() },
+                        modifier = Modifier.size(24.dp)
                     ) {
                         Icon(
                             imageVector = Icons.Default.Refresh, 
                             contentDescription = stringResource(R.string.refresh),
-                            modifier = Modifier.size(18.dp)
+                            modifier = Modifier.size(16.dp)
                         )
                     }
                 }
             }
             
-            Spacer(modifier = Modifier.height(12.dp))
+            Spacer(modifier = Modifier.height(8.dp))
             
             // Disclaimer
             Text(
                 text = stringResource(R.string.estimation_disclaimer),
-                style = MaterialTheme.typography.bodySmall,
+                style = MaterialTheme.typography.bodySmall.copy(fontSize = 10.sp),
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
         }
     }
 }
+
+@Composable
+fun StatItemCompact(
+    label: String,
+    value: String,
+    isHighlight: Boolean = false
+) {
+    Column(horizontalAlignment = Alignment.Start) {
+        Text(
+            text = label,
+            style = MaterialTheme.typography.bodySmall.copy(fontSize = 10.sp),
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+        Text(
+            text = value,
+            style = MaterialTheme.typography.titleMedium,
+            fontWeight = FontWeight.Bold,
+            color = if (isHighlight) SolarOrange else MaterialTheme.colorScheme.onSurface
+        )
+    }
+}
+
 @Composable
 fun MonthlyEnergyChart(
     monthlyProduction: List<Double>,
     isPvgis: Boolean
 ) {
-    val maxProduction = (monthlyProduction.maxOrNull() ?: 1.0) * 1.7 // Reduced from 2.2 to 1.7 as requested
+    val maxProduction = (monthlyProduction.maxOrNull() ?: 1.0) * 1.3 // Reduced scale factor as requested
+
     val months = listOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
     
     Card(

@@ -272,6 +272,53 @@ fun SettingsScreen(
             
             Spacer(modifier = Modifier.height(24.dp))
             
+            // Coordinate Precision Section
+             Text(
+                text = "Coordinate Precision",
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.Bold
+            )
+            
+            Spacer(modifier = Modifier.height(8.dp))
+            
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(12.dp)
+            ) {
+                Column(modifier = Modifier.padding(16.dp)) {
+                    var precision by remember { mutableStateOf(4f) }
+                    
+                    LaunchedEffect(Unit) {
+                        precision = preferencesManager.coordinatePrecision.first().toFloat()
+                    }
+                    
+                    Text(
+                        text = "Decimal digits: ${precision.toInt()}",
+                        style = MaterialTheme.typography.bodyMedium
+                    )
+                    
+                    Slider(
+                        value = precision,
+                        onValueChange = { precision = it },
+                        onValueChangeFinished = {
+                            scope.launch {
+                                preferencesManager.setCoordinatePrecision(precision.toInt())
+                            }
+                        },
+                        valueRange = 0f..4f,
+                        steps = 3
+                    )
+                    
+                    Text(
+                        text = "Example: ${String.format("%.${precision.toInt()}f", 12.345678)}",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+            }
+            
+            Spacer(modifier = Modifier.height(24.dp))
+            
             // About Section
             Text(
                 text = stringResource(R.string.about),
