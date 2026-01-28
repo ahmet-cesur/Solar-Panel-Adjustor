@@ -148,6 +148,17 @@ fun HomeScreen(
                     )
                 }
                 
+                // Satellite Data
+                item {
+                    FeatureCard(
+                        title = stringResource(R.string.satellite_data),
+                        description = stringResource(R.string.satellite_data_desc),
+                        icon = Icons.Default.SatelliteAlt,
+                        onClick = onNavigateToSatelliteData,
+                        gradientColors = listOf(Color(0xFF2196F3), Color(0xFF64B5F6)) // Blue palette
+                    )
+                }
+
                 // Optimal Angle
                 item {
                     FeatureCard(
@@ -167,17 +178,6 @@ fun HomeScreen(
                         icon = Icons.Default.PictureAsPdf,
                         onClick = onNavigateToTiltReport,
                         gradientColors = listOf(SolarGreen, SolarGreenLight)
-                    )
-                }
-
-                // Satellite Data
-                item {
-                    FeatureCard(
-                        title = stringResource(R.string.satellite_data),
-                        description = stringResource(R.string.satellite_data_desc),
-                        icon = Icons.Default.SatelliteAlt,
-                        onClick = onNavigateToSatelliteData,
-                        gradientColors = listOf(Color(0xFF2196F3), Color(0xFF64B5F6)) // Blue palette
                     )
                 }
 
