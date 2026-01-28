@@ -253,7 +253,7 @@ fun SolarEstimationScreen(
             
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(12.dp)
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
                 OutlinedTextField(
                     value = panelWattage,
@@ -281,23 +281,21 @@ fun SolarEstimationScreen(
                     textStyle = MaterialTheme.typography.bodyMedium,
                     singleLine = true
                 )
+
+                OutlinedTextField(
+                    value = efficiency,
+                    onValueChange = { 
+                        efficiency = it
+                        doCalculation()
+                    },
+                    label = { Text(stringResource(R.string.efficiency), style = MaterialTheme.typography.bodySmall) },
+                    suffix = { Text("%", style = MaterialTheme.typography.bodySmall) },
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                    modifier = Modifier.weight(1f).height(52.dp),
+                    textStyle = MaterialTheme.typography.bodyMedium,
+                    singleLine = true
+                )
             }
-            
-            Spacer(modifier = Modifier.height(8.dp))
-            
-            OutlinedTextField(
-                value = efficiency,
-                onValueChange = { 
-                    efficiency = it
-                    doCalculation()
-                },
-                label = { Text(stringResource(R.string.efficiency), style = MaterialTheme.typography.bodySmall) },
-                suffix = { Text("%", style = MaterialTheme.typography.bodySmall) },
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                modifier = Modifier.fillMaxWidth().height(52.dp),
-                textStyle = MaterialTheme.typography.bodyMedium,
-                singleLine = true
-            )
             
             Spacer(modifier = Modifier.height(12.dp))
             
