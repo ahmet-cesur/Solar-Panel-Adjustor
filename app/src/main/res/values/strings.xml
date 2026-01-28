@@ -142,6 +142,8 @@
     <string name="day_label">Day %1$d</string>
     <string name="pvgis_active">★ High-Precision Satellite Optimization Active (PVGIS)</string>
     <string name="monthly_production_chart">Monthly Energy Production (kWh)</string>
+    <string name="lift_up">LIFT UP ⬆️</string>
+    <string name="tilt_down">TILT DOWN ⬇️</string>
 
     <!-- Rate App -->
     <string name="rate_app_title">Rate this app</string>

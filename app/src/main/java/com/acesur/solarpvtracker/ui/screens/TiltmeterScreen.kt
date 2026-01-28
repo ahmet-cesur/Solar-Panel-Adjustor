@@ -33,6 +33,7 @@ import com.acesur.solarpvtracker.ui.components.TiltGauge
 import com.acesur.solarpvtracker.ui.theme.SkyBlue
 import com.acesur.solarpvtracker.ui.theme.SolarGreen
 import com.acesur.solarpvtracker.ui.theme.SolarOrange
+import com.acesur.solarpvtracker.ui.theme.FestivalRed
 import kotlinx.coroutines.launch
 import java.util.Calendar
 import kotlin.math.abs
@@ -399,14 +400,38 @@ fun TiltmeterScreen(
                 
                 Spacer(modifier = Modifier.width(16.dp))
                 
-                Box(
-                    contentAlignment = Alignment.Center
+                Column(
+                    modifier = Modifier.height(220.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center
                 ) {
-                    TiltGauge(
-                        angle = panelAngle,
-                        targetAngle = optimalTiltAngle,
-                        modifier = Modifier.size(260.dp)
-                    )
+                    // Guidance Text
+                    if (abs(tiltDiscrepancy) > 2f) {
+                        val text = if (tiltDiscrepancy < 0) stringResource(R.string.lift_up) else stringResource(R.string.tilt_down)
+                        val color = if (tiltDiscrepancy < 0) SolarGreen else FestivalRed // Or use consistent Logic
+                        // Usually Lift Up means we are below target (need to go up). Color orange/red?
+                        // Let's use customized colors or just Primary/Secondary
+                        
+                        Text(
+                            text = text,
+                            style = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.Bold,
+                            color = MaterialTheme.colorScheme.primary,
+                            modifier = Modifier.padding(bottom = 8.dp)
+                        )
+                    } else {
+                        Spacer(modifier = Modifier.height(32.dp)) // Keep space to prevent jumping
+                    }
+                    
+                    Box(
+                        contentAlignment = Alignment.Center
+                    ) {
+                        TiltGauge(
+                            angle = panelAngle,
+                            targetAngle = optimalTiltAngle,
+                            modifier = Modifier.size(200.dp)
+                        )
+                    }
                 }
             }
             
