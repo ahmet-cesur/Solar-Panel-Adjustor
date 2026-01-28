@@ -208,6 +208,8 @@ fun OptimalAngleScreen(
                     )
                     Spacer(modifier = Modifier.width(12.dp))
                     
+    val coordinatePrecision by preferencesManager.coordinatePrecision.collectAsState(initial = 4)
+    
                     if (isLoadingLocation) {
                         CircularProgressIndicator(modifier = Modifier.size(24.dp))
                         Spacer(modifier = Modifier.width(8.dp))
@@ -219,7 +221,7 @@ fun OptimalAngleScreen(
                                 style = MaterialTheme.typography.labelSmall
                             )
                             Text(
-                                text = String.format("%.4f°", location?.latitude),
+                                text = String.format("%.${coordinatePrecision}f°", location?.latitude),
                                 style = MaterialTheme.typography.titleMedium,
                                 fontWeight = FontWeight.Bold
                             )

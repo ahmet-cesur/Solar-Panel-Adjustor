@@ -513,6 +513,10 @@ fun TiltmeterScreen(
             
             Spacer(modifier = Modifier.height(16.dp))
 
+    val coordinatePrecision by preferencesManager.coordinatePrecision.collectAsState(initial = 4)
+    
+    // ... existing UI code ...
+
             // Coordinate Display (Moved to bottom)
             location?.let { loc ->
                 Card(
@@ -537,7 +541,7 @@ fun TiltmeterScreen(
                         )
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(
-                            text = String.format("%s: %.4f°, %s: %.4f°", 
+                            text = String.format("%s: %.${coordinatePrecision}f°, %s: %.${coordinatePrecision}f°", 
                                 stringResource(R.string.latitude), loc.latitude,
                                 stringResource(R.string.longitude), loc.longitude),
                             style = MaterialTheme.typography.bodySmall,
