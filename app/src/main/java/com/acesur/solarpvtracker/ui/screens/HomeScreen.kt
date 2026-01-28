@@ -94,7 +94,7 @@ fun HomeScreen(
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(120.dp)
+                            .height(80.dp)
                             .clip(RoundedCornerShape(16.dp))
                             .background(SkyBlue)
                             .clickable {
