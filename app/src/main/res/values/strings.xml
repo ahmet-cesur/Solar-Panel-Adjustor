@@ -79,7 +79,7 @@
     <string name="longitude">Longitude</string>
     <string name="about">About</string>
     <string name="version">Version %1$s</string>
-    <string name="app_description">A comprehensive tool for solar panel installation and optimization. Measure tilt angles, calculate optimal positioning, and estimate solar energy production.</string>
+    <string name="app_description">A comprehensive tool for solar panel installation and optimization. Powered by high-precision PVGIS satellite data, this app provides location-specific solar radiation analysis and energy production estimates. Features include a precise quarter-circle tiltmeter, optimal angle recommendations based on satellite imagery, and detailed monthly output forecasts to maximize your system\'s efficiency.</string>
     
     <!-- Remove Ads Screen -->
     <string name="remove_ads">Remove Ads</string>
