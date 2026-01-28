@@ -198,20 +198,21 @@ fun TiltmeterScreen(
                             onClick = { angleMode = AngleMode.FIXED },
                             modifier = Modifier
                                 .weight(1f)
-                                .height(66.dp),
+                                .height(40.dp),
                             colors = ButtonDefaults.buttonColors(
                                 containerColor = if (angleMode == AngleMode.FIXED) SolarOrange else MaterialTheme.colorScheme.secondaryContainer,
                                 contentColor = if (angleMode == AngleMode.FIXED) Color.White else MaterialTheme.colorScheme.onSecondaryContainer
                             ),
                             shape = RoundedCornerShape(12.dp),
-                            contentPadding = PaddingValues(horizontal = 4.dp, vertical = 8.dp)
+                            contentPadding = PaddingValues(horizontal = 4.dp, vertical = 4.dp)
                         ) {
                             Text(
                                 stringResource(R.string.fixed_angle),
                                 style = MaterialTheme.typography.labelSmall,
                                 fontWeight = FontWeight.Bold,
                                 textAlign = TextAlign.Center,
-                                lineHeight = 14.sp
+                                lineHeight = 12.sp,
+                                maxLines = 1
                             )
                         }
                         
@@ -220,20 +221,21 @@ fun TiltmeterScreen(
                             onClick = { angleMode = AngleMode.DAILY },
                             modifier = Modifier
                                 .weight(1f)
-                                .height(66.dp),
+                                .height(40.dp),
                             colors = ButtonDefaults.buttonColors(
                                 containerColor = if (angleMode == AngleMode.DAILY) SolarOrange else MaterialTheme.colorScheme.secondaryContainer,
                                 contentColor = if (angleMode == AngleMode.DAILY) Color.White else MaterialTheme.colorScheme.onSecondaryContainer
                             ),
                             shape = RoundedCornerShape(12.dp),
-                            contentPadding = PaddingValues(horizontal = 4.dp, vertical = 8.dp)
+                            contentPadding = PaddingValues(horizontal = 4.dp, vertical = 4.dp)
                         ) {
                             Text(
                                 stringResource(R.string.daily_angle),
                                 style = MaterialTheme.typography.labelSmall,
                                 fontWeight = FontWeight.Bold,
                                 textAlign = TextAlign.Center,
-                                lineHeight = 14.sp
+                                lineHeight = 12.sp,
+                                maxLines = 1
                             )
                         }
                         
@@ -242,20 +244,21 @@ fun TiltmeterScreen(
                             onClick = { angleMode = AngleMode.NEXT_30_DAYS },
                             modifier = Modifier
                                 .weight(1f)
-                                .height(66.dp),
+                                .height(40.dp),
                             colors = ButtonDefaults.buttonColors(
                                 containerColor = if (angleMode == AngleMode.NEXT_30_DAYS) SolarOrange else MaterialTheme.colorScheme.secondaryContainer,
                                 contentColor = if (angleMode == AngleMode.NEXT_30_DAYS) Color.White else MaterialTheme.colorScheme.onSecondaryContainer
                             ),
                             shape = RoundedCornerShape(12.dp),
-                            contentPadding = PaddingValues(horizontal = 4.dp, vertical = 8.dp)
+                            contentPadding = PaddingValues(horizontal = 4.dp, vertical = 4.dp)
                         ) {
                             Text(
                                 stringResource(R.string.next_30_days),
                                 style = MaterialTheme.typography.labelSmall,
                                 fontWeight = FontWeight.Bold,
                                 textAlign = TextAlign.Center,
-                                lineHeight = 14.sp
+                                lineHeight = 12.sp,
+                                maxLines = 1
                             )
                         }
                     }
