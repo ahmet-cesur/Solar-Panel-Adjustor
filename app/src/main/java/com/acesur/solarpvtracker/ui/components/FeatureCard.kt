@@ -42,13 +42,13 @@ fun FeatureCard(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp),
+                .padding(14.dp), // Reduced from 16.dp
             verticalAlignment = Alignment.CenterVertically
         ) {
             // Icon with gradient background
             Box(
                 modifier = Modifier
-                    .size(56.dp)
+                    .size(50.dp) // Reduced from 56.dp
                     .clip(RoundedCornerShape(12.dp))
                     .background(
                         brush = Brush.linearGradient(gradientColors)
