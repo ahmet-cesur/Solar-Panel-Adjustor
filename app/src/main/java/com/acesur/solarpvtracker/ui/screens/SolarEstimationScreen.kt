@@ -184,63 +184,6 @@ fun SolarEstimationScreen(
                 .verticalScroll(rememberScrollState())
                 .padding(16.dp)
         ) {
-            // Location Card
-            Card(
-                modifier = Modifier.fillMaxWidth(),
-                shape = RoundedCornerShape(12.dp)
-            ) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(16.dp),
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.LocationOn,
-                        contentDescription = null,
-                        tint = SolarOrange
-                    )
-                    Spacer(modifier = Modifier.width(12.dp))
-                    
-                    if (isLoadingLocation) {
-                        CircularProgressIndicator(modifier = Modifier.size(24.dp))
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Text(stringResource(R.string.getting_location))
-                    } else if (location != null) {
-                        Column {
-                            Text(
-                                text = stringResource(R.string.location),
-                                style = MaterialTheme.typography.labelSmall
-                            )
-                            Text(
-                                text = String.format("%.4f°, %.4f°", location?.latitude, location?.longitude),
-                                style = MaterialTheme.typography.bodyMedium,
-                                fontWeight = FontWeight.Bold
-                            )
-                        }
-                    } else {
-                        Text(
-                            text = stringResource(R.string.location_unavailable),
-                            color = MaterialTheme.colorScheme.error
-                        )
-                    }
-                    
-                    Spacer(modifier = Modifier.weight(1f))
-                    
-                    IconButton(onClick = {
-                        scope.launch {
-                            isLoadingLocation = true
-                            location = locationHelper.getCurrentLocation()
-                            isLoadingLocation = false
-                            doCalculation()
-                        }
-                    }) {
-                        Icon(Icons.Default.Refresh, contentDescription = stringResource(R.string.refresh))
-                    }
-                }
-            }
-            
-            Spacer(modifier = Modifier.height(8.dp))
             
             // Panel Settings
             Text(
@@ -421,7 +364,72 @@ fun SolarEstimationScreen(
 
             }
             
-            Spacer(modifier = Modifier.height(16.dp))
+            // Location Card
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(12.dp),
+                colors = CardDefaults.cardColors(
+                    containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f)
+                )
+            ) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 12.dp, vertical = 4.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.LocationOn,
+                        contentDescription = null,
+                        tint = SolarOrange,
+                        modifier = Modifier.size(18.dp)
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    
+                    if (isLoadingLocation) {
+                        CircularProgressIndicator(modifier = Modifier.size(16.dp))
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(
+                            text = stringResource(R.string.getting_location),
+                            style = MaterialTheme.typography.bodySmall
+                        )
+                    } else if (location != null) {
+                        Text(
+                            text = String.format("%s: %.4f°, %.4f°", stringResource(R.string.location), location?.latitude, location?.longitude),
+                            style = MaterialTheme.typography.bodySmall,
+                            fontWeight = FontWeight.Medium
+                        )
+                    } else {
+                        Text(
+                            text = stringResource(R.string.location_unavailable),
+                            color = MaterialTheme.colorScheme.error,
+                            style = MaterialTheme.typography.bodySmall
+                        )
+                    }
+                    
+                    Spacer(modifier = Modifier.weight(1f))
+                    
+                    IconButton(
+                        onClick = {
+                            scope.launch {
+                                isLoadingLocation = true
+                                location = locationHelper.getCurrentLocation()
+                                isLoadingLocation = false
+                                doCalculation()
+                            }
+                        },
+                        modifier = Modifier.size(32.dp)
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Refresh, 
+                            contentDescription = stringResource(R.string.refresh),
+                            modifier = Modifier.size(18.dp)
+                        )
+                    }
+                }
+            }
+            
+            Spacer(modifier = Modifier.height(12.dp))
             
             // Disclaimer
             Text(
