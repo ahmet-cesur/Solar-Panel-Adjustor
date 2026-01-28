@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.drawText
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.rememberTextMeasurer
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -42,29 +43,23 @@ fun TiltGauge(
     val textMeasurer = rememberTextMeasurer()
     
     Canvas(modifier = modifier.size(280.dp)) {
-        val centerX = size.width / 2
-        val centerY = size.height / 2
-        val radius = size.minDimension / 2 - 30f
+        // Anchor at bottom-left for a quarter-circle protractor look
+        val margin = 50f
+        val centerX = margin
+        val centerY = size.height - margin
+        val radius = size.width - margin * 2
         
-        // Outer circle
-        drawCircle(
-            color = Color.LightGray.copy(alpha = 0.5f),
-            radius = radius + 20f,
-            center = Offset(centerX, centerY),
-            style = Stroke(width = 2f)
-        )
-        
-        // Background arc for the active quadrant (0 to 90)
+        // Background quadrant area
         drawArc(
-            color = Color.LightGray.copy(alpha = 0.2f),
+            color = Color.LightGray.copy(alpha = 0.1f),
             startAngle = 0f,
             sweepAngle = -90f,
             useCenter = true,
-            topLeft = Offset(centerX - radius - 20f, centerY - radius - 20f),
-            size = Size((radius + 20f) * 2, (radius + 20f) * 2)
+            topLeft = Offset(centerX - radius, centerY - radius),
+            size = Size(radius * 2, radius * 2)
         )
         
-        // Thick arc for 0-90 scale
+        // Outer arc boundary
         drawArc(
             color = Color.LightGray.copy(alpha = 0.5f),
             startAngle = 0f,
@@ -72,29 +67,39 @@ fun TiltGauge(
             useCenter = false,
             topLeft = Offset(centerX - radius, centerY - radius),
             size = Size(radius * 2, radius * 2),
+            style = Stroke(width = 2f)
+        )
+        
+        // Inner scale arc (Thick)
+        val scaleRadius = radius - 15f
+        drawArc(
+            color = Color.LightGray.copy(alpha = 0.3f),
+            startAngle = 0f,
+            sweepAngle = -90f,
+            useCenter = false,
+            topLeft = Offset(centerX - scaleRadius, centerY - scaleRadius),
+            size = Size(scaleRadius * 2, scaleRadius * 2),
             style = Stroke(width = 15f, cap = StrokeCap.Round)
         )
         
-        // Crosshairs (Axis lines)
+        // Axis lines (Horizontal and Vertical)
         drawLine(
-            color = Color.LightGray,
-            start = Offset(centerX - radius - 10f, centerY),
+            color = Color.Gray,
+            start = Offset(centerX, centerY),
             end = Offset(centerX + radius + 10f, centerY),
-            strokeWidth = 1f
+            strokeWidth = 2f
         )
         drawLine(
-            color = Color.LightGray,
-            start = Offset(centerX, centerY - radius - 10f),
-            end = Offset(centerX, centerY + radius + 10f),
-            strokeWidth = 1f
+            color = Color.Gray,
+            start = Offset(centerX, centerY),
+            end = Offset(centerX, centerY - radius - 10f),
+            strokeWidth = 2f
         )
         
         // Draw degree markings (0 to 90)
         for (i in 0..90 step 15) {
-            // Convert angle to radians for placement
-            // Mathematical angle i corresponds to Canvas angle -i
             val angleRad = Math.toRadians(-i.toDouble())
-            val innerRadius = radius - 20f
+            val innerRadius = radius - 30f
             val outerRadius = radius
             
             val startX = centerX + (innerRadius * cos(angleRad)).toFloat()
@@ -106,7 +111,7 @@ fun TiltGauge(
                 color = Color.Gray,
                 start = Offset(startX, startY),
                 end = Offset(endX, endY),
-                strokeWidth = if (i % 30 == 0) 3f else 1.5f
+                strokeWidth = if (i % 30 == 0) 4f else 2f
             )
             
             // Draw degree labels
@@ -114,7 +119,6 @@ fun TiltGauge(
             val textX = centerX + (textRadius * cos(angleRad)).toFloat()
             val textY = centerY + (textRadius * sin(angleRad)).toFloat()
             
-            // Adjust text alignment based on position
             val textSize = textMeasurer.measure("${i}°")
             val textOffsetX = textX - textSize.size.width / 2
             val textOffsetY = textY - textSize.size.height / 2
@@ -125,7 +129,8 @@ fun TiltGauge(
                 topLeft = Offset(textOffsetX, textOffsetY),
                 style = TextStyle(
                     fontSize = 12.sp,
-                    color = Color.DarkGray
+                    color = Color.DarkGray,
+                    fontWeight = FontWeight.Bold
                 )
             )
         }
@@ -136,6 +141,7 @@ fun TiltGauge(
             val targetX = centerX + (radius * cos(targetAngleRad)).toFloat()
             val targetY = centerY + (radius * sin(targetAngleRad)).toFloat()
             
+            // Target line
             drawLine(
                 color = SkyBlue,
                 start = Offset(centerX, centerY),
@@ -144,6 +150,7 @@ fun TiltGauge(
                 cap = StrokeCap.Round
             )
             
+            // Target circle at the end
             drawCircle(
                 color = SkyBlue,
                 radius = 8f,
@@ -159,10 +166,10 @@ fun TiltGauge(
         
         // Needle shadow
         drawLine(
-            color = Color.Black.copy(alpha = 0.2f),
+            color = Color.Black.copy(alpha = 0.1f),
             start = Offset(centerX + 2f, centerY + 2f),
             end = Offset(needleX + 2f, needleY + 2f),
-            strokeWidth = 6f,
+            strokeWidth = 8f,
             cap = StrokeCap.Round
         )
         
@@ -171,20 +178,24 @@ fun TiltGauge(
             color = SolarOrange,
             start = Offset(centerX, centerY),
             end = Offset(needleX, needleY),
-            strokeWidth = 6f,
+            strokeWidth = 8f,
             cap = StrokeCap.Round
         )
         
-        // Center pivot
+        // Center pivot (Corner bolt look)
         drawCircle(
-            color = SunYellow,
-            radius = 12f,
+            color = Color.DarkGray,
+            radius = 14f,
             center = Offset(centerX, centerY)
         )
-        
+        drawCircle(
+            color = SunYellow,
+            radius = 10f,
+            center = Offset(centerX, centerY)
+        )
         drawCircle(
             color = SolarOrange,
-            radius = 6f,
+            radius = 5f,
             center = Offset(centerX, centerY)
         )
     }
