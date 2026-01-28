@@ -23,6 +23,8 @@ sealed class Screen(val route: String) {
 fun AppNavigation(
     navController: NavHostController,
     isFirstLaunch: Boolean,
+    userLocation: com.acesur.solarpvtracker.data.UserLocation?,
+    onRefreshLocation: () -> Unit,
     onLanguageSelected: (String) -> Unit,
     onNavigateWithAd: (destination: String, navigate: () -> Unit) -> Unit = { _, nav -> nav() },
     onPurchaseProduct: (String) -> Unit = {},
@@ -83,25 +85,33 @@ fun AppNavigation(
         
         composable(Screen.Tiltmeter.route) {
             TiltmeterScreen(
-                onNavigateBack = { navController.popBackStack() }
+                onNavigateBack = { navController.popBackStack() },
+                userLocation = userLocation,
+                onRefreshLocation = onRefreshLocation
             )
         }
         
         composable(Screen.SolarEstimation.route) {
             SolarEstimationScreen(
-                onNavigateBack = { navController.popBackStack() }
+                onNavigateBack = { navController.popBackStack() },
+                userLocation = userLocation,
+                onRefreshLocation = onRefreshLocation
             )
         }
         
         composable(Screen.OptimalAngle.route) {
             OptimalAngleScreen(
-                onNavigateBack = { navController.popBackStack() }
+                onNavigateBack = { navController.popBackStack() },
+                userLocation = userLocation,
+                onRefreshLocation = onRefreshLocation
             )
         }
         
         composable(Screen.TiltAngleReport.route) {
             TiltAngleReportScreen(
-                onNavigateBack = { navController.popBackStack() }
+                onNavigateBack = { navController.popBackStack() },
+                userLocation = userLocation,
+                onRefreshLocation = onRefreshLocation
             )
         }
         
@@ -129,7 +139,9 @@ fun AppNavigation(
 
         composable(Screen.SatelliteData.route) {
             SatelliteDataScreen(
-                onNavigateBack = { navController.popBackStack() }
+                onNavigateBack = { navController.popBackStack() },
+                userLocation = userLocation,
+                onRefreshLocation = onRefreshLocation
             )
         }
     }

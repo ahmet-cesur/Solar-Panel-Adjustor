@@ -262,6 +262,26 @@ class MainActivity : ComponentActivity() {
                         )
                     }
 
+                    // Shared Location State
+                    val locationHelper = remember { com.acesur.solarpvtracker.data.LocationHelper(this@MainActivity, preferencesManager) }
+                    var userLocation by remember { mutableStateOf<com.acesur.solarpvtracker.data.UserLocation?>(null) }
+                    
+                    // Function to refresh location
+                    val refreshLocation = remember {
+                        { 
+                            lifecycleScope.launch {
+                                if (locationHelper.hasLocationPermission()) {
+                                    userLocation = locationHelper.getCurrentLocation()
+                                }
+                            }
+                        }
+                    }
+                    
+                    // Fetch location on start if permission granted
+                    LaunchedEffect(Unit) {
+                        refreshLocation()
+                    }
+
                     // Auto-show Remove Ads screen every 30 minutes if not ad-free
                     LaunchedEffect(isAdFree) {
                         if (!isAdFree) {
@@ -278,6 +298,8 @@ class MainActivity : ComponentActivity() {
                     AppNavigation(
                         navController = navController,
                         isFirstLaunch = isFirstLaunch,
+                        userLocation = userLocation, // Pass shared location
+                        onRefreshLocation = { refreshLocation() }, // Pass refresh function
                         onLanguageSelected = { languageCode ->
                             // Save language preference
                             runBlocking {

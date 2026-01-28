@@ -119,11 +119,7 @@ fun HomeScreen(
                                 color = Color.White
                             )
                             Spacer(modifier = Modifier.height(4.dp))
-                            Text(
-                                text = stringResource(R.string.home_subtitle),
-                                style = MaterialTheme.typography.bodyMedium,
-                                color = Color.White.copy(alpha = 0.9f)
-                            )
+
                         }
                     }
                 }

@@ -21,10 +21,14 @@ import androidx.compose.ui.unit.sp
 import com.acesur.solarpvtracker.R
 import com.acesur.solarpvtracker.ui.theme.*
 
+import com.acesur.solarpvtracker.data.UserLocation
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SatelliteDataScreen(
-    onNavigateBack: () -> Unit
+    onNavigateBack: () -> Unit,
+    userLocation: UserLocation?,
+    onRefreshLocation: () -> Unit
 ) {
     Scaffold(
         topBar = {

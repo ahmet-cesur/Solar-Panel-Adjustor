@@ -43,17 +43,21 @@ import org.json.JSONObject
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SolarEstimationScreen(
-    onNavigateBack: () -> Unit
+    onNavigateBack: () -> Unit,
+    userLocation: UserLocation?,
+    onRefreshLocation: () -> Unit
 ) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     val preferencesManager = remember { com.acesur.solarpvtracker.data.PreferencesManager(context) }
-    val locationHelper = remember { LocationHelper(context, preferencesManager) }
+    // LocationHelper managed by MainActivity
     val solarCalculator = remember { SolarCalculator() }
     val pvgisManager = remember { PVGISManager(context, preferencesManager) }
     
-    var location by remember { mutableStateOf<UserLocation?>(null) }
-    var isLoadingLocation by remember { mutableStateOf(false) }
+    // Alias for compatibility
+    val location = userLocation
+    
+    var isLoadingLocation by remember { mutableStateOf(false) } // Keep local loading state for UI feedback
     
     // Panel settings
     var panelWattage by remember { mutableStateOf("400") }
@@ -121,17 +125,21 @@ fun SolarEstimationScreen(
         }
     }
     
+    // Trigger calculation when location changes
+    LaunchedEffect(location) {
+        if (location != null) {
+            doCalculation()
+        } else {
+            onRefreshLocation()
+        }
+    }
+    
     val permissionLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.RequestMultiplePermissions()
     ) { permissions ->
         if (permissions[Manifest.permission.ACCESS_FINE_LOCATION] == true ||
             permissions[Manifest.permission.ACCESS_COARSE_LOCATION] == true) {
-            scope.launch {
-                isLoadingLocation = true
-                location = locationHelper.getCurrentLocation()
-                isLoadingLocation = false
-                doCalculation()
-            }
+            onRefreshLocation()
         }
     }
     
@@ -139,16 +147,18 @@ fun SolarEstimationScreen(
     
     LaunchedEffect(useGps) {
         if (!useGps) {
-            isLoadingLocation = true
-            location = locationHelper.getCurrentLocation()
-            isLoadingLocation = false
-            doCalculation()
+            onRefreshLocation()
         } else {
-            if (locationHelper.hasLocationPermission()) {
-                isLoadingLocation = true
-                location = locationHelper.getCurrentLocation()
-                isLoadingLocation = false
-                doCalculation()
+             // Check permission (Context based)
+            val hasPermission = androidx.core.content.ContextCompat.checkSelfPermission(
+                context, Manifest.permission.ACCESS_FINE_LOCATION
+            ) == android.content.pm.PackageManager.PERMISSION_GRANTED ||
+            androidx.core.content.ContextCompat.checkSelfPermission(
+                context, Manifest.permission.ACCESS_COARSE_LOCATION
+            ) == android.content.pm.PackageManager.PERMISSION_GRANTED
+
+            if (hasPermission) {
+                onRefreshLocation()
             } else {
                 permissionLauncher.launch(
                     arrayOf(
@@ -157,6 +167,8 @@ fun SolarEstimationScreen(
                     )
                 )
             }
+             // If no permission, MainActivity logic or onRefreshLocation handles it? 
+             // Actually onRefreshLocation checks permission. If missing, UI needs to show button to request.
         }
     }
     
@@ -411,12 +423,7 @@ fun SolarEstimationScreen(
                     
                     IconButton(
                         onClick = {
-                            scope.launch {
-                                isLoadingLocation = true
-                                location = locationHelper.getCurrentLocation()
-                                isLoadingLocation = false
-                                doCalculation()
-                            }
+                            onRefreshLocation()
                         },
                         modifier = Modifier.size(32.dp)
                     ) {

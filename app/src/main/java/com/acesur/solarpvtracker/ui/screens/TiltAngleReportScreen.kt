@@ -35,16 +35,20 @@ import kotlinx.coroutines.withContext
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TiltAngleReportScreen(
-    onNavigateBack: () -> Unit
+    onNavigateBack: () -> Unit,
+    userLocation: UserLocation?,
+    onRefreshLocation: () -> Unit
 ) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     val preferencesManager = remember { com.acesur.solarpvtracker.data.PreferencesManager(context) }
-    val locationHelper = remember { LocationHelper(context, preferencesManager) }
+    // LocationHelper managed by MainActivity
     val solarCalculator = remember { SolarCalculator() }
     val pdfExportManager = remember { PdfExportManager(context) }
     
-    var location by remember { mutableStateOf<UserLocation?>(null) }
+    // Alias for compatibility
+    val location = userLocation
+    
     var isLoadingLocation by remember { mutableStateOf(false) }
     var isExporting by remember { mutableStateOf(false) }
     
@@ -52,20 +56,27 @@ fun TiltAngleReportScreen(
     var dailyAngles by remember { mutableStateOf<List<DailyTiltAngle>>(emptyList()) }
     var monthlyAngles by remember { mutableStateOf<List<MonthlyTiltAngle>>(emptyList()) }
     
+    // Generate report data when location changes
+    LaunchedEffect(location) {
+        location?.let { loc ->
+            dailyAngles = solarCalculator.generateDailyTiltAngles(loc.latitude)
+            monthlyAngles = solarCalculator.generateMonthlyTiltAngles(loc.latitude)
+        }
+    }
+    
+    // Trigger location refresh if missing
+    LaunchedEffect(location) {
+        if (location == null) {
+            onRefreshLocation()
+        }
+    }
+    
     val permissionLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.RequestMultiplePermissions()
     ) { permissions ->
         if (permissions[Manifest.permission.ACCESS_FINE_LOCATION] == true ||
             permissions[Manifest.permission.ACCESS_COARSE_LOCATION] == true) {
-            scope.launch {
-                isLoadingLocation = true
-                location = locationHelper.getCurrentLocation()
-                location?.let { loc ->
-                    dailyAngles = solarCalculator.generateDailyTiltAngles(loc.latitude)
-                    monthlyAngles = solarCalculator.generateMonthlyTiltAngles(loc.latitude)
-                }
-                isLoadingLocation = false
-            }
+            onRefreshLocation()
         }
     }
     
@@ -73,22 +84,18 @@ fun TiltAngleReportScreen(
     
     LaunchedEffect(useGps) {
         if (!useGps) {
-            isLoadingLocation = true
-            location = locationHelper.getCurrentLocation()
-            location?.let { loc ->
-                dailyAngles = solarCalculator.generateDailyTiltAngles(loc.latitude)
-                monthlyAngles = solarCalculator.generateMonthlyTiltAngles(loc.latitude)
-            }
-            isLoadingLocation = false
+            onRefreshLocation()
         } else {
-            if (locationHelper.hasLocationPermission()) {
-                isLoadingLocation = true
-                location = locationHelper.getCurrentLocation()
-                location?.let { loc ->
-                    dailyAngles = solarCalculator.generateDailyTiltAngles(loc.latitude)
-                    monthlyAngles = solarCalculator.generateMonthlyTiltAngles(loc.latitude)
-                }
-                isLoadingLocation = false
+             // Check permission (Context based)
+            val hasPermission = androidx.core.content.ContextCompat.checkSelfPermission(
+                context, Manifest.permission.ACCESS_FINE_LOCATION
+            ) == android.content.pm.PackageManager.PERMISSION_GRANTED ||
+            androidx.core.content.ContextCompat.checkSelfPermission(
+                context, Manifest.permission.ACCESS_COARSE_LOCATION
+            ) == android.content.pm.PackageManager.PERMISSION_GRANTED
+
+            if (hasPermission) {
+                onRefreshLocation()
             } else {
                 permissionLauncher.launch(
                     arrayOf(

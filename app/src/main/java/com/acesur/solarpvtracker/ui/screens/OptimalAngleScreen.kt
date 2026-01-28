@@ -52,24 +52,43 @@ private enum class OptimalAngleMode {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun OptimalAngleScreen(
-    onNavigateBack: () -> Unit
+    onNavigateBack: () -> Unit,
+    userLocation: UserLocation?,
+    onRefreshLocation: () -> Unit
 ) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     val preferencesManager = remember { com.acesur.solarpvtracker.data.PreferencesManager(context) }
-    val locationHelper = remember { LocationHelper(context, preferencesManager) }
+    // LocationHelper managed by MainActivity
     val solarCalculator = remember { SolarCalculator() }
     val pvgisManager = remember { PVGISManager(context, preferencesManager) }
     
-    var location by remember { mutableStateOf<UserLocation?>(null) }
+    // Alias for compatibility
+    val location = userLocation
+    
     var isLoadingLocation by remember { mutableStateOf(false) }
     var seasonalAngles by remember { mutableStateOf<List<OptimalTiltAngle>>(emptyList()) }
     var pvgisOptimalAngle by remember { mutableStateOf<Float?>(null) }
+    
+    // Update seasonal angles when location changes
+    LaunchedEffect(location) {
+        location?.let { loc ->
+            seasonalAngles = solarCalculator.getSeasonalTiltAngles(loc.latitude)
+            // PVGIS fetch is handled in another LaunchedEffect below (or merged here)
+        }
+    }
     
     // Fetch PVGIS angle when location is available
     LaunchedEffect(location) {
         location?.let { loc ->
             pvgisOptimalAngle = pvgisManager.getOptimalTilt(loc.latitude, loc.longitude)
+        }
+    }
+    
+     // Trigger location refresh if missing
+    LaunchedEffect(location) {
+        if (location == null) {
+            onRefreshLocation()
         }
     }
     
@@ -115,35 +134,26 @@ fun OptimalAngleScreen(
     ) { permissions ->
         if (permissions[Manifest.permission.ACCESS_FINE_LOCATION] == true ||
             permissions[Manifest.permission.ACCESS_COARSE_LOCATION] == true) {
-            scope.launch {
-                isLoadingLocation = true
-                location = locationHelper.getCurrentLocation()
-                location?.let { loc ->
-                    seasonalAngles = solarCalculator.getSeasonalTiltAngles(loc.latitude)
-                }
-                isLoadingLocation = false
-            }
+            onRefreshLocation()
         }
     }
-    
-    val useGps by preferencesManager.useGps.collectAsState(initial = true)
 
+    val useGps by preferencesManager.useGps.collectAsState(initial = true)
+    
     LaunchedEffect(useGps) {
         if (!useGps) {
-            isLoadingLocation = true
-            location = locationHelper.getCurrentLocation()
-            location?.let { loc ->
-                seasonalAngles = solarCalculator.getSeasonalTiltAngles(loc.latitude)
-            }
-            isLoadingLocation = false
+            onRefreshLocation()
         } else {
-            if (locationHelper.hasLocationPermission()) {
-                isLoadingLocation = true
-                location = locationHelper.getCurrentLocation()
-                location?.let { loc ->
-                    seasonalAngles = solarCalculator.getSeasonalTiltAngles(loc.latitude)
-                }
-                isLoadingLocation = false
+            // Check permission (Context based)
+            val hasPermission = androidx.core.content.ContextCompat.checkSelfPermission(
+                context, Manifest.permission.ACCESS_FINE_LOCATION
+            ) == android.content.pm.PackageManager.PERMISSION_GRANTED ||
+            androidx.core.content.ContextCompat.checkSelfPermission(
+                context, Manifest.permission.ACCESS_COARSE_LOCATION
+            ) == android.content.pm.PackageManager.PERMISSION_GRANTED
+
+            if (hasPermission) {
+                onRefreshLocation()
             } else {
                 permissionLauncher.launch(
                     arrayOf(

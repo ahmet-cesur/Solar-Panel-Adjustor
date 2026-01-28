@@ -47,34 +47,46 @@ enum class AngleMode {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TiltmeterScreen(
-    onNavigateBack: () -> Unit
+    onNavigateBack: () -> Unit,
+    userLocation: UserLocation?,
+    onRefreshLocation: () -> Unit
 ) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
     val preferencesManager = remember { com.acesur.solarpvtracker.data.PreferencesManager(context) }
     val tiltSensorManager = remember { TiltSensorManager(context) }
-    val locationHelper = remember { LocationHelper(context, preferencesManager) }
+    // LocationHelper is now managed by MainActivity
     val solarCalculator = remember { SolarCalculator() }
     val pvgisManager = remember { PVGISManager(context, preferencesManager) }
+    
+    // Alias for compatibility
+    val location = userLocation
     
     val tiltData by tiltSensorManager.tiltDataFlow.collectAsState(
         initial = com.acesur.solarpvtracker.sensor.TiltData(0f, 0f, 0f)
     )
     
-    var location by remember { mutableStateOf<UserLocation?>(null) }
+    // Use passed userLocation
     var angleMode by remember { mutableStateOf(AngleMode.FIXED) }
     var pvgisOptimalAngle by remember { mutableStateOf<Float?>(null) }
     
     // Fetch PVGIS angle when location is available
-    LaunchedEffect(location) {
-        location?.let { loc ->
+    LaunchedEffect(userLocation) {
+        userLocation?.let { loc ->
             pvgisOptimalAngle = pvgisManager.getOptimalTilt(loc.latitude, loc.longitude)
         }
     }
     
+    // Request location if missing (optional, as main activity tries too)
+    LaunchedEffect(Unit) {
+        if (userLocation == null) {
+            onRefreshLocation()
+        }
+    }
+    
     // Calculate optimal tilt angle based on selected mode
-    val optimalTiltAngle = remember(location, angleMode, pvgisOptimalAngle) {
-        location?.let { loc ->
+    val optimalTiltAngle = remember(userLocation, angleMode, pvgisOptimalAngle) {
+        userLocation?.let { loc ->
             when (angleMode) {
                 AngleMode.FIXED -> {
                     // Try to use PVGIS angle first, fallback to latitude
@@ -127,9 +139,7 @@ fun TiltmeterScreen(
     ) { permissions ->
         if (permissions[Manifest.permission.ACCESS_FINE_LOCATION] == true ||
             permissions[Manifest.permission.ACCESS_COARSE_LOCATION] == true) {
-            scope.launch {
-                location = locationHelper.getCurrentLocation()
-            }
+            onRefreshLocation()
         }
     }
     
@@ -137,10 +147,17 @@ fun TiltmeterScreen(
     
     LaunchedEffect(useGps) {
         if (!useGps) {
-             location = locationHelper.getCurrentLocation()
+             onRefreshLocation()
         } else {
-            if (locationHelper.hasLocationPermission()) {
-                location = locationHelper.getCurrentLocation()
+            val hasPermission = androidx.core.content.ContextCompat.checkSelfPermission(
+                context, Manifest.permission.ACCESS_FINE_LOCATION
+            ) == android.content.pm.PackageManager.PERMISSION_GRANTED ||
+            androidx.core.content.ContextCompat.checkSelfPermission(
+                context, Manifest.permission.ACCESS_COARSE_LOCATION
+            ) == android.content.pm.PackageManager.PERMISSION_GRANTED
+
+            if (hasPermission) {
+                onRefreshLocation()
             } else {
                 permissionLauncher.launch(
                     arrayOf(
