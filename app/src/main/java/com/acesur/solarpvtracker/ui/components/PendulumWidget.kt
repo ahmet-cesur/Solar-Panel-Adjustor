@@ -27,69 +27,55 @@ fun PendulumWidget(
     modifier: Modifier = Modifier
 ) {
     // Determine if we are valid (vertical within +/- 5 degrees)
-    val isVertical = abs(roll) <= 5f
-    val indicatorColor = if (isVertical) SolarGreen else FestivalRed
+    val isVertical = abs(roll) <= 2f // Using tighter tolerance for color
+    val indicatorColor = if (abs(roll) <= 5f) SolarGreen else FestivalRed
 
-    Box(modifier = modifier, contentAlignment = Alignment.BottomCenter) {
+    Box(modifier = modifier, contentAlignment = Alignment.Center) {
         Canvas(modifier = Modifier.matchParentSize()) {
             val width = size.width
             val height = size.height
             val centerX = width / 2
-            val topY = 0f
+            val centerY = height / 2
             
-            // Draw background / reference frame
-            // A semi-circle or arc at the top? Or just a vertical dotted line for reference
+            // 1. Draw Static Background (Vertical Reference)
             drawLine(
-                color = Color.Gray.copy(alpha = 0.5f),
-                start = Offset(centerX, topY),
-                end = Offset(centerX, height * 0.8f),
-                strokeWidth = 2.dp.toPx(),
-                pathEffect = androidx.compose.ui.graphics.PathEffect.dashPathEffect(floatArrayOf(10f, 10f), 0f)
+                color = Color.Gray.copy(alpha = 0.3f),
+                start = Offset(centerX, 20f),
+                end = Offset(centerX, height - 20f),
+                strokeWidth = 1.dp.toPx()
             )
 
-            // Draw the Pendulum
-            // We rotate around the top center point (centerX, topY)
-            // Roll is in degrees. +Roll means tilt right? We just rotate by -roll to simulate gravity acting on pendulum
-            // Actually if phone tilts right, pendulum should swing left relative to phone?
-            // If phone tilts right (positive roll), the "down" vector is to the left in the phone's frame.
-            // So we rotate by -roll.
-            
-            rotate(degrees = -roll, pivot = Offset(centerX, topY)) {
-                // String
-                drawLine(
-                    color = indicatorColor,
-                    start = Offset(centerX, topY),
-                    end = Offset(centerX, height * 0.75f),
-                    strokeWidth = 4.dp.toPx()
+            // 2. Draw Rotating Phone
+            rotate(degrees = roll, pivot = Offset(centerX, centerY)) {
+                val phoneWidth = 40.dp.toPx()
+                val phoneHeight = 80.dp.toPx()
+                val cornerRadius = 6.dp.toPx()
+                
+                // Phone Body
+                drawRoundRect(
+                    color = if (isVertical) SolarGreen else Color.DarkGray,
+                    topLeft = Offset(centerX - phoneWidth / 2, centerY - phoneHeight / 2),
+                    size = androidx.compose.ui.geometry.Size(phoneWidth, phoneHeight),
+                    cornerRadius = androidx.compose.ui.geometry.CornerRadius(cornerRadius),
+                    style = Stroke(width = 3.dp.toPx())
                 )
                 
-                // Bob (Weight)
+                // Screen outline
+                drawRoundRect(
+                    color = if (isVertical) SolarGreen.copy(0.3f) else Color.Gray.copy(0.2f),
+                    topLeft = Offset(centerX - (phoneWidth - 10f) / 2, centerY - (phoneHeight - 10f) / 2),
+                    size = androidx.compose.ui.geometry.Size(phoneWidth - 10f, phoneHeight - 10f),
+                    cornerRadius = androidx.compose.ui.geometry.CornerRadius(cornerRadius - 2f)
+                )
+                
+                // Ear speaker / Camera dot
                 drawCircle(
-                    color = indicatorColor,
-                    radius = 8.dp.toPx(),
-                    center = Offset(centerX, height * 0.75f)
+                    color = Color.Gray,
+                    radius = 2.dp.toPx(),
+                    center = Offset(centerX, centerY - phoneHeight / 2 + 8f)
                 )
-                
-                // Draw arrow head at bottom? Optional.
             }
-            
-            // Draw arc for safe zone (+/- 5 deg)
-            // Arc center is (centerX, topY), radius is height * 0.75
-            // Start angle: 90 - 5 = 85? No, 0 degrees is usually 3 o'clock in Canvas.
-            // Down is 90 degrees.
-            // So range is 85 to 95 degrees.
-            // In Compose drawArc: startAngle and sweepAngle.
-            // 90 degrees is Down.
-            // -5 to +5 relative to Down (90).
-            // So 85 start, 10 sweep.
-            drawArc(
-                color = SolarGreen.copy(alpha = 0.3f),
-                startAngle = 85f,
-                sweepAngle = 10f,
-                useCenter = true,
-                topLeft = Offset(centerX - height*0.75f, topY - height*0.75f),
-                size = androidx.compose.ui.geometry.Size(height*1.5f, height*1.5f)
-            )
+
         }
         
         // Text reading
