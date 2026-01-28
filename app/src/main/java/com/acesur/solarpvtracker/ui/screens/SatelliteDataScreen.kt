@@ -89,38 +89,34 @@ fun SatelliteDataScreen(
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            // Main Stats Grid (Mock)
-            Row(modifier = Modifier.fillMaxWidth()) {
-                StatCard(
-                    title = "Cloud Cover",
+            // Main Stats Row
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                CompactStatCard(
+                    title = "Cloud",
                     value = "12%",
                     icon = Icons.Default.Cloud,
                     color = SkyBlue,
                     modifier = Modifier.weight(1f)
                 )
-                Spacer(modifier = Modifier.width(12.dp))
-                StatCard(
-                    title = "Visibility",
-                    value = "15 km",
+                CompactStatCard(
+                    title = "Visib.",
+                    value = "15km",
                     icon = Icons.Default.Visibility,
                     color = SolarGreen,
                     modifier = Modifier.weight(1f)
                 )
-            }
-
-            Spacer(modifier = Modifier.height(12.dp))
-
-            Row(modifier = Modifier.fillMaxWidth()) {
-                StatCard(
-                    title = "UV Index",
-                    value = "Low (2)",
+                CompactStatCard(
+                    title = "UV",
+                    value = "2",
                     icon = Icons.Default.WbSunny,
                     color = SunYellow,
                     modifier = Modifier.weight(1f)
                 )
-                Spacer(modifier = Modifier.width(12.dp))
-                StatCard(
-                    title = "Humidity",
+                CompactStatCard(
+                    title = "Humid.",
                     value = "45%",
                     icon = Icons.Default.WaterDrop,
                     color = Color(0xFF2196F3),
@@ -180,7 +176,7 @@ fun SatelliteDataScreen(
 }
 
 @Composable
-fun StatCard(
+fun CompactStatCard(
     title: String,
     value: String,
     icon: ImageVector,
@@ -188,21 +184,31 @@ fun StatCard(
     modifier: Modifier = Modifier
 ) {
     Card(
-        modifier = modifier.height(110.dp),
-        shape = RoundedCornerShape(16.dp),
+        modifier = modifier.height(80.dp),
+        shape = RoundedCornerShape(12.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
     ) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(12.dp),
+                .padding(4.dp),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Icon(imageVector = icon, contentDescription = null, tint = color, modifier = Modifier.size(28.dp))
-            Spacer(modifier = Modifier.height(8.dp))
-            Text(text = title, style = MaterialTheme.typography.labelMedium, color = Color.Gray)
-            Text(text = value, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
+            Icon(imageVector = icon, contentDescription = null, tint = color, modifier = Modifier.size(20.dp))
+            Spacer(modifier = Modifier.height(4.dp))
+            Text(
+                text = title, 
+                style = MaterialTheme.typography.labelSmall.copy(fontSize = 10.sp), 
+                color = Color.Gray,
+                maxLines = 1
+            )
+            Text(
+                text = value, 
+                style = MaterialTheme.typography.bodyMedium, 
+                fontWeight = FontWeight.Bold,
+                maxLines = 1
+            )
         }
     }
 }
