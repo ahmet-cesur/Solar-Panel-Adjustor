@@ -11,6 +11,8 @@
     <string name="optimal_angle_desc">Obtenez les meilleures recommandations d\'angle pour votre latitude</string>
     <string name="tilt_report">Rapport d\'Angles</string>
     <string name="tilt_report_desc">Visualisez et exportez les angles optimaux quotidiens/mensuels en PDF</string>
+    <string name="satellite_data">Données Satellite</string>
+    <string name="satellite_data_desc">Accédez aux données solares satellites et prévisions en temps réel</string>
     <string name="settings">Paramètres</string>
     <string name="back">Retour</string>
     <string name="refresh">Actualiser</string>

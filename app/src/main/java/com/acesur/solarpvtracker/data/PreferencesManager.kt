@@ -33,6 +33,12 @@ class PreferencesManager(private val context: Context) {
         private val KEY_RATE_APP_LAST_SHOWN_TIME = longPreferencesKey("rate_app_last_shown_time")
         private val KEY_HAS_RATED_APP = booleanPreferencesKey("has_rated_app")
         private val KEY_NEVER_SHOW_RATE_APP = booleanPreferencesKey("never_show_rate_app")
+        
+        // PVGIS Caching
+        private val KEY_PVGIS_FIXED_ANGLE = floatPreferencesKey("pvgis_fixed_angle")
+        private val KEY_PVGIS_LAST_FETCH_TIME = longPreferencesKey("pvgis_last_fetch_time")
+        private val KEY_PVGIS_LAST_LOCATION = stringPreferencesKey("pvgis_last_location")
+        private val KEY_PVGIS_MONTHLY_DATA = stringPreferencesKey("pvgis_monthly_data")
     }
     
     // Language
@@ -234,6 +240,40 @@ class PreferencesManager(private val context: Context) {
             preferences[KEY_RATE_APP_LAST_SHOWN_TIME] = 0L
             preferences[KEY_HAS_RATED_APP] = false
             preferences[KEY_NEVER_SHOW_RATE_APP] = false
+        }
+    }
+    
+    // PVGIS Cache
+    val pvgisFixedAngle: Flow<Float?> = context.dataStore.data.map { preferences ->
+        preferences[KEY_PVGIS_FIXED_ANGLE]
+    }
+    
+    val pvgisLastFetchTime: Flow<Long> = context.dataStore.data.map { preferences ->
+        preferences[KEY_PVGIS_LAST_FETCH_TIME] ?: 0L
+    }
+    
+    val pvgisLastLocation: Flow<String?> = context.dataStore.data.map { preferences ->
+        preferences[KEY_PVGIS_LAST_LOCATION]
+    }
+    
+    val pvgisMonthlyData: Flow<String?> = context.dataStore.data.map { preferences ->
+        preferences[KEY_PVGIS_MONTHLY_DATA]
+    }
+    
+    suspend fun savePVGISData(angle: Float, latitude: Double, longitude: Double) {
+        context.dataStore.edit { preferences ->
+            preferences[KEY_PVGIS_FIXED_ANGLE] = angle
+            preferences[KEY_PVGIS_LAST_FETCH_TIME] = System.currentTimeMillis()
+            preferences[KEY_PVGIS_LAST_LOCATION] = "$latitude,$longitude"
+        }
+    }
+
+    suspend fun savePVGISFullData(angle: Float, latitude: Double, longitude: Double, monthlyJson: String) {
+        context.dataStore.edit { preferences ->
+            preferences[KEY_PVGIS_FIXED_ANGLE] = angle
+            preferences[KEY_PVGIS_LAST_FETCH_TIME] = System.currentTimeMillis()
+            preferences[KEY_PVGIS_LAST_LOCATION] = "$latitude,$longitude"
+            preferences[KEY_PVGIS_MONTHLY_DATA] = monthlyJson
         }
     }
 }

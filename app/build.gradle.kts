@@ -68,6 +68,9 @@ dependencies {
     // AdMob
     implementation(libs.play.services.ads)
 
+    // Network
+    implementation(libs.okhttp)
+
     // Billing
     implementation(libs.billing.ktx)
 

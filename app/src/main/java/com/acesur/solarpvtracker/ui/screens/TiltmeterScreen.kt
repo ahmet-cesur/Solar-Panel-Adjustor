@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.sp
 import com.acesur.solarpvtracker.R
 import com.acesur.solarpvtracker.data.LocationHelper
 import com.acesur.solarpvtracker.data.UserLocation
+import com.acesur.solarpvtracker.data.PVGISManager
 import com.acesur.solarpvtracker.sensor.TiltSensorManager
 import com.acesur.solarpvtracker.solar.SolarCalculator
 import com.acesur.solarpvtracker.ui.components.BubbleLevel
@@ -53,21 +54,30 @@ fun TiltmeterScreen(
     val tiltSensorManager = remember { TiltSensorManager(context) }
     val locationHelper = remember { LocationHelper(context, preferencesManager) }
     val solarCalculator = remember { SolarCalculator() }
+    val pvgisManager = remember { PVGISManager(context, preferencesManager) }
     
     val tiltData by tiltSensorManager.tiltDataFlow.collectAsState(
         initial = com.acesur.solarpvtracker.sensor.TiltData(0f, 0f, 0f)
     )
     
     var location by remember { mutableStateOf<UserLocation?>(null) }
-    var angleMode by remember { mutableStateOf(AngleMode.DAILY) }
+    var angleMode by remember { mutableStateOf(AngleMode.FIXED) }
+    var pvgisOptimalAngle by remember { mutableStateOf<Float?>(null) }
+    
+    // Fetch PVGIS angle when location is available
+    LaunchedEffect(location) {
+        location?.let { loc ->
+            pvgisOptimalAngle = pvgisManager.getOptimalTilt(loc.latitude, loc.longitude)
+        }
+    }
     
     // Calculate optimal tilt angle based on selected mode
     val optimalTiltAngle = remember(location, angleMode) {
         location?.let { loc ->
             when (angleMode) {
                 AngleMode.FIXED -> {
-                    // Year-round fixed = latitude
-                    abs(loc.latitude).toFloat()
+                    // Try to use PVGIS angle first, fallback to latitude
+                    pvgisOptimalAngle ?: abs(loc.latitude).toFloat()
                 }
                 AngleMode.DAILY -> {
                     // Today's optimal angle
@@ -477,6 +487,28 @@ fun TiltmeterScreen(
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
+
+                    // PVGIS Attribution
+                    if (angleMode == AngleMode.FIXED && pvgisOptimalAngle != null) {
+                        Spacer(modifier = Modifier.height(12.dp))
+                        HorizontalDivider(color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.1f))
+                        Spacer(modifier = Modifier.height(8.dp))
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Icon(
+                                imageVector = Icons.Default.Verified,
+                                contentDescription = null,
+                                tint = SolarGreen,
+                                modifier = Modifier.size(16.dp)
+                            )
+                            Spacer(modifier = Modifier.width(6.dp))
+                            Text(
+                                text = stringResource(R.string.pvgis_active),
+                                style = MaterialTheme.typography.labelSmall,
+                                fontWeight = FontWeight.Bold,
+                                color = SolarGreen
+                            )
+                        }
+                    }
                 }
             }
         }

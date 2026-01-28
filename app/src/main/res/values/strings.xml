@@ -15,6 +15,8 @@
     <string name="optimal_angle_desc">Get the best tilt angle recommendations for your latitude</string>
     <string name="tilt_report">Tilt Angle Report</string>
     <string name="tilt_report_desc">View and export daily/monthly optimal angles as PDF</string>
+    <string name="satellite_data">Satellite Data</string>
+    <string name="satellite_data_desc">Access real-time satellite solar data and forecasts</string>
     
     <!-- Common -->
     <string name="settings">Settings</string>
@@ -57,7 +59,7 @@
     <string name="your_latitude">Your Latitude</string>
     <string name="seasonal_recommendations">Seasonal Recommendations</string>
     <string name="tilt_angle_info_title">About Optimal Tilt</string>
-    <string name="tilt_angle_info">The optimal tilt angle depends on your latitude and the season. For year-round fixed installations, setting the tilt equal to your latitude provides good average performance. Adjusting seasonally can increase output by 5–10%.</string>
+    <string name="tilt_angle_info">The optimal tilt angle depends on your latitude and local solar radiation patterns. For fixed year-round systems, this app utilizes high-precision PVGIS satellite data to provide the most accurate optimized angle. Seasonal adjustments can further increase your energy output by 5–10%.</string>
     
     <!-- Tilt Report Screen -->
     <string name="monthly_12">Monthly (12)</string>
@@ -132,12 +134,14 @@
     <string name="summer_description">Summer (Lower tilt for higher sun)</string>
     <string name="spring_fall_description">Spring/Fall (Equal to latitude)</string>
     <string name="winter_description">Winter (Higher tilt for lower sun)</string>
-    <string name="year_round_description">Year-round fixed (Equal to latitude)</string>
+    <string name="year_round_description">Year-round fixed (Satellite Optimized)</string>
     <string name="target_label">Target: %1$.1f°</string>
     <string name="summer_lower_tilt">Summer - Lower tilt</string>
     <string name="winter_higher_tilt">Winter - Higher tilt</string>
     <string name="transition_season">Transition season</string>
     <string name="day_label">Day %1$d</string>
+    <string name="pvgis_active">★ High-Precision Satellite Optimization Active (PVGIS)</string>
+    <string name="monthly_production_chart">Monthly Energy Production (kWh)</string>
 
     <!-- Rate App -->
     <string name="rate_app_title">Rate this app</string>

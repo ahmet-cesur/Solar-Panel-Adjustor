@@ -15,6 +15,8 @@
     <string name="optimal_angle_desc">Enleminiz için en iyi eğim açısı önerilerini alın</string>
     <string name="tilt_report">Eğim Açısı Raporu</string>
     <string name="tilt_report_desc">Günlük/aylık optimal açıları PDF olarak görüntüleyin ve dışa aktarın</string>
+    <string name="satellite_data">Uydu Verileri</string>
+    <string name="satellite_data_desc">Gerçek zamanlı uydu güneş verilerine ve tahminlerine erişin</string>
     
     <!-- Common -->
     <string name="settings">Ayarlar</string>

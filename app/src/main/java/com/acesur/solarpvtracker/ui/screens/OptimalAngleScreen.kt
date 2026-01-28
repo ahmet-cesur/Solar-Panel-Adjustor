@@ -32,6 +32,7 @@ import com.acesur.solarpvtracker.ui.theme.SkyBlue
 import com.acesur.solarpvtracker.ui.theme.SolarGreen
 import com.acesur.solarpvtracker.ui.theme.SolarOrange
 import com.acesur.solarpvtracker.ui.theme.SunYellow
+import com.acesur.solarpvtracker.data.PVGISManager
 import kotlinx.coroutines.launch
 import java.util.Calendar
 import kotlin.math.abs
@@ -58,10 +59,19 @@ fun OptimalAngleScreen(
     val preferencesManager = remember { com.acesur.solarpvtracker.data.PreferencesManager(context) }
     val locationHelper = remember { LocationHelper(context, preferencesManager) }
     val solarCalculator = remember { SolarCalculator() }
+    val pvgisManager = remember { PVGISManager(context, preferencesManager) }
     
     var location by remember { mutableStateOf<UserLocation?>(null) }
     var isLoadingLocation by remember { mutableStateOf(false) }
     var seasonalAngles by remember { mutableStateOf<List<OptimalTiltAngle>>(emptyList()) }
+    var pvgisOptimalAngle by remember { mutableStateOf<Float?>(null) }
+    
+    // Fetch PVGIS angle when location is available
+    LaunchedEffect(location) {
+        location?.let { loc ->
+            pvgisOptimalAngle = pvgisManager.getOptimalTilt(loc.latitude, loc.longitude)
+        }
+    }
     
     // Calculate today's optimal angle
     val todayOptimalAngle = remember(location) {
@@ -86,8 +96,8 @@ fun OptimalAngleScreen(
     }
     
     // Year-round fixed angle
-    val fixedAngle = remember(location) {
-        location?.let { loc -> abs(loc.latitude) } ?: 0.0
+    val fixedAngle = remember(location, pvgisOptimalAngle) {
+        pvgisOptimalAngle?.toDouble() ?: location?.let { loc -> abs(loc.latitude) } ?: 0.0
     }
     
     // State for selected angle mode to display in graph
@@ -369,6 +379,31 @@ fun OptimalAngleScreen(
                         fontWeight = FontWeight.Bold,
                         color = SolarOrange
                     )
+                }
+                
+                // PVGIS Source Badge
+                if (pvgisOptimalAngle != null) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(end = 16.dp, bottom = 8.dp),
+                        horizontalArrangement = Arrangement.End,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Verified,
+                            contentDescription = null,
+                            tint = SolarGreen,
+                            modifier = Modifier.size(14.dp)
+                        )
+                        Spacer(modifier = Modifier.width(4.dp))
+                        Text(
+                            text = "Source: PVGIS API",
+                            style = MaterialTheme.typography.labelSmall,
+                            color = SolarGreen,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
                 }
             }
             

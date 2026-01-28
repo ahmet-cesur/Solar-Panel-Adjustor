@@ -16,6 +16,7 @@ sealed class Screen(val route: String) {
     object TiltAngleReport : Screen("tilt_angle_report")
     object Settings : Screen("settings")
     object RemoveAds : Screen("remove_ads")
+    object SatelliteData : Screen("satellite_data")
 }
 
 @Composable
@@ -70,6 +71,11 @@ fun AppNavigation(
                 },
                 onNavigateToSettings = { navController.navigate(Screen.Settings.route) },
                 onNavigateToRemoveAds = { navController.navigate(Screen.RemoveAds.route) },
+                onNavigateToSatelliteData = {
+                    onNavigateWithAd(Screen.SatelliteData.route) {
+                        navController.navigate(Screen.SatelliteData.route)
+                    }
+                },
                 hasRatedApp = hasRatedApp,
                 onRateApp = onRateApp
             )
@@ -118,6 +124,12 @@ fun AppNavigation(
                     onPurchaseProduct(BillingManager.PRODUCT_ID_FOREVER)
                 },
                 foreverPrice = foreverPrice
+            )
+        }
+
+        composable(Screen.SatelliteData.route) {
+            SatelliteDataScreen(
+                onNavigateBack = { navController.popBackStack() }
             )
         }
     }

@@ -18,7 +18,8 @@ data class SolarRadiation(
 data class PVOutput(
     val dailyOutput: Double,    // kWh per day
     val monthlyOutput: Double,  // kWh per month
-    val yearlyOutput: Double    // kWh per year
+    val yearlyOutput: Double,   // kWh per year
+    val monthlyBreakdown: List<Double> = emptyList() // 12 months in kWh
 )
 
 data class OptimalTiltAngle(
