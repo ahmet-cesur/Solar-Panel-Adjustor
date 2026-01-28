@@ -72,7 +72,7 @@ fun TiltmeterScreen(
     }
     
     // Calculate optimal tilt angle based on selected mode
-    val optimalTiltAngle = remember(location, angleMode) {
+    val optimalTiltAngle = remember(location, angleMode, pvgisOptimalAngle) {
         location?.let { loc ->
             when (angleMode) {
                 AngleMode.FIXED -> {
