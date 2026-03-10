@@ -7,6 +7,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -33,18 +34,69 @@ data class LanguageOption(
 
 val supportedLanguages = listOf(
     LanguageOption("en", "English", "English"),
-    LanguageOption("es", "Spanish", "Español"),
-    LanguageOption("fr", "French", "Français"),
-    LanguageOption("de", "German", "Deutsch"),
-    LanguageOption("pt", "Portuguese", "Português"),
-    LanguageOption("tr", "Turkish", "Türkçe"),
-    LanguageOption("zh", "Chinese", "中文"),
-    LanguageOption("ru", "Russian", "Русский"),
-    LanguageOption("bg", "Bulgarian", "Български"),
-    LanguageOption("nl", "Dutch", "Nederlands"),
+    LanguageOption("af", "Afrikaans", "Afrikaans"),
+    LanguageOption("am", "Amharic", "አማርኛ"),
     LanguageOption("ar", "Arabic", "العربية"),
-    LanguageOption("hi", "Hindi", "हिन्दी")
+    LanguageOption("az", "Azerbaijani", "Azərbaycanca"),
+    LanguageOption("bn", "Bengali", "বাংলা"),
+    LanguageOption("bg", "Bulgarian", "Български"),
+    LanguageOption("eu", "Basque", "Euskara"),
+    LanguageOption("ca", "Catalan", "Català"),
+    LanguageOption("zh", "Chinese", "中文"),
+    LanguageOption("zh-rCN", "Chinese (Simplified)", "简体中文"),
+    LanguageOption("hr", "Croatian", "Hrvatski"),
+    LanguageOption("cs", "Czech", "Čeština"),
+    LanguageOption("da", "Danish", "Dansk"),
+    LanguageOption("nl", "Dutch", "Nederlands"),
+    LanguageOption("et", "Estonian", "Eesti"),
+    LanguageOption("fi", "Finnish", "Suomi"),
+    LanguageOption("fr", "French", "Français"),
+    LanguageOption("gl", "Galician", "Galego"),
+    LanguageOption("de", "German", "Deutsch"),
+    LanguageOption("el", "Greek", "Ελληνικά"),
+    LanguageOption("gu", "Gujarati", "ગુજરાતી"),
+    LanguageOption("he", "Hebrew", "עברית"),
+    LanguageOption("iw", "Hebrew", "עברית"),
+    LanguageOption("hi", "Hindi", "हिन्दी"),
+    LanguageOption("hu", "Hungarian", "Magyar"),
+    LanguageOption("is", "Icelandic", "Íslenska"),
+    LanguageOption("id", "Indonesian", "Bahasa Indonesia"),
+    LanguageOption("in", "Indonesian", "Bahasa Indonesia"),
+    LanguageOption("it", "Italian", "Italiano"),
+    LanguageOption("ja", "Japanese", "日本語"),
+    LanguageOption("kn", "Kannada", "ಕನ್ನಡ"),
+    LanguageOption("ko", "Korean", "한국어"),
+    LanguageOption("lt", "Lithuanian", "Lietuvių"),
+    LanguageOption("lv", "Latvian", "Latviešu"),
+    LanguageOption("ms", "Malay", "Bahasa Melayu"),
+    LanguageOption("ml", "Malayalam", "മലയാളം"),
+    LanguageOption("mr", "Marathi", "मराठी"),
+    LanguageOption("nb", "Norwegian Bokmål", "Norsk Bokmål"),
+    LanguageOption("no", "Norwegian", "Norsk"),
+    LanguageOption("pa", "Punjabi", "ਪੰਜਾਬੀ"),
+    LanguageOption("fa", "Persian", "فارسی"),
+    LanguageOption("pl", "Polish", "Polski"),
+    LanguageOption("pt", "Portuguese", "Português"),
+    LanguageOption("ro", "Romanian", "Română"),
+    LanguageOption("ru", "Russian", "Русский"),
+    LanguageOption("sr", "Serbian", "Српски"),
+    LanguageOption("sk", "Slovak", "Slovenčina"),
+    LanguageOption("sl", "Slovenian", "Slovenščina"),
+    LanguageOption("es", "Spanish", "Español"),
+    LanguageOption("sw", "Swahili", "Kiswahili"),
+    LanguageOption("sv", "Swedish", "Svenska"),
+    LanguageOption("tl", "Tagalog", "Tagalog"),
+    LanguageOption("ta", "Tamil", "தமிழ்"),
+    LanguageOption("te", "Telugu", "తెలుగు"),
+    LanguageOption("th", "Thai", "ไทย"),
+    LanguageOption("tr", "Turkish", "Türkçe"),
+    LanguageOption("uk", "Ukrainian", "Українська"),
+    LanguageOption("ur", "Urdu", "اردو"),
+    LanguageOption("vi", "Vietnamese", "Tiếng Việt"),
+    LanguageOption("zu", "Zulu", "isiZulu")
 )
+
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -78,7 +130,7 @@ fun SettingsScreen(
                 title = { Text(stringResource(R.string.settings)) },
                 navigationIcon = {
                     IconButton(onClick = onNavigateBack) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = stringResource(R.string.back))
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.back))
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
@@ -274,7 +326,7 @@ fun SettingsScreen(
             
             // Coordinate Precision Section
              Text(
-                text = "Coordinate Precision",
+                text = stringResource(R.string.coordinate_precision),
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.Bold
             )
@@ -293,7 +345,7 @@ fun SettingsScreen(
                     }
                     
                     Text(
-                        text = "Decimal digits: ${precision.toInt()}",
+                        text = stringResource(R.string.decimal_digits, precision.toInt()),
                         style = MaterialTheme.typography.bodyMedium
                     )
                     
@@ -310,7 +362,7 @@ fun SettingsScreen(
                     )
                     
                     Text(
-                        text = "Example: ${String.format("%.${precision.toInt()}f", 12.345678)}",
+                        text = stringResource(R.string.precision_example, String.format("%.${precision.toInt()}f", 12.345678)),
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
@@ -380,6 +432,8 @@ fun SettingsScreen(
                     )
                 }
             }
+            
+            Spacer(modifier = Modifier.navigationBarsPadding())
         }
     }
     

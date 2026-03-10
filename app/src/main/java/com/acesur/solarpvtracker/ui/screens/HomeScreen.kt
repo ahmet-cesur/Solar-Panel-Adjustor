@@ -38,6 +38,7 @@ fun HomeScreen(
     onNavigateToSettings: () -> Unit,
     onNavigateToRemoveAds: () -> Unit,
     onNavigateToSatelliteData: () -> Unit,
+    onNavigateToSatelliteTiltmeter: () -> Unit,
     hasRatedApp: Boolean,
     onRateApp: () -> Unit
 ) {
@@ -136,6 +137,17 @@ fun HomeScreen(
                         gradientColors = listOf(SolarOrange, SolarOrangeLight)
                     )
                 }
+
+                // Satellite Tiltmeter
+                item {
+                    FeatureCard(
+                        title = stringResource(R.string.satellite_tiltmeter),
+                        description = stringResource(R.string.satellite_tiltmeter_desc),
+                        icon = Icons.Default.SatelliteAlt,
+                        onClick = onNavigateToSatelliteTiltmeter,
+                        gradientColors = listOf(Color(0xFF2196F3), Color(0xFF64B5F6))
+                    )
+                }
                 
                 // Solar Estimation
                 item {
@@ -213,8 +225,11 @@ fun HomeScreen(
                 BannerAdView(
                     modifier = Modifier
                         .fillMaxWidth()
+                        .navigationBarsPadding()
                         .padding(8.dp)
                 )
+            } else {
+                Spacer(modifier = Modifier.navigationBarsPadding())
             }
         }
     }

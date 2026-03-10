@@ -1,9 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.google.services)
 }
+
 
 android {
     namespace = "com.acesur.solarpvtracker"
@@ -13,8 +13,8 @@ android {
         applicationId = "com.acesur.solarpvtracker"
         minSdk = 26
         targetSdk = 36
-        versionCode = 13
-        versionName = "2.3"
+        versionCode = 21
+        versionName = "3.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -33,11 +33,17 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-    kotlinOptions {
-        jvmTarget = "11"
-    }
     buildFeatures {
         compose = true
+        resValues = true
+    }
+
+
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11)
     }
 }
 
@@ -55,6 +61,7 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.material.icons.extended)
+    implementation(libs.material)
     
     // Navigation
     implementation(libs.androidx.navigation.compose)
@@ -72,7 +79,7 @@ dependencies {
     implementation(libs.okhttp)
 
     // Billing
-    implementation(libs.billing.ktx)
+    implementation(libs.billing)
 
     // Firebase
     implementation(platform(libs.firebase.bom))

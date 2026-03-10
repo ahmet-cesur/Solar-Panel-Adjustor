@@ -1,46 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Solar Panel Adjustor</string>
-    
-    <!-- Home Screen -->
-    <string name="welcome_message">Welkom bij Solar Panel Adjustor</string>
-    <string name="home_subtitle">Optimaliseer uw zonnepaneleninstallatie</string>
-    
-    <!-- Features -->
+    <string name="app_name">Zonnepaneel Justeerder</string>
+    <string name="welcome_message">Welkom bij Zonnepaneel Justeerder</string>
+    <string name="home_subtitle">Zonnepaneel installatie optimalisator</string>
     <string name="tiltmeter">Hellingsmeter</string>
-    <string name="tiltmeter_desc">Meet en pas de hellingshoek van het paneel aan met uw telefoon</string>
-    <string name="solar_estimation">Zonne-energie Schatting</string>
-    <string name="solar_estimation_desc">Bereken zonnestraling en PV-opbrengst voor uw locatie</string>
+    <string name="tiltmeter_desc">Meet en pas de hellingshoek van het paneel aan met je telefoon</string>
+    <string name="solar_estimation">Zonneschatting</string>
+    <string name="solar_estimation_desc">Bereken zonnestraling en PV-opbrengst voor jouw locatie</string>
     <string name="optimal_angle">Optimale Hoek</string>
-    <string name="optimal_angle_desc">Krijg de beste hellingshoekaanbevelingen voor uw breedtegraad</string>
-    <string name="tilt_report">Rapport Hellingshoek</string>
-    <string name="tilt_report_desc">Bekijk en exporteer dagelijkse/maandelijkse optimale hoeken als PDF</string>
-    
-    <!-- Common -->
+    <string name="optimal_angle_desc">Krijg de beste aanbevelingen voor de hellingshoek voor jouw breedtegraad</string>
+    <string name="tilt_report">Hellingshoek Rapport</string>
+    <string name="tilt_report_desc">PDF met dagelijkse/maandelijkse optimale hoeken</string>
+    <string name="satellite_data">Satellietgegevens</string>
+    <string name="satellite_data_desc">Real-time satelliet zonnevoorspellingen</string>
+    <string name="realtime_forecast">Real-time Voorspelling</string>
+    <string name="satellite_feeds_desc">Gebaseerd op satellietfeeds van NASA &amp; NOAA</string>
+    <string name="cloud_cover">Bewolking</string>
+    <string name="visibility">Zichtbaarheid</string>
+    <string name="uv_index">UV-index</string>
+    <string name="humidity">Luchtvochtigheid</string>
+    <string name="next_5_days_yield">Zonopbrengst volgende 5 dagen</string>
+    <string name="excellent">Uitstekend</string>
+    <string name="good">Goed</string>
+    <string name="fair">Redelijk</string>
+    <string name="cloudy">Bewolkt</string>
+    <string name="thursday">Donderdag</string>
+    <string name="friday">Vrijdag</string>
+    <string name="saturday">Zaterdag</string>
+    <string name="sunday">Zondag</string>
+    <string name="monday">Maandag</string>
     <string name="settings">Instellingen</string>
     <string name="back">Terug</string>
-    <string name="refresh">Verversen</string>
+    <string name="refresh">Vernieuwen</string>
     <string name="cancel">Annuleren</string>
     <string name="save">Opslaan</string>
-    
-    <!-- Tiltmeter Screen -->
+    <string name="continue_label">Doorgaan</string>
+    <string name="select_your_language">Selecteer je taal</string>
     <string name="angle_mode">Hoekmodus</string>
     <string name="level_mode">Waterpasmodus</string>
     <string name="current_angle">Huidige Hoek</string>
     <string name="locked_angle">Vergrendeld</string>
     <string name="difference">Verschil</string>
-    <string name="lock_angle">Vergrendel Hoek</string>
-    <string name="unlock">Ontgrendel</string>
-    <string name="level_instruction">Plaats uw telefoon op een vlakke ondergrond. De bel moet in het midden staan als het waterpas is.</string>
-    <string name="how_to_use">Hoe te gebruiken</string>
-    <string name="tiltmeter_instructions">1. Plaats uw telefoon langs het oppervlak van het zonnepaneel\n2. Lees de huidige hoek af van de meter\n3. Gebruik Vergrendel Hoek om een doelhoek op te slaan\n4. Pas uw paneel aan totdat het verschil 0° aangeeft</string>
-    
-    <!-- Solar Estimation Screen -->
+    <string name="lock_angle">Hoek Vergrendelen</string>
+    <string name="unlock">Ontgrendelen</string>
+    <string name="level_instruction">Plaats je telefoon op een vlakke ondergrond. De bel moet in het midden staan als het waterpas is.</string>
+    <string name="how_to_use">Handleiding</string>
+    <string name="tiltmeter_instructions">1. Plaats je telefoon langs het zonnepaneeloppervlak\n2. Lees de huidige hoek af op de meter\n3. Gebruik Hoek Vergrendelen om een doelhoek op te slaan\n4. Pas je paneel aan tot het verschil 0° aangeeft</string>
     <string name="getting_location">Locatie ophalen…</string>
     <string name="location">Locatie</string>
     <string name="location_unavailable">Locatie niet beschikbaar</string>
     <string name="panel_settings">Paneelinstellingen</string>
-    <string name="wattage">Wattage</string>
+    <string name="wattage">Vermogen (W)</string>
     <string name="panel_count">Aantal</string>
     <string name="efficiency">Efficiëntie</string>
     <string name="solar_radiation">Zonnestraling</string>
@@ -49,88 +59,127 @@
     <string name="yearly">Jaarlijks</string>
     <string name="estimated_output">Geschatte PV-opbrengst</string>
     <string name="annual_production">Jaarlijkse Productie</string>
-    <string name="estimation_disclaimer">* Schatten zijn gebaseerd op gemiddelde zonnestralingsgegevens en kunnen variëren afhankelijk van weer, paneeloriëntatie en lokale omstandigheden.</string>
-    
-    <!-- Optimal Angle Screen -->
-    <string name="your_latitude">Uw Breedtegraad</string>
-    <string name="seasonal_recommendations">Seizoensaanbevelingen</string>
+    <string name="estimation_disclaimer">* Schattingen zijn gebaseerd op gemiddelde zonnestralingsgegevens en kunnen variëren op basis van het weer, de paneeloriëntatie en lokale omstandigheden.</string>
+    <string name="your_latitude">Jouw breedtegraad</string>
+    <string name="seasonal_recommendations">Seizoensgebonden Aanbevelingen</string>
     <string name="tilt_angle_info_title">Over Optimale Helling</string>
-    <string name="tilt_angle_info">De optimale hellingshoek hangt af van uw breedtegraad en het seizoen. Voor vaste installaties het hele jaar door biedt een helling gelijk aan uw breedtegraad goede gemiddelde prestaties. Seizoensgebonden aanpassing kan de opbrengst met 5-10% verhogen.</string>
-    
-    <!-- Tilt Report Screen -->
+    <string name="tilt_angle_info">De optimale hellingshoek hangt af van je breedtegraad en lokale zonnestralingspatronen. Voor vaste systemen die het hele jaar door worden gebruikt, maakt deze app gebruik van uiterst nauwkeurige PVGIS-satellietgegevens om de meest accurate geoptimaliseerde hoek te bieden. Seizoensgebonden aanpassingen kunnen je energieopbrengst met nog eens 5–10% verhogen.</string>
     <string name="monthly_12">Maandelijks (12)</string>
     <string name="daily_365">Dagelijks (365)</string>
-    <string name="export_pdf">Exporteer PDF</string>
+    <string name="export_pdf">PDF Exporteren</string>
     <string name="pdf_saved">PDF opgeslagen: %1$s</string>
     <string name="pdf_error">Fout bij genereren PDF</string>
-    
-    <!-- Settings Screen -->
     <string name="language">Taal</string>
-    <string name="select_language">Selecteer Taal</string>
+    <string name="select_language">Taal Selecteren</string>
     <string name="appearance">Uiterlijk</string>
     <string name="dark_mode">Donkere Modus</string>
     <string name="location_settings">Locatie</string>
-    <string name="use_gps">Gebruik GPS</string>
+    <string name="use_gps">GPS gebruiken</string>
     <string name="latitude">Breedtegraad</string>
     <string name="longitude">Lengtegraad</string>
     <string name="about">Over</string>
     <string name="version">Versie %1$s</string>
-    <string name="app_description">Een uitgebreide tool voor installatie en optimalisatie van zonnepanelen. Meet hellingshoeken, bereken optimale positionering en schat zonne-energieproductie.</string>
-    
-    <!-- Remove Ads Screen -->
-    <string name="remove_ads">Verwijder Advertenties</string>
-    <string name="remove_ads_desc">Verwijder advertenties en steun de ontwikkeling</string>
-    <string name="enjoy_ad_free">Geniet van een Advertentievrije Ervaring</string>
-    <string name="ad_free_active">Advertentievrij Actief</string>
-    <string name="ad_free_forever_desc">U heeft levenslang advertentievrije toegang</string>
+    <string name="app_description">Een uitgebreide tool voor de installatie en optimalisatie van zonnepanelen. Aangedreven door uiterst nauwkeurige PVGIS-satellietgegevens, biedt deze app locatiespecifieke zonnestralingsanalyse en energieproductieschattingen. Functies omvatten een nauwkeurige hellingsmeter, optimale hoekaanbevelingen op basis van satellietbeelden en gedetailleerde maandelijkse opbrengstvoorspellingen om de efficiëntie van je systeem te maximaliseren.</string>
+    <string name="remove_ads">Advertenties verwijderen</string>
+    <string name="remove_ads_desc">Verwijder advertenties en ondersteun de ontwikkeling</string>
+    <string name="enjoy_ad_free">Geniet van een advertentievrije ervaring</string>
+    <string name="ad_free_active">Advertentievrij actief</string>
+    <string name="ad_free_forever_desc">Je hebt levenslange advertentievrije toegang</string>
     <string name="expires_on">Verloopt op %1$s</string>
     <string name="benefits">Voordelen</string>
     <string name="benefit_no_banners">Geen banneradvertenties</string>
-    <string name="benefit_no_interstitials">Geen tussentijdse advertenties</string>
+    <string name="benefit_no_interstitials">Geen interstitiële advertenties</string>
     <string name="benefit_clean_ui">Schone, afleidingsvrije interface</string>
-    <string name="benefit_support_dev">Steun app-ontwikkeling</string>
-    <string name="choose_option">Kies Uw Optie</string>
-    <string name="remove_ads_30_days">Verwijder Advertenties voor 30 Dagen ($2.99)</string>
-    <string name="remove_ads_30_days_desc">Geniet 30 dagen zonder advertenties</string>
-    <string name="remove_ads_forever">Verwijder Advertenties Voor Altijd</string>
+    <string name="benefit_support_dev">Ondersteun app-ontwikkeling</string>
+    <string name="choose_option">Kies je optie</string>
+    <string name="remove_ads_30_days">Verwijder advertenties voor 30 dagen ($2.99)</string>
+    <string name="remove_ads_30_days_desc">Geniet van 30 dagen zonder advertenties</string>
+    <string name="remove_ads_forever">Verwijder advertenties voor altijd</string>
     <string name="remove_ads_forever_desc">Eenmalige betaling, levenslange toegang</string>
-    <string name="purchase_note">Aankopen worden gekoppeld aan uw Google Play-account</string>
-    
-    <!-- Tiltmeter Azimuth -->
+    <string name="purchase_note">Aankopen worden gekoppeld aan je Google Play-account</string>
     <string name="panel_azimuth">Paneel Azimut</string>
-    <string name="required_azimuth">Vereiste Azimut</string>
-    <string name="azimuth_discrepancy">Azimutafwijking</string>
-    <string name="point_south">Wijs naar Zuiden</string>
-    <string name="point_north">Wijs naar Noorden</string>
+    <string name="required_azimuth">Vereist Azimut</string>
+    <string name="azimuth_discrepancy">Azimut Discrepantie</string>
+    <string name="point_south">Richten op het Zuiden</string>
+    <string name="point_north">Richten op het Noorden</string>
     <string name="hemisphere_northern">Noordelijk Halfrond</string>
     <string name="hemisphere_southern">Zuidelijk Halfrond</string>
-    
-    <!-- Angle Mode Options -->
     <string name="angle_calculation">Hoekberekening</string>
-    <string name="fixed_angle">Vast (Het Hele Jaar)</string>
+    <string name="fixed_angle">Vast (Het hele jaar door)</string>
     <string name="fixed_angle_desc">Optimaal voor permanente installaties</string>
     <string name="daily_angle">Dagelijks Optimaal</string>
     <string name="daily_angle_desc">Beste hoek voor vandaag</string>
-    <string name="next_30_days">Komende 30 Dagen</string>
+    <string name="next_30_days">Volgende 30 dagen</string>
     <string name="next_30_days_desc">Gemiddeld optimaal voor de komende maand</string>
     <string name="target_angle">Doelhoek</string>
-    <string name="tilt_report_subheader">Beste hellingshoek op uw locatie voor die maand.</string>
-    <string name="translation_disclaimer">Alle teksten zijn door AI vertaald uit het Engels. U kunt de Engelse versie raadplegen ter referentie.</string>
-    <string name="light_mode">Lichte modus</string>
-    <string name="optimal_position_status">✓ OPTIMALE POSITIE</string>
+    <string name="tilt_report_subheader">Beste hellingshoek op jouw locatie voor die maand.</string>
+    <string name="copyright">© A.C. Bros 2026 Ankara</string>
+    <string name="light_mode">Lichte Modus</string>
     <string name="current_tilt">Huidige Helling</string>
     <string name="tilt_diff">Hellingsverschil</string>
     <string name="azimuth_diff">Azimutverschil</string>
     <string name="instructions_title">Instructies</string>
-    <string name="tiltmeter_usage_instructions">1. Gebruik het kompas om de azimut uit te lijnen (richt de pijl op het doel).\n2. Pas de helling aan totdat de bel gecentreerd is en de meter overeenkomt met het doel.\n3. Gecombineerde nauwkeurigheid &lt; 5° activeert een pieptoon en een groene status.</string>
-    <string name="quick_reference">Snelreferentie</string>
-    <string name="summer_description">Zomer (Lagere helling voor hogere zon)</string>
-    <string name="spring_fall_description">Lente/Herfst (Gelijk aan breedtegraad)</string>
-    <string name="winter_description">Winter (Hogere helling voor lagere zon)</string>
-    <string name="year_round_description">Jaarrond vast (Gelijk aan breedtegraad)</string>
+    <string name="tiltmeter_usage_instructions">1. Selecteer Modus: Kies Vaste, Dagelijkse of 30-daagse optimalisatie.\n2. Positioneer Telefoon: Plaats het apparaat plat op het zonnepaneel, met het scherm naar boven.\n3. Lijn Azimut uit: Draai het paneel horizontaal tot de kompasnaald naar het doel wijst.\n4. Pas Helling aan: Kantel het paneel verticaal tot de bel in het midden staat en overeenkomt met het doel.\n5. Klaar: Het scherm wordt groen als de uitlijning nauwkeurig is (&lt; 5°).</string>
+    <string name="quick_reference">Snelkoppeling</string>
+    <string name="summer_description">Zomer (lagere helling voor hogere zon)</string>
+    <string name="spring_fall_description">Lente/Herfst (gelijk aan breedtegraad)</string>
+    <string name="winter_description">Winter (hogere helling voor lagere zon)</string>
+    <string name="year_round_description">Het hele jaar door vast (satelliet geoptimaliseerd)</string>
     <string name="target_label">Doel: %1$.1f°</string>
-    <string name="summer_lower_tilt">Zomer - Lagere helling</string>
-    <string name="winter_higher_tilt">Winter - Hogere helling</string>
+    <string name="summer_lower_tilt">Zomer - lagere helling</string>
+    <string name="winter_higher_tilt">Winter - hogere helling</string>
     <string name="transition_season">Overgangsseizoen</string>
     <string name="day_label">Dag %1$d</string>
+    <string name="pvgis_active">★ Hoge-precisie satellietoptimalisatie actief (PVGIS-SARAH3)</string>
+    <string name="utilize_pvgis">Gebruik PVGIS-satellietgegevens</string>
+    <string name="pvgis_link_text">Open PVGIS (SARAH3) ter verificatie</string>
+    <string name="monthly_production_chart">Maandelijkse energieproductie (kWh)</string>
+    <string name="lift_up">OMHOOG TILLEN ⬆️</string>
+    <string name="tilt_down">OMLAAG KANTELEN ⬇️</string>
+    <string name="coordinate_precision">Precisie van coördinatenweergave</string>
+    <string name="decimal_digits">Decimalen: %1$d</string>
+    <string name="precision_example">Voorbeeld: %1$s</string>
+    <string name="rate_app_title">Beoordeel deze app</string>
+    <string name="rate_app_message">Als je deze app met plezier gebruikt, wil je dan een moment de tijd nemen om hem te beoordelen? Het duurt niet langer dan een minuut. Bedankt voor je steun!</string>
+    <string name="rate_app_card_desc">Steun ons door de app te beoordelen in de Play Store</string>
+    <string name="rate_now">Nu beoordelen</string>
+    <string name="remind_later">Later herinneren</string>
+    <string name="no_thanks">Nee bedankt</string>
+    <string name="satellite_tiltmeter">Satelliet Hellingsmeter</string>
+    <string name="satellite_tiltmeter_desc">Uiterst nauwkeurige, via satelliet geoptimaliseerde paneelaanpassing</string>
+    <string name="satellite_tiltmeter_instructions">1. Automatische Gegevens: De app haalt de optimale satelliet-hoek (SARAH3) op voor jouw locatie.\n2. Handmatige Verificatie (Optioneel): Klik op de onderstaande link. Op de site: Selecteer \"PVGIS-SARAH3\", vink \"Optimize slope\" aan en \"Visualize results\".\n3. Positioneer Telefoon: Plaats het apparaat plat op het zonnepaneel.\n4. Pas Paneel aan: Draai om het kompas uit te lijnen en kantel omhoog/omlaag om overeen te komen met de doelhoek.\n5. Klaar: Het scherm wordt groen als de uitlijning nauwkeurig is (&lt; 5°).</string>
+    <string name="irradiance_unit">Instraling (kWh/m²)</string>
+    <string name="production_unit">Productie (kWh)</string>
+    <string name="source_pvgis">Bron: PVGIS API</string>
+    <string name="point_direction_fmt">Richten op %1$s (%2$d°)</string>
+    <string name="direction_n">N</string>
+    <string name="direction_s">Z</string>
+    <string name="month_jan">Jan</string>
+    <string name="month_feb">Feb</string>
+    <string name="month_mar">Mrt</string>
+    <string name="month_apr">Apr</string>
+    <string name="month_may">Mei</string>
+    <string name="month_jun">Jun</string>
+    <string name="month_jul">Jul</string>
+    <string name="month_aug">Aug</string>
+    <string name="month_sep">Sep</string>
+    <string name="month_oct">Okt</string>
+    <string name="month_nov">Nov</string>
+    <string name="month_dec">Dec</string>
+    <string name="feature_title_format">%1$s: </string>
+    <string name="last_updated">Laatst bijgewerkt: %1$s</string>
+    <string name="updated_at">Bijgewerkt om: %1$s</string>
+    <string name="status_clear">Helder</string>
+    <string name="status_drizzle">Motregen</string>
+    <string name="status_fair">Redelijk</string>
+    <string name="status_foggy">Mistig</string>
+    <string name="status_rain_showers">Regenbuien</string>
+    <string name="status_rainy">Regenachtig</string>
+    <string name="status_snowy">Sneeuwachtig</string>
+    <string name="status_sunny">Zonnig</string>
+    <string name="status_thunderstorm">Onweer</string>
+    <string name="tuesday">Dinsdag</string>
+    <string name="wednesday">Woensdag</string>
+    <string name="translation_disclaimer"></string>
+    <string name="optimal_position_status"></string>
 </resources>

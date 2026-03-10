@@ -11,6 +11,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -180,7 +181,7 @@ fun SolarEstimationScreen(
                 title = { Text(stringResource(R.string.solar_estimation)) },
                 navigationIcon = {
                     IconButton(onClick = onNavigateBack) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = stringResource(R.string.back))
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.back))
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
@@ -219,7 +220,7 @@ fun SolarEstimationScreen(
                         doCalculation()
                     },
                     label = { Text(stringResource(R.string.wattage), style = MaterialTheme.typography.bodySmall) },
-                    suffix = { Text("W", style = MaterialTheme.typography.bodySmall) },
+                    suffix = { Text(stringResource(R.string.unit_watt), style = MaterialTheme.typography.bodySmall) },
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                     modifier = Modifier.weight(1f),
                     textStyle = MaterialTheme.typography.bodyMedium,
@@ -246,7 +247,7 @@ fun SolarEstimationScreen(
                         doCalculation()
                     },
                     label = { Text(stringResource(R.string.efficiency), style = MaterialTheme.typography.bodySmall) },
-                    suffix = { Text("%", style = MaterialTheme.typography.bodySmall) },
+                    suffix = { Text(stringResource(R.string.percent_suffix), style = MaterialTheme.typography.bodySmall) },
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                     modifier = Modifier.weight(1f),
                     textStyle = MaterialTheme.typography.bodyMedium,
@@ -294,7 +295,7 @@ fun SolarEstimationScreen(
                         // Radiation Header
                         if (radiation != null) {
                             Text(
-                                text = "Irradiance (kWh/m²)",
+                                text = stringResource(R.string.irradiance_unit),
                                 style = MaterialTheme.typography.labelMedium,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
@@ -320,7 +321,7 @@ fun SolarEstimationScreen(
                         // Output Header
                         if (pvOutput != null) {
                             Text(
-                                text = "Production (kWh)",
+                                text = stringResource(R.string.production_unit),
                                 style = MaterialTheme.typography.labelMedium,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
@@ -413,7 +414,8 @@ fun SolarEstimationScreen(
             Text(
                 text = stringResource(R.string.estimation_disclaimer),
                 style = MaterialTheme.typography.bodySmall.copy(fontSize = 10.sp),
-                color = MaterialTheme.colorScheme.onSurfaceVariant
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.navigationBarsPadding()
             )
         }
     }
@@ -447,7 +449,20 @@ fun MonthlyEnergyChart(
 ) {
     val maxProduction = (monthlyProduction.maxOrNull() ?: 1.0) * 1.3 // Reduced scale factor as requested
 
-    val months = listOf("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+    val months = listOf(
+        stringResource(R.string.month_jan), 
+        stringResource(R.string.month_feb), 
+        stringResource(R.string.month_mar), 
+        stringResource(R.string.month_apr), 
+        stringResource(R.string.month_may), 
+        stringResource(R.string.month_jun), 
+        stringResource(R.string.month_jul), 
+        stringResource(R.string.month_aug), 
+        stringResource(R.string.month_sep), 
+        stringResource(R.string.month_oct), 
+        stringResource(R.string.month_nov), 
+        stringResource(R.string.month_dec)
+    )
     
     Card(
         modifier = Modifier
@@ -532,7 +547,7 @@ fun MonthlyEnergyChart(
                     )
                     Spacer(modifier = Modifier.width(4.dp))
                     Text(
-                        text = "Source: PVGIS API",
+                        text = stringResource(R.string.source_pvgis),
                         style = MaterialTheme.typography.labelSmall.copy(fontSize = 10.sp),
                         color = SolarGreen,
                         fontWeight = FontWeight.Bold

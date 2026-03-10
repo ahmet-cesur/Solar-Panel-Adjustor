@@ -11,6 +11,7 @@ sealed class Screen(val route: String) {
     object LanguageSelection : Screen("language_selection")
     object Home : Screen("home")
     object Tiltmeter : Screen("tiltmeter")
+    object SatelliteTiltmeter : Screen("satellite_tiltmeter")
     object SolarEstimation : Screen("solar_estimation")
     object OptimalAngle : Screen("optimal_angle")
     object TiltAngleReport : Screen("tilt_angle_report")
@@ -78,6 +79,11 @@ fun AppNavigation(
                         navController.navigate(Screen.SatelliteData.route)
                     }
                 },
+                onNavigateToSatelliteTiltmeter = {
+                    onNavigateWithAd(Screen.SatelliteTiltmeter.route) {
+                        navController.navigate(Screen.SatelliteTiltmeter.route)
+                    }
+                },
                 hasRatedApp = hasRatedApp,
                 onRateApp = onRateApp
             )
@@ -85,6 +91,14 @@ fun AppNavigation(
         
         composable(Screen.Tiltmeter.route) {
             TiltmeterScreen(
+                onNavigateBack = { navController.popBackStack() },
+                userLocation = userLocation,
+                onRefreshLocation = onRefreshLocation
+            )
+        }
+        
+        composable(Screen.SatelliteTiltmeter.route) {
+            SatelliteTiltmeterScreen(
                 onNavigateBack = { navController.popBackStack() },
                 userLocation = userLocation,
                 onRefreshLocation = onRefreshLocation

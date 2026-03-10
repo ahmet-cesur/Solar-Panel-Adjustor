@@ -9,6 +9,7 @@ import okhttp3.*
 import org.json.JSONObject
 import java.io.IOException
 import java.util.concurrent.TimeUnit
+import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 
 class PVGISManager(private val context: Context, private val preferencesManager: PreferencesManager) {
@@ -109,7 +110,7 @@ class PVGISManager(private val context: Context, private val preferencesManager:
                         val jsonStr = response.body?.string() ?: ""
                         try {
                             val json = JSONObject(jsonStr)
-                            continuation.resume(json) {}
+                            continuation.resume(json)
                         } catch (e: Exception) {
                             continuation.resumeWithException(e)
                         }

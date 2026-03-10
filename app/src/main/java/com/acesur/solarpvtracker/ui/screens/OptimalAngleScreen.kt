@@ -13,6 +13,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -24,6 +25,9 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.acesur.solarpvtracker.R
@@ -117,9 +121,15 @@ fun OptimalAngleScreen(
         } ?: 0.0
     }
     
+    val usePvgis by preferencesManager.usePvgis.collectAsState(initial = true)
+    
     // Year-round fixed angle
-    val fixedAngle = remember(location, pvgisOptimalAngle) {
-        pvgisOptimalAngle?.toDouble() ?: location?.let { loc -> abs(loc.latitude) } ?: 0.0
+    val fixedAngle = remember(location, pvgisOptimalAngle, usePvgis) {
+        if (usePvgis) {
+            pvgisOptimalAngle?.toDouble() ?: location?.let { loc -> abs(loc.latitude) } ?: 0.0
+        } else {
+            location?.let { loc -> abs(loc.latitude) } ?: 0.0
+        }
     }
     
     // State for selected angle mode to display in graph
@@ -174,7 +184,7 @@ fun OptimalAngleScreen(
                 title = { Text(stringResource(R.string.optimal_angle)) },
                 navigationIcon = {
                     IconButton(onClick = onNavigateBack) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = stringResource(R.string.back))
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.back))
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
@@ -288,6 +298,40 @@ fun OptimalAngleScreen(
                     HorizontalDivider(modifier = Modifier.padding(vertical = 6.dp))
                     
                     // Fixed
+                    if (selectedMode == OptimalAngleMode.FIXED) {
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier.padding(start = 32.dp, bottom = 0.dp)
+                        ) {
+                            Checkbox(
+                                checked = usePvgis,
+                                onCheckedChange = { scope.launch { preferencesManager.updateUsePvgis(it) } },
+                                modifier = Modifier.size(32.dp)
+                            )
+                            Text(
+                                stringResource(R.string.utilize_pvgis),
+                                style = MaterialTheme.typography.labelSmall,
+                                fontSize = 10.sp
+                            )
+                        }
+                        
+                        Text(
+                            text = stringResource(R.string.pvgis_link_text),
+                            style = MaterialTheme.typography.labelSmall.copy(
+                                fontSize = 10.sp,
+                                color = SkyBlue,
+                                textDecoration = TextDecoration.Underline
+                            ),
+                            modifier = Modifier
+                                .padding(start = 36.dp, bottom = 4.dp)
+                                .clickable {
+                                    val url = context.getString(R.string.pvgis_url, location?.latitude ?: 0.0, location?.longitude ?: 0.0)
+                                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                                    context.startActivity(intent)
+                                }
+                        )
+                    }
+
                     CompactAngleRow(
                         title = stringResource(R.string.fixed_angle),
                         subtitle = stringResource(R.string.fixed_angle_desc),
@@ -296,7 +340,7 @@ fun OptimalAngleScreen(
                         color = SolarOrange,
                         isSelected = selectedMode == OptimalAngleMode.FIXED,
                         onClick = { selectedMode = OptimalAngleMode.FIXED },
-                        isPvgis = pvgisOptimalAngle != null
+                        isPvgis = pvgisOptimalAngle != null && usePvgis
                     )
                 }
             }
@@ -357,7 +401,9 @@ fun OptimalAngleScreen(
             
             // Info Card
             Card(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .navigationBarsPadding(),
                 shape = RoundedCornerShape(12.dp),
                 colors = CardDefaults.cardColors(
                     containerColor = MaterialTheme.colorScheme.surfaceVariant
@@ -569,7 +615,7 @@ fun CompactAngleRow(
                     )
                     Spacer(modifier = Modifier.width(2.dp))
                     Text(
-                        text = "PVGIS",
+                        text = stringResource(R.string.source_pvgis).removePrefix("Source: "),
                         style = MaterialTheme.typography.labelSmall.copy(fontSize = 10.sp),
                         color = SolarGreen,
                         fontWeight = FontWeight.Bold
@@ -580,7 +626,7 @@ fun CompactAngleRow(
         
         // Angle Value
         Text(
-            text = String.format("%.1f°", angle),
+            text = stringResource(R.string.angle_degree_fmt, angle),
             style = MaterialTheme.typography.titleMedium,
             fontWeight = FontWeight.Bold,
             color = color

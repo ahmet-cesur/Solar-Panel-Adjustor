@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ad-services-config>
+    <attribution force-attribution-reporting-enabled="true"/>
+    <custom-audience force-join-custom-audience-enabled="true"/>
+</ad-services-config>

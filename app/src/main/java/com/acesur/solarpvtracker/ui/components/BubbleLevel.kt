@@ -30,6 +30,9 @@ import kotlin.math.abs
 import kotlin.math.cos
 import kotlin.math.sin
 
+import androidx.compose.ui.res.stringResource
+import com.acesur.solarpvtracker.R
+
 /**
  * Enhanced Bubble Level with compass and target position
  */
@@ -237,7 +240,7 @@ fun CompassIndicator(
     azimuthError: Float,
     modifier: Modifier = Modifier
 ) {
-    val targetDirection = if (isNorthernHemisphere) "S" else "N"
+    val targetDirectionStr = if (isNorthernHemisphere) stringResource(R.string.direction_s) else stringResource(R.string.direction_n)
     
     Column(
         modifier = modifier,
@@ -245,7 +248,7 @@ fun CompassIndicator(
     ) {
         // Target direction label
         Text(
-            text = "Point $targetDirection (${targetAzimuth.toInt()}°)",
+            text = stringResource(R.string.point_direction_fmt, targetDirectionStr, targetAzimuth.toInt()),
             style = MaterialTheme.typography.labelSmall,
             fontWeight = FontWeight.Bold,
             color = when {

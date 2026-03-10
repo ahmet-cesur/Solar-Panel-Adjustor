@@ -28,8 +28,8 @@ class AdManager(private val context: Context) {
         const val BANNER_AD_UNIT_ID = "ca-app-pub-6223654168327818/8114482012"
         const val INTERSTITIAL_AD_UNIT_ID = "ca-app-pub-6223654168327818/3481920672"
         
-        // Interstitial ad probability (30%)
-        const val INTERSTITIAL_PROBABILITY = 0.30f
+        // Interstitial ad probability (10%)
+        const val INTERSTITIAL_PROBABILITY = 0.10f
         
         private var isInitialized = false
     }
@@ -109,7 +109,7 @@ class AdManager(private val context: Context) {
     }
     
     /**
-     * Show interstitial ad with 30% probability
+     * Show interstitial ad with 10% probability
      * Returns true if ad was shown, false otherwise
      */
     fun maybeShowInterstitialAd(
@@ -122,7 +122,7 @@ class AdManager(private val context: Context) {
             return
         }
         
-        // 30% probability
+        // 10% probability
         if (Random.nextFloat() > INTERSTITIAL_PROBABILITY) {
             onNoAdShown()
             return

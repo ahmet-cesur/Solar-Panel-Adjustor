@@ -52,8 +52,7 @@ class MainActivity : ComponentActivity() {
         private fun getLocaleFromCode(languageCode: String): Locale {
             return when (languageCode) {
                 "zh" -> Locale.SIMPLIFIED_CHINESE
-                "ar" -> Locale("ar")
-                else -> Locale(languageCode)
+                else -> Locale.forLanguageTag(languageCode)
             }
         }
     }
@@ -145,29 +144,52 @@ class MainActivity : ComponentActivity() {
         // Get initial settings
         var isFirstLaunch = runBlocking { preferencesManager.isFirstLaunch.first() }
         val savedLanguage = runBlocking { preferencesManager.language.first() }
+        val autoLangChecked = runBlocking { preferencesManager.autoLangChecked.first() }
         
-        // Logic for Auto-Language Detection on First Launch
-        if (isFirstLaunch) {
+        // Logic for Auto-Language Detection on First Launch OR First launch after this update
+        if (isFirstLaunch || !autoLangChecked) {
             val deviceLanguageCode = Locale.getDefault().language
-            val isSupported = supportedLanguages.any { it.code == deviceLanguageCode }
+            val deviceLanguageTag = Locale.getDefault().toLanguageTag()
             
-            if (isSupported) {
-                // Automatically select the language and skip the selection screen
+            // Try to find exact match first, then base language match
+            val bestMatchingLang = supportedLanguages.find { it.code == deviceLanguageTag }
+                ?: supportedLanguages.find { it.code == deviceLanguageCode }
+                ?: supportedLanguages.find { it.code == "en" } // Fallback to English if nothing matches
+            
+            if (bestMatchingLang != null && bestMatchingLang.code != savedLanguage) {
+                // Automatically select the language
                 runBlocking {
-                    preferencesManager.setLanguage(deviceLanguageCode)
-                    preferencesManager.setFirstLaunchComplete()
+                    preferencesManager.setLanguage(bestMatchingLang.code)
+                    preferencesManager.setAutoLangChecked()
+                    if (isFirstLaunch) {
+                        preferencesManager.setFirstLaunchComplete()
+                    }
                 }
-                applyLanguage(deviceLanguageCode)
+                applyLanguage(bestMatchingLang.code)
                 // Need to recreate so attachBaseContext runs with the new locale
                 recreate()
                 return // Don't continue executing onCreate after recreate
+            } else {
+                // Already matching or English is the intended default, just mark as checked
+                runBlocking { preferencesManager.setAutoLangChecked() }
             }
         } else {
             // Apply saved language
             applyLanguage(savedLanguage)
         }
+
         
         enableEdgeToEdge()
+        
+        // Android 15+ (API 35+) enforces edge-to-edge. 
+        // We set the cutout mode to ALWAYS to avoid the deprecated SHORT_EDGES warning.
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P) {
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
+                window.attributes.layoutInDisplayCutoutMode = android.view.WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_ALWAYS
+            } else {
+                window.attributes.layoutInDisplayCutoutMode = android.view.WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES
+            }
+        }
         
         setContent {
             // Observe simple preference flows
@@ -311,7 +333,7 @@ class MainActivity : ComponentActivity() {
                             recreate()
                         },
                         onNavigateWithAd = { destination, navigate ->
-                            // Show interstitial with 30% probability
+                            // Show interstitial with 10% probability
                             adManager.maybeShowInterstitialAd(
                                 activity = this@MainActivity,
                                 onAdDismissed = { navigate() },

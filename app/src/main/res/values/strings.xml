@@ -4,7 +4,7 @@
     
     <!-- Home Screen -->
     <string name="welcome_message">Welcome to Solar Panel Adjustor</string>
-    <string name="home_subtitle">Optimize your solar panel installation</string>
+    <string name="home_subtitle">Solar panel installation optimizer</string>
     
     <!-- Features -->
     <string name="tiltmeter">Tiltmeter</string>
@@ -14,9 +14,38 @@
     <string name="optimal_angle">Optimal Angle</string>
     <string name="optimal_angle_desc">Get the best tilt angle recommendations for your latitude</string>
     <string name="tilt_report">Tilt Angle Report</string>
-    <string name="tilt_report_desc">View and export daily/monthly optimal angles as PDF</string>
+    <string name="tilt_report_desc">Daily/monthly optimal angles PDF</string>
     <string name="satellite_data">Satellite Data</string>
-    <string name="satellite_data_desc">Access real-time satellite solar data and forecasts</string>
+    <string name="satellite_data_desc">Real-time satellite solar forecasts</string>
+    <string name="realtime_forecast">Real-time Forecast</string>
+    <string name="satellite_feeds_desc">Based on NASA &amp; NOAA satellite feeds</string>
+    <string name="last_updated">Last updated: %1$s</string>
+    <string name="updated_at">Updated at: %1$s</string>
+    <string name="cloud_cover">Cloud</string>
+    <string name="visibility">Visib.</string>
+    <string name="uv_index">UV</string>
+    <string name="humidity">Humid.</string>
+    <string name="next_5_days_yield">Next 5 Days Solar Yield</string>
+    <string name="excellent">Excellent</string>
+    <string name="good">Good</string>
+    <string name="fair">Fair</string>
+    <string name="cloudy">Cloudy</string>
+    <string name="status_sunny">Sunny</string>
+    <string name="status_clear">Clear</string>
+    <string name="status_fair">Fair</string>
+    <string name="thursday">Thursday</string>
+    <string name="friday">Friday</string>
+    <string name="saturday">Saturday</string>
+    <string name="sunday">Sunday</string>
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="status_foggy">Foggy</string>
+    <string name="status_drizzle">Drizzle</string>
+    <string name="status_rainy">Rainy</string>
+    <string name="status_snowy">Snowy</string>
+    <string name="status_rain_showers">Rain Showers</string>
+    <string name="status_thunderstorm">Thunderstorm</string>
     
     <!-- Common -->
     <string name="settings">Settings</string>
@@ -121,15 +150,13 @@
     <string name="tilt_report_subheader">Best tilt angle at your location for that month.</string>
     <string name="copyright">© A.C. Bros 2026 Ankara</string>
     <string name="translation_disclaimer"></string>
+    <string name="optimal_position_status"></string>
     <string name="light_mode">Light Mode</string>
-    <string name="optimal_position_status">✓ OPTIMAL POSITION</string>
     <string name="current_tilt">Current Tilt</string>
     <string name="tilt_diff">Tilt Diff</string>
     <string name="azimuth_diff">Azimuth Diff</string>
     <string name="instructions_title">Instructions</string>
-    <string name="tiltmeter_usage_instructions">1. Use compass to align azimuth (point arrow to target).
-2. Adjust tilt until bubble is centered and gauge matches target.
-3. Combined accuracy &lt; 5° triggers beep and green status.</string>
+    <string name="tiltmeter_usage_instructions">1. Select Mode: Choose Fixed, Daily, or 30-Day optimization.\n2. Position Phone: Place device flat on the solar panel, screen facing up.\n3. Align Azimuth: Rotate the panel horizontally until the compass arrow points to the target.\n4. Adjust Tilt: Angle the panel vertically until the bubble centers and matches the target.\n5. Done: The screen turns green when alignment is accurate (&lt; 5°).</string>
     <string name="quick_reference">Quick Reference</string>
     <string name="summer_description">Summer (Lower tilt for higher sun)</string>
     <string name="spring_fall_description">Spring/Fall (Equal to latitude)</string>
@@ -140,10 +167,15 @@
     <string name="winter_higher_tilt">Winter - Higher tilt</string>
     <string name="transition_season">Transition season</string>
     <string name="day_label">Day %1$d</string>
-    <string name="pvgis_active">★ High-Precision Satellite Optimization Active (PVGIS)</string>
+    <string name="pvgis_active">★ High-Precision Satellite Optimization Active (PVGIS-SARAH3)</string>
+    <string name="utilize_pvgis">Utilize PVGIS satellite data</string>
+    <string name="pvgis_link_text">Open PVGIS (SARAH3) for verification</string>
     <string name="monthly_production_chart">Monthly Energy Production (kWh)</string>
     <string name="lift_up">LIFT UP ⬆️</string>
     <string name="tilt_down">TILT DOWN ⬇️</string>
+    <string name="coordinate_precision">Coordinate Display Precision</string>
+    <string name="decimal_digits">Decimal digits: %1$d</string>
+    <string name="precision_example">Example: %1$s</string>
 
     <!-- Rate App -->
     <string name="rate_app_title">Rate this app</string>
@@ -152,4 +184,57 @@
     <string name="rate_now">Rate Now</string>
     <string name="remind_later">Remind Later</string>
     <string name="no_thanks">No Thanks</string>
+    <string name="satellite_tiltmeter">Satellite Tiltmeter</string>
+    <string name="satellite_tiltmeter_desc">High-precision satellite-optimized panel adjustment</string>
+    <string name="satellite_tiltmeter_instructions">1. Automatic Data: The app fetches the optimal satellite (SARAH3) angle for your location.\n2. Manual Verification (Optional): Click link below. On site: Select \"PVGIS-SARAH3\", check \"Optimize slope\", and \"Visualize results\".\n3. Position Phone: Place device flat on the solar panel.\n4. Adjust Panel: Rotate to align the compass and tilt up/down to match the target angle.\n5. Done: The screen turns green when alignment is accurate (&lt; 5°).</string>
+    
+    <!-- Units and Formatting -->
+    <string name="percent_fmt">%1$d%%</string>
+    <string name="percent_suffix">%%</string>
+    <string name="unit_km">km</string>
+    <string name="unit_kwh_sqm">kWh/m²</string>
+    <string name="unit_watt">W</string>
+    <string name="yield_fmt_unit">%1$.1f kWh/m²</string>
+    <string name="angle_degree_fmt">%1$.1f°</string>
+    <string name="placeholder_value">--</string>
+
+    <!-- PDF Report Labels -->
+    <string name="pdf_report_monthly_title">Monthly Optimal Tilt Angles</string>
+    <string name="pdf_col_month">Month</string>
+    <string name="pdf_col_month_name">Month Name</string>
+    <string name="pdf_col_angle">Angle (°)</string>
+    <string name="pdf_col_notes">Notes</string>
+    <string name="pdf_report_daily_title">Daily Optimal Tilt Angles (365 Days)</string>
+    <string name="pdf_report_daily_page">Daily Optimal Tilt Angles - Page %1$d</string>
+    <string name="pdf_col_date">Date</string>
+    <string name="pdf_report_footer">Generated by Solar Panel Adjustor App</string>
+    <string name="pdf_location_label">Location: %1$.4f°, %2$.4f°</string>
+    <string name="pdf_generated_label">Generated: %1$s</string>
+    <string name="pvgis_url">https://re.jrc.ec.europa.eu/pvg_tools/en/#PVP?lat=%1$.6f&amp;lon=%2$.6f&amp;raddat=1</string>
+    <string name="pvgis_label">PVGIS</string>
+    <string name="emoji_thumbs_up">👍</string>
+
+    <!-- Dynamic Strings -->
+    <string name="irradiance_unit">Irradiance (kWh/m²)</string>
+    <string name="production_unit">Production (kWh)</string>
+    <string name="source_pvgis">Source: PVGIS API</string>
+    <string name="point_direction_fmt">Point %1$s (%2$d°)</string>
+    <string name="direction_n">N</string>
+    <string name="direction_s">S</string>
+    
+    <!-- Months -->
+    <string name="month_jan">Jan</string>
+    <string name="month_feb">Feb</string>
+    <string name="month_mar">Mar</string>
+    <string name="month_apr">Apr</string>
+    <string name="month_may">May</string>
+    <string name="month_jun">Jun</string>
+    <string name="month_jul">Jul</string>
+    <string name="month_aug">Aug</string>
+    <string name="month_sep">Sep</string>
+    <string name="month_oct">Oct</string>
+    <string name="month_nov">Nov</string>
+    <string name="month_dec">Dec</string>
+
+    <string name="feature_title_format">%1$s: </string>
 </resources>

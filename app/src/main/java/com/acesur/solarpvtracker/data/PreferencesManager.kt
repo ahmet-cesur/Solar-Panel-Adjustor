@@ -42,7 +42,29 @@ class PreferencesManager(private val context: Context) {
         
         // Coordinate Settings
         private val KEY_COORDINATE_PRECISION = intPreferencesKey("coordinate_precision")
+        
+        // PVGIS Toggle
+        private val KEY_USE_PVGIS = booleanPreferencesKey("use_pvgis")
+        
+        // Auto Language Check
+        private val KEY_AUTO_LANG_CHECKED = booleanPreferencesKey("auto_lang_checked_v2")
+        
+        // Weather Caching
+        private val KEY_WEATHER_LAST_FETCH_TIME = longPreferencesKey("weather_last_fetch_time")
+        private val KEY_WEATHER_CACHE = stringPreferencesKey("weather_cache")
     }
+    
+    // Auto Language Check
+    val autoLangChecked: Flow<Boolean> = context.dataStore.data.map { preferences ->
+        preferences[KEY_AUTO_LANG_CHECKED] ?: false
+    }
+
+    suspend fun setAutoLangChecked() {
+        context.dataStore.edit { preferences ->
+            preferences[KEY_AUTO_LANG_CHECKED] = true
+        }
+    }
+
     
     // Coordinate Precision
     val coordinatePrecision: Flow<Int> = context.dataStore.data.map { preferences ->
@@ -52,6 +74,17 @@ class PreferencesManager(private val context: Context) {
     suspend fun setCoordinatePrecision(precision: Int) {
         context.dataStore.edit { preferences ->
             preferences[KEY_COORDINATE_PRECISION] = precision
+        }
+    }
+    
+    // PVGIS Use
+    val usePvgis: Flow<Boolean> = context.dataStore.data.map { preferences ->
+        preferences[KEY_USE_PVGIS] ?: true
+    }
+
+    suspend fun updateUsePvgis(enabled: Boolean) {
+        context.dataStore.edit { preferences ->
+            preferences[KEY_USE_PVGIS] = enabled
         }
     }
     
@@ -288,6 +321,28 @@ class PreferencesManager(private val context: Context) {
             preferences[KEY_PVGIS_LAST_FETCH_TIME] = System.currentTimeMillis()
             preferences[KEY_PVGIS_LAST_LOCATION] = "$latitude,$longitude"
             preferences[KEY_PVGIS_MONTHLY_DATA] = monthlyJson
+        }
+    }
+
+    // Weather Fetch Tracking
+    val weatherLastFetchTime: Flow<Long> = context.dataStore.data.map { preferences ->
+        preferences[KEY_WEATHER_LAST_FETCH_TIME] ?: 0L
+    }
+
+    suspend fun setWeatherFetched() {
+        context.dataStore.edit { preferences ->
+            preferences[KEY_WEATHER_LAST_FETCH_TIME] = System.currentTimeMillis()
+        }
+    }
+
+    val weatherCache: Flow<String?> = context.dataStore.data.map { preferences ->
+        preferences[KEY_WEATHER_CACHE]
+    }
+
+    suspend fun saveWeatherCache(json: String) {
+        context.dataStore.edit { preferences ->
+            preferences[KEY_WEATHER_CACHE] = json
+            preferences[KEY_WEATHER_LAST_FETCH_TIME] = System.currentTimeMillis()
         }
     }
 }

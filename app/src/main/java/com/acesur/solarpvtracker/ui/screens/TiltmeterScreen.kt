@@ -4,11 +4,13 @@ import android.Manifest
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -18,6 +20,13 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.foundation.text.ClickableText
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.acesur.solarpvtracker.R
@@ -57,7 +66,6 @@ fun TiltmeterScreen(
     val tiltSensorManager = remember { TiltSensorManager(context) }
     // LocationHelper is now managed by MainActivity
     val solarCalculator = remember { SolarCalculator() }
-    val pvgisManager = remember { PVGISManager(context, preferencesManager) }
     
     // Alias for compatibility
     val location = userLocation
@@ -68,14 +76,6 @@ fun TiltmeterScreen(
     
     // Use passed userLocation
     var angleMode by remember { mutableStateOf(AngleMode.FIXED) }
-    var pvgisOptimalAngle by remember { mutableStateOf<Float?>(null) }
-    
-    // Fetch PVGIS angle when location is available
-    LaunchedEffect(userLocation) {
-        userLocation?.let { loc ->
-            pvgisOptimalAngle = pvgisManager.getOptimalTilt(loc.latitude, loc.longitude)
-        }
-    }
     
     // Request location if missing (optional, as main activity tries too)
     LaunchedEffect(Unit) {
@@ -85,12 +85,12 @@ fun TiltmeterScreen(
     }
     
     // Calculate optimal tilt angle based on selected mode
-    val optimalTiltAngle = remember(userLocation, angleMode, pvgisOptimalAngle) {
+    val optimalTiltAngle = remember(userLocation, angleMode) {
         userLocation?.let { loc ->
             when (angleMode) {
                 AngleMode.FIXED -> {
-                    // Try to use PVGIS angle first, fallback to latitude
-                    pvgisOptimalAngle ?: abs(loc.latitude).toFloat()
+                    // Rule of thumb: absolute latitude
+                    abs(loc.latitude).toFloat()
                 }
                 AngleMode.DAILY -> {
                     // Today's optimal angle
@@ -175,7 +175,7 @@ fun TiltmeterScreen(
                 title = { Text(stringResource(R.string.tiltmeter)) },
                 navigationIcon = {
                     IconButton(onClick = onNavigateBack) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = stringResource(R.string.back))
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.back))
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
@@ -191,7 +191,7 @@ fun TiltmeterScreen(
                 .fillMaxSize()
                 .padding(paddingValues)
                 .verticalScroll(rememberScrollState())
-                .padding(start = 16.dp, end = 16.dp, bottom = 16.dp, top = 4.dp),
+                .padding(start = 16.dp, end = 16.dp, bottom = 8.dp, top = 2.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             // Angle Calculation Mode Selector
@@ -205,7 +205,7 @@ fun TiltmeterScreen(
                         MaterialTheme.colorScheme.surfaceVariant
                 )
             ) {
-                Column(modifier = Modifier.padding(start = 12.dp, end = 12.dp, bottom = 12.dp, top = 8.dp)) {
+                Column(modifier = Modifier.padding(start = 12.dp, end = 12.dp, bottom = 8.dp, top = 6.dp)) {
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(8.dp)
@@ -281,7 +281,7 @@ fun TiltmeterScreen(
                     }
                     
                     HorizontalDivider(
-                        modifier = Modifier.padding(vertical = 12.dp),
+                        modifier = Modifier.padding(vertical = 8.dp),
                         color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.2f)
                     )
 
@@ -323,7 +323,7 @@ fun TiltmeterScreen(
                                     color = MaterialTheme.colorScheme.onSurfaceVariant
                                 )
                                 Text(
-                                    text = String.format("%.1f°", panelAngle),
+                                    text = stringResource(R.string.angle_degree_fmt, panelAngle),
                                     style = MaterialTheme.typography.titleMedium,
                                     fontWeight = FontWeight.Bold,
                                     color = MaterialTheme.colorScheme.primary
@@ -338,7 +338,7 @@ fun TiltmeterScreen(
                                     color = MaterialTheme.colorScheme.onSurfaceVariant
                                 )
                                 Text(
-                                    text = String.format("%+.1f°", tiltDiscrepancy),
+                                    text = if (tiltDiscrepancy >= 0) "+${stringResource(R.string.angle_degree_fmt, tiltDiscrepancy)}" else stringResource(R.string.angle_degree_fmt, tiltDiscrepancy),
                                     style = MaterialTheme.typography.titleMedium,
                                     fontWeight = FontWeight.Bold,
                                     color = if (abs(tiltDiscrepancy) <= 5f) SolarGreen else MaterialTheme.colorScheme.primary
@@ -347,20 +347,11 @@ fun TiltmeterScreen(
                         }
                     }
 
-                    if (isOnTarget) {
-                        Spacer(modifier = Modifier.height(8.dp))
-                        Text(
-                            text = stringResource(R.string.optimal_position_status),
-                            style = MaterialTheme.typography.labelSmall,
-                            fontWeight = FontWeight.Bold,
-                            color = SolarGreen,
-                            modifier = Modifier.align(Alignment.CenterHorizontally)
-                        )
-                    }
+                    // Removed optimal_position_status Box to minimize space
                 }
             }
             
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(8.dp))
             
             // Calculate combined error for feedback
             val combinedError = maxOf(abs(tiltDiscrepancy), abs(azimuthDiscrepancy))
@@ -399,10 +390,18 @@ fun TiltmeterScreen(
                         isNorthernHemisphere = isNorthernHemisphere,
                         azimuthError = abs(azimuthDiscrepancy)
                     )
+                    
+                    if (isOnTarget) {
+                        Text(
+                            text = stringResource(R.string.emoji_thumbs_up),
+                            fontSize = 32.sp,
+                            modifier = Modifier.align(Alignment.Center)
+                        )
+                    }
                 }
             }
             
-            Spacer(modifier = Modifier.height(24.dp))
+            Spacer(modifier = Modifier.height(12.dp))
             
             // Angle Graph (Tilt Gauge)
             // Add Pendulum Widget to left
@@ -455,11 +454,7 @@ fun TiltmeterScreen(
                 }
             }
             
-            Spacer(modifier = Modifier.height(16.dp))
-            
-            Spacer(modifier = Modifier.height(16.dp))
-            
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(8.dp))
 
             
             // Instructions
@@ -487,27 +482,6 @@ fun TiltmeterScreen(
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
 
-                    // PVGIS Attribution
-                    if (angleMode == AngleMode.FIXED && pvgisOptimalAngle != null) {
-                        Spacer(modifier = Modifier.height(12.dp))
-                        HorizontalDivider(color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.1f))
-                        Spacer(modifier = Modifier.height(8.dp))
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            Icon(
-                                imageVector = Icons.Default.Verified,
-                                contentDescription = null,
-                                tint = SolarGreen,
-                                modifier = Modifier.size(16.dp)
-                            )
-                            Spacer(modifier = Modifier.width(6.dp))
-                            Text(
-                                text = stringResource(R.string.pvgis_active),
-                                style = MaterialTheme.typography.labelSmall,
-                                fontWeight = FontWeight.Bold,
-                                color = SolarGreen
-                            )
-                        }
-                    }
                 }
             }
             
@@ -520,7 +494,9 @@ fun TiltmeterScreen(
             // Coordinate Display (Moved to bottom)
             location?.let { loc ->
                 Card(
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .navigationBarsPadding(),
                     shape = RoundedCornerShape(8.dp),
                     colors = CardDefaults.cardColors(
                         containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.3f)
@@ -549,7 +525,7 @@ fun TiltmeterScreen(
                         )
                     }
                 }
-            }
+            } ?: Spacer(modifier = Modifier.navigationBarsPadding())
         }
     }
 }

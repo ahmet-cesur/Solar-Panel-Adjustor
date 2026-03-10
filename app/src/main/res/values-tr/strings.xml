@@ -1,72 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Solar Panel Adjustor</string>
-    
-    <!-- Home Screen -->
-    <string name="welcome_message">Solar Panel Adjustor\'a Hoşgeldiniz</string>
-    <string name="home_subtitle">Güneş paneli kurulumunuzu optimize edin</string>
-    
-    <!-- Features -->
-    <string name="tiltmeter">Eğim Ölçer</string>
+    <string name="app_name">Güneş Paneli Ayarlayıcı</string>
+    <string name="welcome_message">Güneş Paneli Ayarlayıcı\'ya Hoş Geldiniz</string>
+    <string name="home_subtitle">Güneş paneli kurulum optimize edici</string>
+    <string name="tiltmeter">Eğimölçer</string>
     <string name="tiltmeter_desc">Telefonunuzu kullanarak panel eğim açısını ölçün ve ayarlayın</string>
-    <string name="solar_estimation">Güneş Enerjisi Tahmini</string>
-    <string name="solar_estimation_desc">Konumunuz için güneş radyasyonu ve PV çıkışını hesaplayın</string>
-    <string name="optimal_angle">Optimum Açı</string>
+    <string name="solar_estimation">Güneş Tahmini</string>
+    <string name="solar_estimation_desc">Konumunuz için güneş radyasyonunu ve PV çıktısını hesaplayın</string>
+    <string name="optimal_angle">Optimal Açı</string>
     <string name="optimal_angle_desc">Enleminiz için en iyi eğim açısı önerilerini alın</string>
     <string name="tilt_report">Eğim Açısı Raporu</string>
-    <string name="tilt_report_desc">Günlük/aylık optimal açıları PDF olarak görüntüleyin ve dışa aktarın</string>
+    <string name="tilt_report_desc">Günlük/aylık optimal açıların PDF\'i</string>
     <string name="satellite_data">Uydu Verileri</string>
-    <string name="satellite_data_desc">Gerçek zamanlı uydu güneş verilerine ve tahminlerine erişin</string>
-    
-    <!-- Common -->
+    <string name="satellite_data_desc">Gerçek zamanlı uydu güneş tahminleri</string>
+    <string name="realtime_forecast">Gerçek Zamanlı Tahmin</string>
+    <string name="satellite_feeds_desc">NASA ve NOAA uydu akışlarına dayanmaktadır</string>
+    <string name="cloud_cover">Bulutluluk</string>
+    <string name="visibility">Görüş Mesafesi</string>
+    <string name="uv_index">UV İndeksi</string>
+    <string name="humidity">Nem</string>
+    <string name="next_5_days_yield">Gelecek 5 Günlük Güneş Verimi</string>
+    <string name="excellent">Mükemmel</string>
+    <string name="good">İyi</string>
+    <string name="fair">Orta</string>
+    <string name="cloudy">Bulutlu</string>
+    <string name="thursday">Perşembe</string>
+    <string name="friday">Cuma</string>
+    <string name="saturday">Cumartesi</string>
+    <string name="sunday">Pazar</string>
+    <string name="monday">Pazartesi</string>
     <string name="settings">Ayarlar</string>
     <string name="back">Geri</string>
     <string name="refresh">Yenile</string>
     <string name="cancel">İptal</string>
     <string name="save">Kaydet</string>
-    
-    <!-- Tiltmeter Screen -->
+    <string name="continue_label">Devam Et</string>
+    <string name="select_your_language">Dilinizi seçin</string>
     <string name="angle_mode">Açı Modu</string>
-    <string name="level_mode">Seviye Modu</string>
+    <string name="level_mode">Su Terazisi Modu</string>
     <string name="current_angle">Mevcut Açı</string>
     <string name="locked_angle">Kilitli</string>
     <string name="difference">Fark</string>
     <string name="lock_angle">Açıyı Kilitle</string>
     <string name="unlock">Kilidi Aç</string>
-    <string name="level_instruction">Telefonunuzu düz bir yüzeye yerleştirin. Düz olduğunda baloncuk ortalanmalıdır.</string>
+    <string name="level_instruction">Telefonunuzu düz bir yüzeye yerleştirin. Düz olduğunda kabarcık merkezde olmalıdır.</string>
     <string name="how_to_use">Nasıl Kullanılır</string>
-    <string name="tiltmeter_instructions">1. Telefonunuzu güneş paneli yüzeyi boyunca yerleştirin\n2. Göstergeden mevcut açıyı okuyun\n3. Hedef açıyı kaydetmek için Açıyı Kilitle\'yi kullanın\n4. Panel ayarlamasını fark 0° olana kadar yapın</string>
-    
-    <!-- Solar Estimation Screen -->
-    <string name="getting_location">Konum alınıyor...</string>
+    <string name="tiltmeter_instructions">1. Telefonunuzu güneş paneli yüzeyi boyunca yerleştirin\n2. Mevcut açıyı ölçerden okuyun\n3. Hedef açıyı kaydetmek için Açıyı Kilitle\'yi kullanın\n4. Fark 0° gösterene kadar panelinizi ayarlayın</string>
+    <string name="getting_location">Konum alınıyor…</string>
     <string name="location">Konum</string>
-    <string name="location_unavailable">Konum kullanılamıyor</string>
+    <string name="location_unavailable">Konum ulaşılamaz</string>
     <string name="panel_settings">Panel Ayarları</string>
-    <string name="wattage">Watt Değeri</string>
+    <string name="wattage">Watt (W)</string>
     <string name="panel_count">Adet</string>
     <string name="efficiency">Verimlilik</string>
     <string name="solar_radiation">Güneş Radyasyonu</string>
     <string name="daily">Günlük</string>
     <string name="monthly">Aylık</string>
     <string name="yearly">Yıllık</string>
-    <string name="estimated_output">Tahmini PV Çıkışı</string>
+    <string name="estimated_output">Tahmini PV Çıktısı</string>
     <string name="annual_production">Yıllık Üretim</string>
-    <string name="estimation_disclaimer">* Tahminler ortalama güneş ışınımı verilerine dayanır ve hava durumu, panel yönü ve yerel koşullara göre değişebilir.</string>
-    
-    <!-- Optimal Angle Screen -->
+    <string name="estimation_disclaimer">* Tahminler ortalama güneş radyasyonu verilerine dayanmaktadır ve hava durumuna, panel yönüne ve yerel koşullara göre değişebilir.</string>
     <string name="your_latitude">Enleminiz</string>
     <string name="seasonal_recommendations">Mevsimsel Öneriler</string>
-    <string name="tilt_angle_info_title">Optimum Eğim Hakkında</string>
-    <string name="tilt_angle_info">Optimum eğim açısı enleminize ve mevsime bağlıdır. Yıl boyu sabit kurulumlar için, eğimi enleminize eşit ayarlamak iyi bir ortalama performans sağlar. Mevsimsel ayarlama yapmak çıktıyı %5–10 oranında artırabilir.</string>
-    
-    <!-- Tilt Report Screen -->
+    <string name="tilt_angle_info_title">Optimal Eğim Hakkında</string>
+    <string name="tilt_angle_info">Optimal eğim açısı enleminize ve yerel güneş radyasyonu modellerine bağlıdır. Sabit yıl boyu sistemler için bu uygulama, en doğru optimize edilmiş açıyı sağlamak amacıyla yüksek hassasiyetli PVGIS uydu verilerini kullanır. Mevsimsel ayarlamalar enerji veriminizi %5–10 daha artırabilir.</string>
     <string name="monthly_12">Aylık (12)</string>
     <string name="daily_365">Günlük (365)</string>
     <string name="export_pdf">PDF Dışa Aktar</string>
     <string name="pdf_saved">PDF kaydedildi: %1$s</string>
-    <string name="pdf_error">PDF oluşturma hatası</string>
-    
-    <!-- Settings Screen -->
+    <string name="pdf_error">PDF oluşturulurken hata oluştu</string>
     <string name="language">Dil</string>
     <string name="select_language">Dil Seçin</string>
     <string name="appearance">Görünüm</string>
@@ -76,63 +78,108 @@
     <string name="latitude">Enlem</string>
     <string name="longitude">Boylam</string>
     <string name="about">Hakkında</string>
-    <string name="version">Sürüm %1$s</string>
-    <string name="app_description">Güneş paneli kurulumu ve optimizasyonu için kapsamlı bir araç. Eğim açılarını ölçün, optimum konumlandırmayı hesaplayın ve güneş enerjisi üretimini tahmin edin.</string>
-    
-    <!-- Remove Ads Screen -->
+    <string name="version">Versiyon %1$s</string>
+    <string name="app_description">Güneş paneli kurulumu ve optimizasyonu için kapsamlı bir araç. Yüksek hassasiyetli PVGIS uydu verileriyle desteklenen bu uygulama, konuma özel güneş radyasyonu analizi ve enerji üretim tahminleri sunar. Özellikler arasında hassas eğimölçer, uydu görüntülerine dayalı optimal açı önerileri ve sistem verimliliğinizi maksimize etmek için ayrıntılı aylık çıktı tahminleri yer alır.</string>
     <string name="remove_ads">Reklamları Kaldır</string>
-    <string name="remove_ads_desc">Reklamları kaldır ve geliştiricileri destekle</string>
+    <string name="remove_ads_desc">Reklamları kaldırın ve geliştirmeyi destekleyin</string>
     <string name="enjoy_ad_free">Reklamsız Deneyimin Tadını Çıkarın</string>
     <string name="ad_free_active">Reklamsız Aktif</string>
     <string name="ad_free_forever_desc">Ömür boyu reklamsız erişiminiz var</string>
-    <string name="expires_on">Bitiş tarihi %1$s</string>
+    <string name="expires_on">%1$s tarihinde sona eriyor</string>
     <string name="benefits">Avantajlar</string>
     <string name="benefit_no_banners">Banner reklam yok</string>
     <string name="benefit_no_interstitials">Geçiş reklamı yok</string>
-    <string name="benefit_clean_ui">Temiz, dikkatinizi dağıtmayan arayüz</string>
-    <string name="benefit_support_dev">Uygulama geliştirmeyi destekle</string>
-    <string name="choose_option">Seçeneğinizi Belirleyin</string>
+    <string name="benefit_clean_ui">Temiz, dikkat dağıtmayan arayüz</string>
+    <string name="benefit_support_dev">Uygulama geliştirmeyi destekleyin</string>
+    <string name="choose_option">Seçiminizi yapın</string>
     <string name="remove_ads_30_days">30 Günlük Reklamları Kaldır ($2.99)</string>
-    <string name="remove_ads_30_days_desc">30 gün boyunca reklamsız kullanın</string>
-    <string name="remove_ads_forever">Süresiz Reklamları Kaldır</string>
+    <string name="remove_ads_30_days_desc">30 gün boyunca reklamsız deneyimin tadını çıkarın</string>
+    <string name="remove_ads_forever">Reklamları Kalıcı Olarak Kaldır</string>
     <string name="remove_ads_forever_desc">Tek seferlik ödeme, ömür boyu erişim</string>
     <string name="purchase_note">Satın alımlar Google Play hesabınıza bağlanacaktır</string>
-    
-    <!-- Tiltmeter Azimuth -->
     <string name="panel_azimuth">Panel Azimutu</string>
     <string name="required_azimuth">Gerekli Azimut</string>
     <string name="azimuth_discrepancy">Azimut Farkı</string>
-    <string name="point_south">Güneye Yönel</string>
-    <string name="point_north">Kuzeye Yönel</string>
+    <string name="point_south">Güneye Yönelt</string>
+    <string name="point_north">Kuzeye Yönelt</string>
     <string name="hemisphere_northern">Kuzey Yarımküre</string>
     <string name="hemisphere_southern">Güney Yarımküre</string>
-    
-    <!-- Angle Mode Options -->
     <string name="angle_calculation">Açı Hesaplama</string>
-    <string name="fixed_angle">Sabit (Yıl Boyunca)</string>
-    <string name="fixed_angle_desc">Kalıcı kurulumlar için optimum</string>
-    <string name="daily_angle">Günlük Optimum</string>
+    <string name="fixed_angle">Sabit (Yıl Boyu)</string>
+    <string name="fixed_angle_desc">Kalıcı kurulumlar için optimal</string>
+    <string name="daily_angle">Günlük Optimal</string>
     <string name="daily_angle_desc">Bugün için en iyi açı</string>
-    <string name="next_30_days">Sonraki 30 Gün</string>
-    <string name="next_30_days_desc">Gelecek ay için ortalama optimum</string>
+    <string name="next_30_days">Gelecek 30 Gün</string>
+    <string name="next_30_days_desc">Önümüzdeki ay için ortalama optimal</string>
     <string name="target_angle">Hedef Açı</string>
     <string name="tilt_report_subheader">O ay için konumunuzdaki en iyi eğim açısı.</string>
-    <string name="translation_disclaimer">Tüm metinler İngilizce\'den yapay zeka ile çevrilmiştir. Referans için İngilizce versiyonunu kontrol edebilirsiniz.</string>
+    <string name="copyright">© A.C. Bros 2026 Ankara</string>
     <string name="light_mode">Aydınlık Mod</string>
-    <string name="optimal_position_status">✓ OPTİMAL KONUM</string>
     <string name="current_tilt">Mevcut Eğim</string>
     <string name="tilt_diff">Eğim Farkı</string>
     <string name="azimuth_diff">Azimut Farkı</string>
     <string name="instructions_title">Talimatlar</string>
-    <string name="tiltmeter_usage_instructions">1. Azimutu hizalamak için pusulayı kullanın (oku hedefe doğrultun).\n2. Kabarcık merkezlenene ve gösterge hedefle eşleşene kadar eğimi ayarlayın.\n3. &lt; 5° birleşik doğruluk, bip sesini ve yeşil durumu tetikler.</string>
+    <string name="tiltmeter_usage_instructions">1. Modu Seçin: Sabit, Günlük veya 30 günlük optimizasyonu seçin.\n2. Telefonu Yerleştirin: Cihazı güneş panelinin üzerine, ekran yukarı bakacak şekilde düz yerleştirin.\n3. Azimutu Hizalayın: Pusula oku hedefi gösterene kadar paneli yatay olarak döndürün.\n4. Eğimi Ayarlayın: Kabarcık merkezlenene ve hedefle eşleşene kadar paneli dikey olarak eğin.\n5. Bitti: Hizalama hassas olduğunda (&lt; 5°) ekran yeşile döner.</string>
     <string name="quick_reference">Hızlı Referans</string>
     <string name="summer_description">Yaz (Yüksek güneş için daha düşük eğim)</string>
     <string name="spring_fall_description">İlkbahar/Sonbahar (Enleme eşit)</string>
     <string name="winter_description">Kış (Alçak güneş için daha yüksek eğim)</string>
-    <string name="year_round_description">Yıl boyu sabit (Enleme eşit)</string>
+    <string name="year_round_description">Yıl boyu sabit (Uydu Optimize Edilmiş)</string>
     <string name="target_label">Hedef: %1$.1f°</string>
     <string name="summer_lower_tilt">Yaz - Düşük eğim</string>
     <string name="winter_higher_tilt">Kış - Yüksek eğim</string>
     <string name="transition_season">Geçiş mevsimi</string>
     <string name="day_label">Gün %1$d</string>
+    <string name="pvgis_active">★ Yüksek Hassasiyetli Uydu Optimizasyonu Aktif (PVGIS-SARAH3)</string>
+    <string name="utilize_pvgis">PVGIS uydu verilerini kullan</string>
+    <string name="pvgis_link_text">Doğrulama için PVGIS\'i (SARAH3) açın</string>
+    <string name="monthly_production_chart">Aylık Enerji Üretimi (kWh)</string>
+    <string name="lift_up">YUKARI KALDIR ⬆️</string>
+    <string name="tilt_down">AŞAĞI EĞ ⬇️</string>
+    <string name="coordinate_precision">Koordinat Gösterim Hassasiyeti</string>
+    <string name="decimal_digits">Ondalık basamaklar: %1$d</string>
+    <string name="precision_example">Örnek: %1$s</string>
+    <string name="rate_app_title">Bu uygulamayı oylayın</string>
+    <string name="rate_app_message">Bu uygulamayı kullanmaktan keyif alıyorsanız, oylamak için bir dakikanızı ayırır mısınız? Bir dakikadan fazla sürmeyecektir. Desteğiniz için teşekkürler!</string>
+    <string name="rate_app_card_desc">Play Store\'da uygulamayı oylayarak bizi destekleyin</string>
+    <string name="rate_now">Şimdi Oyla</string>
+    <string name="remind_later">Sonra Hatırlat</string>
+    <string name="no_thanks">Hayır, Teşekkürler</string>
+    <string name="satellite_tiltmeter">Uydu Eğimölçer</string>
+    <string name="satellite_tiltmeter_desc">Yüksek hassasiyetli uydu optimize edilmiş panel ayarı</string>
+    <string name="satellite_tiltmeter_instructions">1. Otomatik Veri: Uygulama kononumunuz için optimal uydu (SARAH3) açısını alır.\n2. Manuel Doğrulama (Opsiyonel): Aşağıdaki bağlantıya tıklayın. Sitede: \"PVGIS-SARAH3\"ü seçin, \"Optimize slope\"u işaretleyin ve \"Visualize results\"a basın.\n3. Telefonu Yerleştirin: Cihazı güneş panelinin üzerine düz yerleştirin.\n4. Paneli Ayarlayın: Pusulayı hizalamak için döndürün ve hedef açıyla eşleşmesi için yukarı/aşağı eğin.\n5. Bitti: Hizalama hassas olduğunda (&lt; 5°) ekran yeşile döner.</string>
+    <string name="irradiance_unit">Işınım (kWh/m²)</string>
+    <string name="production_unit">Üretim (kWh)</string>
+    <string name="source_pvgis">Kaynak: PVGIS API</string>
+    <string name="point_direction_fmt">%1$s yönüne yönelt (%2$d°)</string>
+    <string name="direction_n">K</string>
+    <string name="direction_s">G</string>
+    <string name="month_jan">Oca</string>
+    <string name="month_feb">Şub</string>
+    <string name="month_mar">Mar</string>
+    <string name="month_apr">Nis</string>
+    <string name="month_may">May</string>
+    <string name="month_jun">Haz</string>
+    <string name="month_jul">Tem</string>
+    <string name="month_aug">Ağu</string>
+    <string name="month_sep">Eyl</string>
+    <string name="month_oct">Eki</string>
+    <string name="month_nov">Kas</string>
+    <string name="month_dec">Ara</string>
+    <string name="feature_title_format">%1$s: </string>
+    <string name="last_updated">Son güncelleme: %1$s</string>
+    <string name="updated_at">Güncellenme saati: %1$s</string>
+    <string name="status_clear">Açık</string>
+    <string name="status_drizzle">Çiseleme</string>
+    <string name="status_fair">Az Bulutlu</string>
+    <string name="status_foggy">Sisli</string>
+    <string name="status_rain_showers">Sağanak Yağışlı</string>
+    <string name="status_rainy">Yağmurlu</string>
+    <string name="status_snowy">Karlı</string>
+    <string name="status_sunny">Güneşli</string>
+    <string name="status_thunderstorm">Gök Gürültülü Fırtına</string>
+    <string name="tuesday">Salı</string>
+    <string name="wednesday">Çarşamba</string>
+    <string name="translation_disclaimer"></string>
+    <string name="optimal_position_status"></string>
 </resources>

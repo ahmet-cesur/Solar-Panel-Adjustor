@@ -18,6 +18,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.stringResource
+import com.acesur.solarpvtracker.R
 import com.acesur.solarpvtracker.ui.theme.GradientDayEnd
 import com.acesur.solarpvtracker.ui.theme.GradientDayStart
 
@@ -114,7 +116,7 @@ fun StatCard(
             horizontalArrangement = Arrangement.Center
         ) {
             Text(
-                text = "$title: ",
+                text = stringResource(R.string.feature_title_format, title),
                 style = MaterialTheme.typography.labelMedium,
                 color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.8f)
             )
