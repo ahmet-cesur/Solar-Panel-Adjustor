@@ -29,6 +29,8 @@
     <string name="saturday">Суббота</string>
     <string name="sunday">Воскресенье</string>
     <string name="monday">Понедельник</string>
+    <string name="tuesday">Вторник</string>
+    <string name="wednesday">Среда</string>
     <string name="settings">Настройки</string>
     <string name="back">Назад</string>
     <string name="refresh">Обновить</string>
@@ -113,7 +115,7 @@
     <string name="next_30_days_desc">Средний оптимальный наклон на следующий месяц</string>
     <string name="target_angle">Целевой угол</string>
     <string name="tilt_report_subheader">Лучший угол наклона в вашем местоположении для указанного месяца.</string>
-    <string name="copyright">© A.C. Bros 2026, Анкара</string>
+    <string name="copyright">© A.C. Bros 2026 Ankara</string>
     <string name="light_mode">Светлая тема</string>
     <string name="current_tilt">Текущий наклон</string>
     <string name="tilt_diff">Разница в наклоне</string>
@@ -178,8 +180,28 @@
     <string name="status_snowy">Снежно</string>
     <string name="status_sunny">Солнечно</string>
     <string name="status_thunderstorm">Гроза</string>
-    <string name="tuesday">Вторник</string>
-    <string name="wednesday">Среда</string>
-    <string name="translation_disclaimer"></string>
-    <string name="optimal_position_status"></string>
+    <string name="translation_disclaimer">Некоторые переводы могут быть выполнены автоматически.</string>
+    <string name="optimal_position_status">Оптимальное положение достигнуто</string>
+    <string name="percent_fmt">%1$d %%</string>
+    <string name="percent_suffix">%%</string>
+    <string name="unit_km">км</string>
+    <string name="unit_kwh_sqm">кВт·ч/м²</string>
+    <string name="unit_watt">Вт</string>
+    <string name="yield_fmt_unit">%1$.1f кВт·ч/м²</string>
+    <string name="angle_degree_fmt">%1$.1f°</string>
+    <string name="placeholder_value">--</string>
+    <string name="pdf_report_monthly_title">Оптимальные ежемесячные углы наклона</string>
+    <string name="pdf_col_month">Месяц</string>
+    <string name="pdf_col_month_name">Название месяца</string>
+    <string name="pdf_col_angle">Угол (°)</string>
+    <string name="pdf_col_notes">Заметки</string>
+    <string name="pdf_report_daily_title">Оптимальные ежедневные углы наклона (365 дней)</string>
+    <string name="pdf_report_daily_page">Оптимальные ежедневные углы наклона — страница %1$d</string>
+    <string name="pdf_col_date">Дата</string>
+    <string name="pdf_report_footer">Создано в приложении «Настройка солнечных панелей»</string>
+    <string name="pdf_location_label">Местоположение: %1$.4f°, %2$.4f°</string>
+    <string name="pdf_generated_label">Дата создания: %1$s</string>
+    <string name="pvgis_label">PVGIS</string>
+    <string name="emoji_thumbs_up">👍</string>
+    <string name="pvgis_url">https://re.jrc.ec.europa.eu/pvg_tools/en/#PVP?lat=%1$.6f&amp;lon=%2$.6f&amp;raddat=1</string>
 </resources>

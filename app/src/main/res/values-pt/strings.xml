@@ -29,6 +29,8 @@
     <string name="saturday">Sábado</string>
     <string name="sunday">Domingo</string>
     <string name="monday">Segunda-feira</string>
+    <string name="tuesday">Terça-feira</string>
+    <string name="wednesday">Quarta-feira</string>
     <string name="settings">Configurações</string>
     <string name="back">Voltar</string>
     <string name="refresh">Atualizar</string>
@@ -178,8 +180,28 @@
     <string name="status_snowy">Nevado</string>
     <string name="status_sunny">Ensolarado</string>
     <string name="status_thunderstorm">Trovoada</string>
-    <string name="tuesday">Terça-feira</string>
-    <string name="wednesday">Quarta-feira</string>
-    <string name="translation_disclaimer"></string>
-    <string name="optimal_position_status"></string>
+    <string name="translation_disclaimer">Algumas traduções podem ser automáticas.</string>
+    <string name="optimal_position_status">Posição ideal alcançada</string>
+    <string name="percent_fmt">%1$d %%</string>
+    <string name="percent_suffix">%%</string>
+    <string name="unit_km">km</string>
+    <string name="unit_kwh_sqm">kWh/m²</string>
+    <string name="unit_watt">W</string>
+    <string name="yield_fmt_unit">%1$.1f kWh/m²</string>
+    <string name="angle_degree_fmt">%1$.1f°</string>
+    <string name="placeholder_value">--</string>
+    <string name="pdf_report_monthly_title">Ângulos de Inclinação Ideais Mensais</string>
+    <string name="pdf_col_month">Mês</string>
+    <string name="pdf_col_month_name">Nome do Mês</string>
+    <string name="pdf_col_angle">Ângulo (°)</string>
+    <string name="pdf_col_notes">Notas</string>
+    <string name="pdf_report_daily_title">Ângulos de Inclinação Ideais Diários (365 Dias)</string>
+    <string name="pdf_report_daily_page">Ângulos de Inclinação Ideais Diários - Página %1$d</string>
+    <string name="pdf_col_date">Data</string>
+    <string name="pdf_report_footer">Gerado pelo aplicativo Ajustador de Painel Solar</string>
+    <string name="pdf_location_label">Localização: %1$.4f°, %2$.4f°</string>
+    <string name="pdf_generated_label">Gerado em: %1$s</string>
+    <string name="pvgis_label">PVGIS</string>
+    <string name="emoji_thumbs_up">👍</string>
+    <string name="pvgis_url">https://re.jrc.ec.europa.eu/pvg_tools/en/#PVP?lat=%1$.6f&amp;lon=%2$.6f&amp;raddat=1</string>
 </resources>

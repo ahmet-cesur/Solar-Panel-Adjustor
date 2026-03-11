@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Solar Panel Adjustor</string>
+    <string name="app_name">সোলার প্যানেল অ্যাডজাস্টার</string>
     <string name="welcome_message">সোলার প্যানেল অ্যাডজাস্টারে স্বাগতম</string>
     <string name="home_subtitle">সোলার প্যানেল ইনস্টলেশন অপ্টোমাইজার</string>
     <string name="tiltmeter">টিল্টমিটার</string>
@@ -29,6 +29,8 @@
     <string name="saturday">শনিবার</string>
     <string name="sunday">রবিবার</string>
     <string name="monday">সোমবার</string>
+    <string name="tuesday">মঙ্গলবার</string>
+    <string name="wednesday">বুধবার</string>
     <string name="settings">সেটিংস</string>
     <string name="back">ফিরে যান</string>
     <string name="refresh">রিলোড</string>
@@ -50,7 +52,7 @@
     <string name="location">অবস্থান</string>
     <string name="location_unavailable">অবস্থান অনুপলব্ধ</string>
     <string name="panel_settings">প্যানেল সেটিংস</string>
-    <string name="wattage">ওয়াটেজ</string>
+    <string name="wattage">ওয়াটেজ (W)</string>
     <string name="panel_count">গণনা</string>
     <string name="efficiency">দক্ষতা</string>
     <string name="solar_radiation">সোলার রেডিয়েশন</string>
@@ -79,7 +81,7 @@
     <string name="longitude">দ্রাঘিমাংশ</string>
     <string name="about">সম্পর্কে</string>
     <string name="version">সংস্করণ %1$s</string>
-    <string name="app_description">সোলার প্যানেল ইনস্টলেশন এবং অপ্টিমাইজেশনের জন্য একটি ব্যাপক টুল। উচ্চ-নির্ভুলতা PVGIS স্যাটেলাইট ডেটা দ্বারা চালিত, এই অ্যাপটি অবস্থান-নির্দিষ্ট সৌর বিকিরণ বিশ্লেষণ এবং শক্তি উৎপাদন অনুমান প্রদান করে। আপনার সিস্টেমের দক্ষতা সর্বাধিক করতে একটি সুনির্দিষ্ট কোয়ার্টার-সার্কেল টিল্টমিটার, স্যাটেলাইট চিত্রের উপর ভিত্তি করে সর্বোত্তম কোণ সুপারিশ এবং বিস্তারিত মাসিক আউটপুট পূর্বাভাস অন্তর্ভুক্ত রয়েছে।</string>
+    <string name="app_description">সোলার প্যানেল ইনস্টলেশন এবং অপ্টিমাইজেশনের জন্য একটি ব্যাপক টুল। উচ্চ-নির্ভুলতা PVGIS স্যাটেলাইট ডেটা দ্বারা চালিত, এই অ্যাপটি অবস্থান-নির্দিষ্ট সৌর বিকিরণ বিশ্লেষণ এবং শক্তি উৎপাদন অনুমান প্রদান করে। আপনার সিস্টেমের দক্ষতা সর্বাধিক করতে একটি সুনির্দিষ্ট টিল্টমিটার, স্যাটেলাইট চিত্রের উপর ভিত্তি করে সর্বোত্তম কোণ সুপারিশ এবং বিস্তারিত মাসিক আউটপুট পূর্বাভাস অন্তর্ভুক্ত রয়েছে।</string>
     <string name="remove_ads">বিজ্ঞাপন সরান</string>
     <string name="remove_ads_desc">বিজ্ঞাপন সরান এবং ডেভেলপমেন্ট সমর্থন করুন</string>
     <string name="enjoy_ad_free">বিজ্ঞাপন-মুক্ত অভিজ্ঞতা উপভোগ করুন</string>
@@ -121,8 +123,7 @@
     <string name="instructions_title">নির্দেশাবলী</string>
     <string name="tiltmeter_usage_instructions">১. মোড নির্বাচন করুন: ফিক্সড, ডেইলি বা ৩০-দিন অপ্টিমাইজেশন বেছে নিন।\n২. ফোন পজিশন করুন: ডিভাইসটি সোলার প্যানেলে সমতলভাবে রাখুন, স্ক্রিন উপরের দিকে।\n৩. আজিমুথ অ্যালাইন করুন: কম্পাস অ্যারো টার্গেটের দিকে নির্দেশ করা পর্যন্ত প্যানেলটি অনুভূমিকভাবে ঘোরান।\n৪. টিল্ট অ্যাডজাস্ট করুন: বুদবুদ কেন্দ্রে আসা এবং টার্গেটের সাথে মেলা পর্যন্ত প্যানেলটি উলম্বভাবে কোণ করুন।\n৫. সম্পন্ন: অ্যালাইনমেন্ট সঠিক হলে (&lt; ৫°) স্ক্রিন সবুজ হয়ে যায়।</string>
     <string name="quick_reference">দ্রুত রেফারেন্স</string>
-    <string name="summer_description">গ্রীষ্ম (উচ্চ সূর্যের জন্য দ
-ন টিল্ট)</string>
+    <string name="summer_description">গ্রীষ্ম (উচ্চ সূর্যের জন্য নিম্ন টিল্ট)</string>
     <string name="spring_fall_description">বসন্ত/শরত (অক্ষাংশের সমান)</string>
     <string name="winter_description">শীত (নিম্ন সূর্যের জন্য উচ্চ টিল্ট)</string>
     <string name="year_round_description">বছরব্যাপী স্থির (স্যাটেলাইট অপ্টিমাইজড)</string>
@@ -148,7 +149,7 @@
     <string name="no_thanks">না ধন্যবাদ</string>
     <string name="satellite_tiltmeter">স্যাটেলাইট টিল্টমিটার</string>
     <string name="satellite_tiltmeter_desc">উচ্চ-নির্ভুলতা স্যাটেলাইট-অপ্টিমাইজড প্যানেল সামঞ্জস্য</string>
-    <string name="satellite_tiltmeter_instructions">১. স্বয়ংক্রিয় ডেটা: অ্যাপটি আপনার অবস্থানের জন্য সর্বোত্তম স্যাটেলাইট (SARAH3) কোণ নিয়ে আসে।\n২. ম্যানুয়াল যাচাইকরণ (ঐচ্ছিক): নিচের লিঙ্কে ক্লিক করুন। সাইটে: \"PVGIS-SARAH3\" নির্বাচন করুন, \"Optimize slope\" চেক করুন এবং \"Visualize results\"।\n৩. ফোন পজিশন করুন: ডিভাইসটি সোলার প্যানেলে সমতলভাবে রাখুন।\n৪. প্যানেল সামঞ্জস্য করুন: কম্পাস এবং টিল্ট উপর/নিচে ঘোরান যাতে টার্গেট কোণ মেলে।\n৫. সম্পন্ন: অ্যালাইনমেন্ট সঠিক হলে (&lt; ৫°) স্ক্রিন সবুজ হয়ে যায়।</string>
+    <string name="satellite_tiltmeter_instructions">১. স্বয়ংক্রিয় ডেটা: অ্যাপটি আপনার অবস্থানের জন্য সর্বোত্তম স্যাটেলাইট (SARAH3) কোণ নিয়ে আসে।\n২. ম্যানুয়াল যাচাইকরণ (ঐচ্ছিক): নিচের লিঙ্কে ক্লিক করুন। সাইটে: \"PVGIS-SARAH3\" নির্বাচন করুন, \"Optimize slope\" চেক করুন এবং \"Visualize results\"।\n৩. ফোন পজিশন করুন: ডিভাইসটি সোলার প্যানেলে সমতলভাবে রাখুন।\n৪. প্যানেল সামঞ্জস্য করুন: কম্পাস এবং টিল্ট উপর/নিচে ঘোরান যাতে টার্গেটের সাথে মেলে।\n৫. সম্পন্ন: অ্যালাইনমেন্ট সঠিক হলে (&lt; ৫°) স্ক্রিন সবুজ হয়ে যায়।</string>
     <string name="irradiance_unit">ইরেডিয়েন্স (kWh/m²)</string>
     <string name="production_unit">উৎপাদন (kWh)</string>
     <string name="source_pvgis">উৎস: PVGIS API</string>
@@ -168,19 +169,39 @@
     <string name="month_nov">নভে</string>
     <string name="month_dec">ডিসে</string>
     <string name="feature_title_format">%1$s: </string>
-    <string name="last_updated">Last updated: %1$s</string>
-    <string name="updated_at">Updated at: %1$s</string>
-    <string name="status_clear">Clear</string>
-    <string name="status_drizzle">Drizzle</string>
-    <string name="status_fair">Fair</string>
-    <string name="status_foggy">Foggy</string>
-    <string name="status_rain_showers">Rain Showers</string>
-    <string name="status_rainy">Rainy</string>
-    <string name="status_snowy">Snowy</string>
-    <string name="status_sunny">Sunny</string>
-    <string name="status_thunderstorm">Thunderstorm</string>
-    <string name="tuesday">Tuesday</string>
-    <string name="wednesday">Wednesday</string>
-    <string name="translation_disclaimer"></string>
-    <string name="optimal_position_status"></string>
+    <string name="last_updated">সর্বশেষ আপডেট: %1$s</string>
+    <string name="updated_at">আপডেট করা হয়েছে: %1$s</string>
+    <string name="status_clear">পরিষ্কার</string>
+    <string name="status_drizzle">গুঁড়ি গুঁড়ি বৃষ্টি</string>
+    <string name="status_fair">সুন্দর আবহাওয়া</string>
+    <string name="status_foggy">কুয়াশাচ্ছন্ন</string>
+    <string name="status_rain_showers">বৃষ্টির ঝাপ্টা</string>
+    <string name="status_rainy">বৃষ্টিবহুল</string>
+    <string name="status_snowy">তুষারপাত</string>
+    <string name="status_sunny">রৌদ্রোজ্জ্বল</string>
+    <string name="status_thunderstorm">বজ্রবিদ্যুৎসহ ঝড়</string>
+    <string name="translation_disclaimer">কিছু অনুবাদ স্বয়ংক্রিয় হতে পারে।</string>
+    <string name="optimal_position_status">সর্বোত্তম অবস্থান অর্জিত</string>
+    <string name="percent_fmt">%1$d %%</string>
+    <string name="percent_suffix">%%</string>
+    <string name="unit_km">কিমি</string>
+    <string name="unit_kwh_sqm">kWh/m²</string>
+    <string name="unit_watt">W</string>
+    <string name="yield_fmt_unit">%1$.1f kWh/m²</string>
+    <string name="angle_degree_fmt">%1$.1f°</string>
+    <string name="placeholder_value">--</string>
+    <string name="pdf_report_monthly_title">মাসিক সর্বোত্তম টিল্ট কোণ</string>
+    <string name="pdf_col_month">মাস</string>
+    <string name="pdf_col_month_name">মাসের নাম</string>
+    <string name="pdf_col_angle">কোণ (°)</string>
+    <string name="pdf_col_notes">টীকা</string>
+    <string name="pdf_report_daily_title">দৈনিক সর্বোত্তম টিল্ট কোণ (৩৬৫ দিন)</string>
+    <string name="pdf_report_daily_page">দৈনিক সর্বোত্তম টিল্ট কোণ - পৃষ্ঠা %1$d</string>
+    <string name="pdf_col_date">তারিখ</string>
+    <string name="pdf_report_footer">সোলার প্যানেল অ্যাডজাস্টার অ্যাপ দ্বারা তৈরি</string>
+    <string name="pdf_location_label">অবস্থান: %1$.4f°, %2$.4f°</string>
+    <string name="pdf_generated_label">তৈরি করা হয়েছে: %1$s</string>
+    <string name="pvgis_label">PVGIS</string>
+    <string name="emoji_thumbs_up">👍</string>
+    <string name="pvgis_url">https://re.jrc.ec.europa.eu/pvg_tools/en/#PVP?lat=%1$.6f&amp;lon=%2$.6f&amp;raddat=1</string>
 </resources>

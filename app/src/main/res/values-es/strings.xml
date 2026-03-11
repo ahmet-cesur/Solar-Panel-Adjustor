@@ -29,6 +29,8 @@
     <string name="saturday">Sábado</string>
     <string name="sunday">Domingo</string>
     <string name="monday">Lunes</string>
+    <string name="tuesday">Martes</string>
+    <string name="wednesday">Miércoles</string>
     <string name="settings">Ajustes</string>
     <string name="back">Atrás</string>
     <string name="refresh">Actualizar</string>
@@ -78,8 +80,8 @@
     <string name="latitude">Latitud</string>
     <string name="longitude">Longitud</string>
     <string name="about">Acerca de</string>
-    <string name="version">Versión %1$s</string>
-    <string name="app_description">Una herramienta integral para la instalación y optimización de paneles solares. Impulsada por datos satelitales PVGIS de alta precisión, esta aplicación proporciona análisis de radiación solar específicos de la ubicación y estimaciones de producción de energía. Las características incluyen un inclinómetro preciso, recomendaciones de ángulo óptimo basadas en imágenes satelitales y pronósticos detallados de producción mensual para maximizar la eficiencia de su sistema.</string>
+    <string name="version">Versió %1$s</string>
+    <string name="app_description">Una herramienta integral para la instalación y optimización de paneles solares. Impulsada por datos satelitales PVGIS de alta precisión, esta aplicación proporciona análisis de radiación solar específicos de la ubicación y estimaciones de producción de energía. Las características incluyen un inclinómetro preciso, recomendaciones de ángulo óptimo basadas en imágenes satelitales y pronósticos detalladas de producción mensual para maximizar la eficiencia de su sistema.</string>
     <string name="remove_ads">Quitar anuncios</string>
     <string name="remove_ads_desc">Elimine los anuncios y apoye el desarrollo</string>
     <string name="enjoy_ad_free">Disfrute de una experiencia sin anuncios</string>
@@ -178,8 +180,28 @@
     <string name="status_snowy">Nevado</string>
     <string name="status_sunny">Soleado</string>
     <string name="status_thunderstorm">Tormenta</string>
-    <string name="tuesday">Martes</string>
-    <string name="wednesday">Miércoles</string>
-    <string name="translation_disclaimer"></string>
-    <string name="optimal_position_status"></string>
+    <string name="translation_disclaimer">Algunas traducciones pueden ser automáticas.</string>
+    <string name="optimal_position_status">Posición óptima alcanzada</string>
+    <string name="percent_fmt">%1$d %%</string>
+    <string name="percent_suffix">%%</string>
+    <string name="unit_km">km</string>
+    <string name="unit_kwh_sqm">kWh/m²</string>
+    <string name="unit_watt">W</string>
+    <string name="yield_fmt_unit">%1$.1f kWh/m²</string>
+    <string name="angle_degree_fmt">%1$.1f°</string>
+    <string name="placeholder_value">--</string>
+    <string name="pdf_report_monthly_title">Ángulos de inclinación óptimos mensuales</string>
+    <string name="pdf_col_month">Mes</string>
+    <string name="pdf_col_month_name">Nombre del mes</string>
+    <string name="pdf_col_angle">Ángulo (°)</string>
+    <string name="pdf_col_notes">Notas</string>
+    <string name="pdf_report_daily_title">Ángulos de inclinación óptimos diarios (365 días)</string>
+    <string name="pdf_report_daily_page">Ángulos de inclinación óptimos diarios - Página %1$d</string>
+    <string name="pdf_col_date">Fecha</string>
+    <string name="pdf_report_footer">Generado por la aplicación Ajustador de paneles solares</string>
+    <string name="pdf_location_label">Ubicación: %1$.4f°, %2$.4f°</string>
+    <string name="pdf_generated_label">Generado el: %1$s</string>
+    <string name="pvgis_label">PVGIS</string>
+    <string name="emoji_thumbs_up">👍</string>
+    <string name="pvgis_url">https://re.jrc.ec.europa.eu/pvg_tools/en/#PVP?lat=%1$.6f&amp;lon=%2$.6f&amp;raddat=1</string>
 </resources>

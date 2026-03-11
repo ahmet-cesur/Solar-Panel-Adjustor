@@ -29,6 +29,8 @@
     <string name="saturday">Samedi</string>
     <string name="sunday">Dimanche</string>
     <string name="monday">Lundi</string>
+    <string name="tuesday">Mardi</string>
+    <string name="wednesday">Mercredi</string>
     <string name="settings">Paramètres</string>
     <string name="back">Retour</string>
     <string name="refresh">Actualiser</string>
@@ -55,7 +57,7 @@
     <string name="efficiency">Efficacité</string>
     <string name="solar_radiation">Radiation Solaire</string>
     <string name="daily">Quotidien</string>
-    <string name="monthly">Mensuel</string>
+    <string name="monthly">Mensual</string>
     <string name="yearly">Annuel</string>
     <string name="estimated_output">Rendement estimé</string>
     <string name="annual_production">Production annuelle</string>
@@ -119,7 +121,7 @@
     <string name="tilt_diff">Écart d\'inclinaison</string>
     <string name="azimuth_diff">Écart d\'azimut</string>
     <string name="instructions_title">Instructions</string>
-    <string name="tiltmeter_usage_instructions">1. Choisir le mode : Choisissez l\'optimisation fixe, quotidienne ou sur 30 jours.\n2. Positionner : Posez l\'appareil à plat sur le panneau solaire, écran vers le haut.\n3. Aligner l\'azimut : Faites pivoter le panneau horizontalement jusqu’à ce que la flèche de la boussole pointe vers la cible.\n4. Ajuster l\'inclinaison : Inclinez le panneau verticalment jusqu\'à ce que la bulle soit au centre et alignée avec la cible.\n5. Terminé : L\'écran devient vert quand l\'alignement est précis (&amp;lt; 5°).</string>
+    <string name="tiltmeter_usage_instructions">1. Choisir le mode : Choisissez l\'optimisation fixe, quotidienne ou sur 30 jours.\n2. Positionner : Posez l\'appareil à plat sur le panneau solaire, écran vers le haut.\n3. Aligner l\'azimut : Faites pivoter le panneau horizontalement jusqu’à ce que la flèche de la boussole pointe vers la cible.\n4. Ajuster l\'inclinaison : Inclinez le panneau verticalment jusqu\'à ce que la bulle soit au centre et alignée avec la cible.\n5. Terminé : L\'écran devient vert quand l\'alignement est précis (&lt; 5°).</string>
     <string name="quick_reference">Référence rapide</string>
     <string name="summer_description">Été (inclinaison faible pour soleil haut)</string>
     <string name="spring_fall_description">Printemps/Automne (égal à la latitude)</string>
@@ -147,7 +149,7 @@
     <string name="no_thanks">Non merci</string>
     <string name="satellite_tiltmeter">Inclinomètre Satellite</string>
     <string name="satellite_tiltmeter_desc">Ajustement haute précision des panneaux optimisé par satellite</string>
-    <string name="satellite_tiltmeter_instructions">1. Données auto : L\'application récupère l\'angle satellite optimal (SARAH3) pour votre position.\n2. Vérifier manuellement (optionnel) : cliquez sur le lien ci-dessous. Sur le site : choisissez \"PVGIS-SARAH3\", cochez \"Optimize slope\" et visualisez les résultats.\n3. Positionner : Posez l\'appareil à plat sur le panneau solaire.\n4. Ajuster : Faites pivoter pour aligner la boussole et inclinez vers le haut/bas pour correspondre à l\'angle cible.\n5. Terminé : L\'écran devient vert quand l\'alignement est précis (&amp;lt; 5°).</string>
+    <string name="satellite_tiltmeter_instructions">1. Données auto : L\'application récupère l\'angle satellite optimal (SARAH3) pour votre position.\n2. Vérifier manuellement (optionnel) : cliquez sur le lien ci-dessous. Sur le site : choisissez \"PVGIS-SARAH3\", cochez \"Optimize slope\" et visualisez les résultats.\n3. Positionner : Posez l\'appareil à plat sur le panneau solaire.\n4. Ajuster : Faites pivoter pour aligner la boussole et inclinez vers le haut/bas pour correspondre à l\'angle cible.\n5. Terminé : L\'écran devient vert quand l\'alignement est précis (&lt; 5°).</string>
     <string name="irradiance_unit">Irradiation (kWh/m²)</string>
     <string name="production_unit">Production (kWh)</string>
     <string name="source_pvgis">Source : API PVGIS</string>
@@ -178,8 +180,28 @@
     <string name="status_snowy">Neigeux</string>
     <string name="status_sunny">Ensoleillé</string>
     <string name="status_thunderstorm">Orage</string>
-    <string name="tuesday">Mardi</string>
-    <string name="wednesday">Mercredi</string>
-    <string name="translation_disclaimer"></string>
-    <string name="optimal_position_status"></string>
+    <string name="translation_disclaimer">Certaines traductions peuvent être automatiques.</string>
+    <string name="optimal_position_status">Position optimale atteinte</string>
+    <string name="percent_fmt">%1$d %%</string>
+    <string name="percent_suffix">%%</string>
+    <string name="unit_km">km</string>
+    <string name="unit_kwh_sqm">kWh/m²</string>
+    <string name="unit_watt">W</string>
+    <string name="yield_fmt_unit">%1$.1f kWh/m²</string>
+    <string name="angle_degree_fmt">%1$.1f°</string>
+    <string name="placeholder_value">--</string>
+    <string name="pdf_report_monthly_title">Angles d\'inclinaison optimaux mensuels</string>
+    <string name="pdf_col_month">Mois</string>
+    <string name="pdf_col_month_name">Nom du mois</string>
+    <string name="pdf_col_angle">Angle (°)</string>
+    <string name="pdf_col_notes">Notes</string>
+    <string name="pdf_report_daily_title">Angles d\'inclinaison optimaux quotidiens (365 jours)</string>
+    <string name="pdf_report_daily_page">Angles d\'inclinaison optimaux quotidiens - Page %1$d</string>
+    <string name="pdf_col_date">Date</string>
+    <string name="pdf_report_footer">Généré par l\'application Ajusteur de Panneaux Solaires</string>
+    <string name="pdf_location_label">Emplacement : %1$.4f°, %2$.4f°</string>
+    <string name="pdf_generated_label">Généré le : %1$s</string>
+    <string name="pvgis_label">PVGIS</string>
+    <string name="emoji_thumbs_up">👍</string>
+    <string name="pvgis_url">https://re.jrc.ec.europa.eu/pvg_tools/en/#PVP?lat=%1$.6f&amp;lon=%2$.6f&amp;raddat=1</string>
 </resources>

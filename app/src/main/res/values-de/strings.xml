@@ -29,6 +29,8 @@
     <string name="saturday">Samstag</string>
     <string name="sunday">Sonntag</string>
     <string name="monday">Montag</string>
+    <string name="tuesday">Dienstag</string>
+    <string name="wednesday">Mittwoch</string>
     <string name="settings">Einstellungen</string>
     <string name="back">Zurück</string>
     <string name="refresh">Aktualisieren</string>
@@ -178,8 +180,28 @@
     <string name="status_snowy">Schnee</string>
     <string name="status_sunny">Sonnig</string>
     <string name="status_thunderstorm">Gewitter</string>
-    <string name="tuesday">Dienstag</string>
-    <string name="wednesday">Mittwoch</string>
-    <string name="translation_disclaimer"></string>
-    <string name="optimal_position_status"></string>
+    <string name="translation_disclaimer">Einige Übersetzungen können automatisch erstellt worden sein.</string>
+    <string name="optimal_position_status">Optimale Position erreicht</string>
+    <string name="percent_fmt">%1$d %%</string>
+    <string name="percent_suffix">%%</string>
+    <string name="unit_km">km</string>
+    <string name="unit_kwh_sqm">kWh/m²</string>
+    <string name="unit_watt">W</string>
+    <string name="yield_fmt_unit">%1$.1f kWh/m²</string>
+    <string name="angle_degree_fmt">%1$.1f°</string>
+    <string name="placeholder_value">--</string>
+    <string name="pdf_report_monthly_title">Monatliche optimale Neigungswinkel</string>
+    <string name="pdf_col_month">Monat</string>
+    <string name="pdf_col_month_name">Monatsname</string>
+    <string name="pdf_col_angle">Winkel (°)</string>
+    <string name="pdf_col_notes">Notizen</string>
+    <string name="pdf_report_daily_title">Täglich optimale Neigungswinkel (365 Tage)</string>
+    <string name="pdf_report_daily_page">Täglich optimale Neigungswinkel – Seite %1$d</string>
+    <string name="pdf_col_date">Datum</string>
+    <string name="pdf_report_footer">Erstellt mit der Solarpanel-Einsteller App</string>
+    <string name="pdf_location_label">Standort: %1$.4f°, %2$.4f°</string>
+    <string name="pdf_generated_label">Erstellt am: %1$s</string>
+    <string name="pvgis_label">PVGIS</string>
+    <string name="emoji_thumbs_up">👍</string>
+    <string name="pvgis_url">https://re.jrc.ec.europa.eu/pvg_tools/en/#PVP?lat=%1$.6f&amp;lon=%2$.6f&amp;raddat=1</string>
 </resources>

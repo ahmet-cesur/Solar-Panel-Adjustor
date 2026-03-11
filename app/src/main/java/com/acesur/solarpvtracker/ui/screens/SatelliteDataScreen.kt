@@ -15,6 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.acesur.solarpvtracker.R
@@ -281,16 +282,15 @@ fun ForecastRow(day: String, date: String, status: String, yieldValue: Double, w
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Column {
-                Text(text = "$day $date", fontWeight = FontWeight.Bold)
-                Text(
-                    text = stringResource(R.string.yield_fmt_unit, yieldValue),
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
-                )
-            }
+            // Part 1: Day & Date
+            Text(
+                text = "$day $date",
+                style = MaterialTheme.typography.bodyMedium,
+                fontWeight = FontWeight.SemiBold,
+                modifier = Modifier.weight(1.5f)
+            )
             
-            // Fixed color logic based on weatherCode instead of localized string contains
+            // Part 2: Weather Status
             val statusColor = when (weatherCode) {
                 0, 1 -> SolarGreen // Clear or Mainly clear
                 2, 3 -> SolarOrange // Partly cloudy, Overcast
@@ -303,8 +303,21 @@ fun ForecastRow(day: String, date: String, status: String, yieldValue: Double, w
             
             Text(
                 text = status,
+                style = MaterialTheme.typography.bodyMedium,
+                fontWeight = FontWeight.Medium,
+                color = statusColor,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.weight(1.2f)
+            )
+            
+            // Part 3: Solar Yield
+            Text(
+                text = stringResource(R.string.yield_fmt_unit, yieldValue),
+                style = MaterialTheme.typography.bodyMedium,
                 fontWeight = FontWeight.Bold,
-                color = statusColor
+                color = MaterialTheme.colorScheme.primary,
+                textAlign = TextAlign.End,
+                modifier = Modifier.weight(1.3f)
             )
         }
     }
