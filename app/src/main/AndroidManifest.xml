@@ -23,7 +23,7 @@
         <!-- AdMob App ID - Replace with your actual AdMob App ID before publishing -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713" />
+            android:value="ca-app-pub-6223654168327818~8734247357" />
 
         <!-- Resolve AdServices config conflict between AdMob and Firebase -->
         <property
